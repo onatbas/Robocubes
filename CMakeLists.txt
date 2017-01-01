@@ -6,16 +6,16 @@ enable_testing()
 # sets
 set (CMAKE_CXX_STANDARD 14)
 
-set(CLASS_NAMES Game )
+set(CLASS_NAMES Game Box BoxStacker Stack StackPopper VerticalNeighbourCounter VerticalNeigbourCountResult StackPopResult StackDivider)
 
-set(BOXES_GAME_HDR_FILES "")
+set(BOXES_GAME_HDR_FILES "" include/boxesGame/Colors.hxx)
 set(BOXES_GAME_SRC_FILES "")
 
 FOREACH(CLASS_NAME ${CLASS_NAMES})
      set(BOXES_GAME_HDR_FILES
      	${BOXES_GAME_HDR_FILES} ${CMAKE_CURRENT_SOURCE_DIR}/include/boxesGame/${CLASS_NAME}.hxx)
      set(BOXES_GAME_SRC_FILES 
-     	${BOXES_GAME_SRC_FILES} ${CMAKE_CURRENT_SOURCE_DIR}/src/${CLASS_NAME}.cxx)
+     	${BOXES_GAME_SRC_FILES} ${CMAKE_CURRENT_SOURCE_DIR}/src/${CLASS_NAME}.cxx src/Box.cxx)
 ENDFOREACH()
 
 # includes/include directories
