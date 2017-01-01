@@ -26,6 +26,16 @@ TEST(BoxTests, boxes_stack_vertically)
 }
 
 
+TEST(BoxTests, multiple_boxes_stack_vertically)
+{
+	BoxStacker stacker;
+	Stack stack;
+	for (int i=0; i<100; i++)
+		stack = stacker.stackOn(stack, Box(GREEN));
+	EXPECT_EQ(100, stack.size());
+}
+
+
 TEST(BoxTests, stacker_should_stack_in_order)
 {
 	Box first(GREEN);

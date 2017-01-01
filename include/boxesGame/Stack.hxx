@@ -11,6 +11,9 @@
 class Stack {
 public:
 	Box operator[](int value) const;
+	int size() const;
+	bool operator==(const Stack &rhs) const;
+	bool operator!=(const Stack &rhs) const;
 
 protected:
 	std::vector<Box> boxes;

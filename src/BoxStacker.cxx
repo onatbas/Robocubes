@@ -10,3 +10,9 @@ Stack BoxStacker::stackOnTop(const Box first_box, const Box second_box) const {
 	s.boxes.push_back(second_box);
 	return s;
 }
+
+Stack BoxStacker::stackOn(const Stack stack, Box box) {
+	Stack nStack = stack;
+	nStack.boxes.push_back(box);
+	return nStack;
+}
