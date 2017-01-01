@@ -6,6 +6,7 @@
 #define BOXESGAME_BOXPOPPERTESTHELPERS_HXX
 
 #include <BoxStacker.hxx>
+#include <StackSet.hxx>
 
 Stack getallGreenStack()
 {
@@ -54,5 +55,14 @@ Stack get_3_Blue_5_Green_3_Blue_Stack()
 	return s;
 }
 
+StackSet get_3_stacks_one_box_each()
+{
+	return StackSet();
+}
+
+StackSet get_4_stacks_bbrg()
+{
+	return StackSet();
+}
 
 #endif //BOXESGAME_BOXPOPPERTESTHELPERS_HXX

@@ -7,7 +7,7 @@
 #include <BoxStacker.hxx>
 #include "Box.hxx"
 #include "StackPopper.hxx"
-#include "BoxPopperTestHelpers.hxx"
+#include "StackHelpers.hxx"
 
 TEST(BoxPopperTests, single_column_all_should_pop)
 {

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 
 set(BOXES_GAME_TEST_DEPENDENCIES boxesGame ${GTEST_BOTH_LIBRARIES} ${GMOCK_BOTH_LIBRARIES})
-set(BOXES_GAME_TEST_HEADERS BoxPopperTestHelpers.hxx)
+set(BOXES_GAME_TEST_HEADERS StackHelpers.hxx)
 
 macro(ADD_NEW_TEST TEST_SOURCE FOLDER_NAME)
 	set (TARGET_NAME ${TEST_SOURCE}_TESTTARGET)
@@ -17,6 +17,8 @@ endmacro()
 
 ADD_NEW_TEST(BoxTests "boxesGame_tests")
 ADD_NEW_TEST(BoxDisapperanceTest "boxesGame_tests")
-ADD_NEW_TEST(NeighbourCountingTests "boxesGame_tests")
+ADD_NEW_TEST(VerticalNeighbourCountingTests "boxesGame_tests")
+ADD_NEW_TEST(HorizontalAndVerticalNeighbourCountingTests "boxesGame_tests")
+
 
 
