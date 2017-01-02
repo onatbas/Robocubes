@@ -12,3 +12,7 @@ int PoppedPositions::getSize() const {
 void PoppedPositions::popPosition(const BoxPosition &position) {
     positions.push_back(position);
 }
+
+BoxPosition PoppedPositions::operator[](int i) const {
+    return positions[i];
+}

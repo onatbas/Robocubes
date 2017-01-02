@@ -15,7 +15,6 @@ TEST(AdjacentPopperTests, shouldPopVerticals)
     AdjacentPopper popper;
     AdjacentPopperResult result = popper.pop(set, BoxPosition(0,0));
     PoppedPositions popped = result.getPopped();
-
     EXPECT_EQ(popped.getSize(), set[0].size());
 }
 
