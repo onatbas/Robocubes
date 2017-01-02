@@ -18,10 +18,10 @@ set(CLASS_NAMES
         VerticalNeigbourCountResult
         StackPopResult
         StackDivider
-        HorizontalAndVerticalNeigbourCounter
+        AdjacentNeighbourCounter
         StackSet
         BoxPosition
-        HorizontalAndVerticalNeighbourCountResult
+        AdjacentNeighbourCountResult
         TileExistsChecker
         SameColorChecker
         NeighboursInVicinityCounter)

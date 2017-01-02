@@ -2,7 +2,7 @@
 // Created by Onat Bas on 02/01/17.
 //
 
-#include "HorizontalAndVerticalNeigbourCounter.hxx"
+#include "AdjacentNeighbourCounter.hxx"
 #include <queue>
 #include "NeighboursInVicinityCounter.hxx"
 
