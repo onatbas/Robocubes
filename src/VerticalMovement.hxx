@@ -7,11 +7,13 @@
 
 class VerticalMovement {
 
-protected:
 public:
     VerticalMovement(int currentHeight, int moveByUnit);
     bool operator==(const VerticalMovement &rhs) const;
     bool operator!=(const VerticalMovement &rhs) const;
+
+    int getCurrentHeight() const;
+    int getMoveByUnit() const;
 protected:
     int currentHeight;
     int moveByUnit;

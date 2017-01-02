@@ -54,3 +54,15 @@ TEST(VerticalMoveInstructionTests, shouldDetectFallingBoxes88Pattern) {
 
     EXPECT_EQ(4, movements.getStackSize());
 }
+
+
+TEST(VerticalMoveInstructionTests, shouldProvideInformationOnMiddleStackDisappearing) {
+    StackSet set = getStackSetByCodeList("rrr bbb rrr");
+    AdjacentPopper popper;
+    const AdjacentPopperResult popResult = popper.pop(set, BoxPosition(1,2));
+
+    VerticalMover mover;
+    VerticalMovements movements = mover.move(set, popResult);
+
+    EXPECT_EQ(2, movements.getStackSize());
+}

@@ -13,6 +13,7 @@ class HorizontalMover {
 
 public:
     const HorizontalMovements move(const StackSet &set, const VerticalMovements &verticalMovements);
+    bool stackRemains(const std::vector<StackOrder> &remainingStacks, int i) const;
 };
 
 #endif //BOXESGAME_HORIZONTALMOVER_HXX

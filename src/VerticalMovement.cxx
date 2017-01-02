@@ -15,3 +15,11 @@ bool VerticalMovement::operator==(const VerticalMovement &rhs) const {
 bool VerticalMovement::operator!=(const VerticalMovement &rhs) const {
     return !(rhs == *this);
 }
+
+int VerticalMovement::getCurrentHeight() const {
+    return currentHeight;
+}
+
+int VerticalMovement::getMoveByUnit() const {
+    return moveByUnit;
+}

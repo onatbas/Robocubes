@@ -21,13 +21,13 @@ TEST(HorizontalInstructionsTest, shouldDoNothingIfNoStackIsNull) {
     HorizontalMover horizontalMover;
     const HorizontalMovements horizontalMovements = horizontalMover.move(set, verticalMovements);
 
-    EXPECT_EQ(0, horizontalMovements.getMovementsSize());
+    EXPECT_EQ(3, horizontalMovements.getMovementsSize());
 }
 
 TEST(HorizontalInstructionsTest, shouldSlideByOneIfOneColumnIsEmpty) {
     StackSet set = getStackSetByCodeList("bgb bbbb bbbr");
     AdjacentPopper popper;
-    const AdjacentPopperResult result = popper.pop(set, BoxPosition(1, 0));
+    const AdjacentPopperResult result = popper.pop(set, BoxPosition(2, 0));
 
     VerticalMover verticalMover;
     const VerticalMovements verticalMovements = verticalMover.move(set, result);
@@ -35,5 +35,5 @@ TEST(HorizontalInstructionsTest, shouldSlideByOneIfOneColumnIsEmpty) {
     HorizontalMover horizontalMover;
     const HorizontalMovements horizontalMovements = horizontalMover.move(set, verticalMovements);
 
-    EXPECT_EQ(1, horizontalMovements.getMovementsSize());
+    EXPECT_EQ(2, horizontalMovements.getMovementsSize());
 }

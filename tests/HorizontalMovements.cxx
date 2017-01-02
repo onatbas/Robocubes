@@ -5,5 +5,17 @@
 #include "HorizontalMovements.hxx"
 
 int HorizontalMovements::getMovementsSize() const {
-    return 0;
+    return movements.size();
+}
+
+void HorizontalMovements::addMovement(HorizontalMovement movement) {
+    movements.push_back(movement);
+}
+
+HorizontalMovement HorizontalMovements::getMovementAt(int i) const {
+    return movements[i];
+}
+
+HorizontalMovement HorizontalMovements::operator[](int i) const {
+    return getMovementAt(i);
 }
