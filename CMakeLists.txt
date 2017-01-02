@@ -27,7 +27,10 @@ set(CLASS_NAMES
         NeighboursInVicinityCounter
         AdjacentPopper
         AdjacentPopperResult
-        PoppedPositions)
+        PoppedPositions
+        VerticalMover
+        VerticalMovements
+        VerticalMovement)
 
 set(BOXES_GAME_HDR_FILES "" include/boxesGame/Colors.hxx)
 set(BOXES_GAME_SRC_FILES "")

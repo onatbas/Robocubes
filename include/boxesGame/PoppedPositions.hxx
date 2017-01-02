@@ -13,6 +13,8 @@ public:
     int getSize() const;
     void popPosition(const BoxPosition &position);
 
+    BoxPosition operator[](int i) const;
+
 protected:
     std::vector<BoxPosition> positions;
 };
