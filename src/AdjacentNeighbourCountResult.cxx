@@ -5,8 +5,14 @@
 #include "AdjacentNeighbourCountResult.hxx"
 
 int AdjacentNeighbourCountResult::getSameColorAreaCount() const {
-	return neighbours;
+    return neighbours.size();
 }
 
-AdjacentNeighbourCountResult::AdjacentNeighbourCountResult(int neighbours) : neighbours(
-		neighbours) {}
+BoxPosition AdjacentNeighbourCountResult::getNeighbourAt(int i) const {
+    return neighbours[i];
+}
+
+BoxPosition AdjacentNeighbourCountResult::operator[](int i) const {
+    return getNeighbourAt(i);
+}
+

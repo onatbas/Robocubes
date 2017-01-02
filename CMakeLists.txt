@@ -24,7 +24,10 @@ set(CLASS_NAMES
         AdjacentNeighbourCountResult
         TileExistsChecker
         SameColorChecker
-        NeighboursInVicinityCounter)
+        NeighboursInVicinityCounter
+        AdjacentPopper
+        AdjacentPopperResult
+        PoppedPositions)
 
 set(BOXES_GAME_HDR_FILES "" include/boxesGame/Colors.hxx)
 set(BOXES_GAME_SRC_FILES "")
