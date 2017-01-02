@@ -11,7 +11,7 @@
 
 TEST(HorizontalAndVerticalNeighbourCounting, three_single_box_column_counting)
 {
-	HorizontalAndVerticalNeigbourCounter counter;
+	AdjacentNeighbourCounter counter;
 	StackSet set = get_3_stacks_one_box_each();
 	AdjacentNeighbourCountResult result = counter.count(set, BoxPosition(0,0));
 	
@@ -21,7 +21,7 @@ TEST(HorizontalAndVerticalNeighbourCounting, three_single_box_column_counting)
 
 TEST(HorizontalAndVerticalNeighbourCounting, four_single_box_column_counting)
 {
-	HorizontalAndVerticalNeigbourCounter counter;
+	AdjacentNeighbourCounter counter;
 	StackSet set = get_4_stacks_bbrg();
 	
 	AdjacentNeighbourCountResult result1 = counter.count(set, BoxPosition(0,0));
@@ -34,7 +34,7 @@ TEST(HorizontalAndVerticalNeighbourCounting, four_single_box_column_counting)
 
 TEST(HorizontalAndVerticalNeighbourCounting, set_square_reference)
 {
-	HorizontalAndVerticalNeigbourCounter counter;
+	AdjacentNeighbourCounter counter;
 	StackSet set = getGreenSquareStackSet();
 	
 	AdjacentNeighbourCountResult result1 = counter.count(set, BoxPosition(0,0));
@@ -48,7 +48,7 @@ TEST(HorizontalAndVerticalNeighbourCounting, set_square_reference)
 
 TEST(HorizontalAndVerticalNeighbourCounting, test_arbitrary)
 {
-	HorizontalAndVerticalNeigbourCounter counter;
+	AdjacentNeighbourCounter counter;
 	StackSet set = getStackSetByCodeList("bbbggggggg bgbb bbb gggbbbbbbb gbgbgbgbgb");
 	
 	AdjacentNeighbourCountResult result1 = counter.count(set, BoxPosition(0,0));
@@ -58,7 +58,7 @@ TEST(HorizontalAndVerticalNeighbourCounting, test_arbitrary)
 
 TEST(HorizontalAndVerticalNeighbourCounting, test_arbitrary_2)
 {
-	HorizontalAndVerticalNeigbourCounter counter;
+	AdjacentNeighbourCounter counter;
 	StackSet set = getStackSetByCodeList("bbbggggggg bgbbb bbbbb gggbbbbbbb gbgbgbgbgb rrrrrrrrrrrr g rrgrrr ");
 	
 	AdjacentNeighbourCountResult result1 = counter.count(set, BoxPosition(0,0));
