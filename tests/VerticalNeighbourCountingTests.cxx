@@ -4,7 +4,7 @@
 
 #include <VerticalNeighbourCounter.hxx>
 #include "gtest/gtest.h"
-#include "BoxPopperTestHelpers.hxx"
+#include "StackHelpers.hxx"
 
 TEST(NeighbourCountingTests, should_count_vertically)
 {

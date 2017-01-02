@@ -6,7 +6,22 @@ enable_testing()
 # sets
 set (CMAKE_CXX_STANDARD 14)
 
-set(CLASS_NAMES Game Box BoxStacker Stack StackPopper VerticalNeighbourCounter VerticalNeigbourCountResult StackPopResult StackDivider)
+add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
+
+set(CLASS_NAMES
+        Game
+        Box
+        BoxStacker
+        Stack
+        StackPopper
+        VerticalNeighbourCounter
+        VerticalNeigbourCountResult
+        StackPopResult
+        StackDivider
+        HorizontalAndVerticalNeigbourCounter
+        StackSet
+        BoxPosition
+        HorizontalAndVerticalNeighbourCountResult)
 
 set(BOXES_GAME_HDR_FILES "" include/boxesGame/Colors.hxx)
 set(BOXES_GAME_SRC_FILES "")
