@@ -5,8 +5,8 @@
 #ifndef BOXESGAME_BOXPOPPERTESTHELPERS_HXX
 #define BOXESGAME_BOXPOPPERTESTHELPERS_HXX
 
-#include <BoxStacker.hxx>
-#include <StackSet.hxx>
+#include "../src/BoxStacker.hxx"
+#include "../src/StackSet.hxx"
 
 #include <boost/tokenizer.hpp>
 #include <boost/foreach.hpp>

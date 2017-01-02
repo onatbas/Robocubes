@@ -2,12 +2,12 @@
 // Created by Onat Bas on 01/01/17.
 //
 
-#include <StackSet.hxx>
+#include "../src/StackSet.hxx"
 #include "gtest/gtest.h"
-#include "AdjacentNeighbourCounter.hxx"
-#include "BoxPosition.hxx"
+#include "../src/AdjacentNeighbourCounter.hxx"
+#include "../src/BoxPosition.hxx"
 #include "StackHelpers.hxx"
-#include "AdjacentNeighbourCountResult.hxx"
+#include "../src/AdjacentNeighbourCountResult.hxx"
 
 TEST(HorizontalAndVerticalNeighbourCounting, three_single_box_column_counting)
 {
