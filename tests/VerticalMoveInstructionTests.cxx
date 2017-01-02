@@ -20,8 +20,6 @@ TEST(VerticalMoveInstructionTests, shouldCreateEmptyStackIfAllPopped) {
     EXPECT_EQ(0, movements.getMoveSizeInStack(0));
 }
 
-
-
 TEST(VerticalMoveInstructionTests, shouldDetectFallingBoxes) {
     StackSet set = getStackSetByCodeList("rrbrrb rrrrrrrrrr rrrgggg");
     AdjacentPopper popper;
@@ -45,8 +43,6 @@ TEST(VerticalMoveInstructionTests, shouldDetectFallingBoxes) {
     EXPECT_FALSE(std::find(thirdColumn.begin(), thirdColumn.end(), VerticalMovement(6, 3)) == thirdColumn.end());
 
 }
-
-
 
 TEST(VerticalMoveInstructionTests, shouldDetectFallingBoxes88Pattern) {
     StackSet set = getStackSetByCodeList("rrr rbr rrr rgr rrr rrr rggr rbr");

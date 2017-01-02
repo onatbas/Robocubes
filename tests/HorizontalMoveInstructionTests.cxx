@@ -9,10 +9,8 @@
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
 #include "HorizontalMover.hxx"
-#include "HorizontalMovements.hxx"
 
-TEST(HorizontalInstructionsTest, shouldDoNothingIfNoStackIsNull)
-{
+TEST(HorizontalInstructionsTest, shouldDoNothingIfNoStackIsNull) {
     StackSet set = getStackSetByCodeList("bgb bbbr bbbr");
     AdjacentPopper popper;
     const AdjacentPopperResult result = popper.pop(set, BoxPosition(1, 0));
@@ -26,9 +24,7 @@ TEST(HorizontalInstructionsTest, shouldDoNothingIfNoStackIsNull)
     EXPECT_EQ(0, horizontalMovements.getMovementsSize());
 }
 
-
-TEST(HorizontalInstructionsTest, shouldSlideByOneIfOneColumnIsEmpty)
-{
+TEST(HorizontalInstructionsTest, shouldSlideByOneIfOneColumnIsEmpty) {
     StackSet set = getStackSetByCodeList("bgb bbbb bbbr");
     AdjacentPopper popper;
     const AdjacentPopperResult result = popper.pop(set, BoxPosition(1, 0));
