@@ -20,8 +20,6 @@ TEST(VerticalMoveInstructionTests, shouldCreateEmptyStackIfAllPopped) {
     EXPECT_EQ(0, movements.getMoveSizeInStack(0));
 }
 
-
-
 TEST(VerticalMoveInstructionTests, shouldDetectFallingBoxes) {
     StackSet set = getStackSetByCodeList("rrbrrb rrrrrrrrrr rrrgggg");
     AdjacentPopper popper;
@@ -46,8 +44,6 @@ TEST(VerticalMoveInstructionTests, shouldDetectFallingBoxes) {
 
 }
 
-
-
 TEST(VerticalMoveInstructionTests, shouldDetectFallingBoxes88Pattern) {
     StackSet set = getStackSetByCodeList("rrr rbr rrr rgr rrr rrr rggr rbr");
     AdjacentPopper popper;
@@ -57,4 +53,16 @@ TEST(VerticalMoveInstructionTests, shouldDetectFallingBoxes88Pattern) {
     VerticalMovements movements = mover.move(set, popResult);
 
     EXPECT_EQ(4, movements.getStackSize());
+}
+
+
+TEST(VerticalMoveInstructionTests, shouldProvideInformationOnMiddleStackDisappearing) {
+    StackSet set = getStackSetByCodeList("rrr bbb rrr");
+    AdjacentPopper popper;
+    const AdjacentPopperResult popResult = popper.pop(set, BoxPosition(1,2));
+
+    VerticalMover mover;
+    VerticalMovements movements = mover.move(set, popResult);
+
+    EXPECT_EQ(2, movements.getStackSize());
 }

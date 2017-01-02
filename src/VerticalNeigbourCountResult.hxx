@@ -7,16 +7,15 @@
 
 class VerticalNeigbourCountResult {
 private:
-	int upperNeighbours;
-	int lowerNeighbours;
-	
+    int upperNeighbours;
+    int lowerNeighbours;
 
 public:
-	VerticalNeigbourCountResult(int upperNeighbours, int lowerNeighbours);
-	int getSameColorAreaCount() const;
-	int getUpperNeighbours() const;
-	int getLowerNeighbours() const;
-	
+    VerticalNeigbourCountResult(int upperNeighbours, int lowerNeighbours);
+    int getSameColorAreaCount() const;
+    int getUpperNeighbours() const;
+    int getLowerNeighbours() const;
+
 };
 
 #endif //BOXESGAME_NEIGBOURCOUNTRESULT_HXX

@@ -16,12 +16,11 @@
 class AdjacentNeighbourCounter {
 
 public:
-	AdjacentNeighbourCountResult count(const StackSet &set, const BoxPosition &position) const;
-	bool wasProcessedBefore(const std::vector<BoxPosition> &counted, const BoxPosition &current) const;
-	void addToProcessedList(std::vector<BoxPosition> &counted, const BoxPosition &current) const;
-	void addNeighboursToToBeProcessed(const StackSet &set, const BoxPosition position,
-										  std::queue<BoxPosition> & queue,
-										  Colors originalColor) const;
+    AdjacentNeighbourCountResult count(const StackSet &set, const BoxPosition &position) const;
+    bool wasProcessedBefore(const std::vector<BoxPosition> &counted, const BoxPosition &current) const;
+    void addToProcessedList(std::vector<BoxPosition> &counted, const BoxPosition &current) const;
+    void addNeighboursToToBeProcessed(const StackSet &set, const BoxPosition position, std::queue<BoxPosition> &queue,
+                                      Colors originalColor) const;
 };
 
 #endif //BOXESGAME_HORIZONTALANDVERTICALNEIGBOURCOUNTER_HXX

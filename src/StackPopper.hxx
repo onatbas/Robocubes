@@ -11,7 +11,7 @@
 class StackPopper {
 
 public:
-	StackPopResult popOnStack(Stack stack, int i);
+    StackPopResult popOnStack(Stack stack, int i);
 };
 
 #endif //BOXESGAME_STACKPOPPER_HXX

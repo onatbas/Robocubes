@@ -6,29 +6,29 @@
 #include "StackSet.hxx"
 
 void StackSet::addStack(const Stack &v) {
-	stacks.push_back(v);
+    stacks.push_back(v);
 }
 
 Stack StackSet::getStackAt(int i) const {
-	return stacks[i];
+    return stacks[i];
 }
 
 Stack StackSet::operator[](int i) const {
-	return getStackAt(i);
+    return getStackAt(i);
 }
 
 int StackSet::getSize() const {
-	return stacks.size();
+    return stacks.size();
 }
 
 Box StackSet::operator[](const BoxPosition &v) const {
-	return stacks[v.getX()][v.getY()];
+    return stacks[v.getX()][v.getY()];
 }
 
 bool StackSet::operator==(const StackSet &rhs) const {
-	return stacks == rhs.stacks;
+    return stacks == rhs.stacks;
 }
 
 bool StackSet::operator!=(const StackSet &rhs) const {
-	return !(rhs == *this);
+    return !(rhs == *this);
 }

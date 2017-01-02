@@ -12,12 +12,12 @@ AdjacentPopperResult AdjacentPopper::pop(const StackSet &set, const BoxPosition 
     if (!hasEnoughNeighbours) {
         return AdjacentPopperResult();
     }
-    
+
     AdjacentNeighbourCounter counter;
     const auto result = counter.count(set, position);
 
     PoppedPositions positions;
-    for (int i=0; i<result.getSameColorAreaCount(); i++)
+    for (int i = 0; i < result.getSameColorAreaCount(); i++)
         positions.popPosition(result[i]);
 
     return AdjacentPopperResult(positions);

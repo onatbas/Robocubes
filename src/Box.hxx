@@ -9,12 +9,12 @@
 
 class Box {
 public:
-	Box(Colors colors);
-	bool operator==(const Box& other) const;
-	Colors getColor() const;
+    Box(Colors colors);
+    bool operator==(const Box &other) const;
+    Colors getColor() const;
 
 private:
-	Colors color;
+    Colors color;
 };
 
 #endif //BOXESGAME_BOX_H

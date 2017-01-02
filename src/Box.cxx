@@ -5,13 +5,13 @@
 #include "Box.hxx"
 
 bool Box::operator==(const Box &other) const {
-	return (other.color == color);
+    return (other.color == color);
 }
 
 Box::Box(Colors color) {
-	this->color = color;
+    this->color = color;
 }
 
 Colors Box::getColor() const {
-	return color;
+    return color;
 }

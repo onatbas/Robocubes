@@ -5,16 +5,19 @@
 #include "VerticalNeigbourCountResult.hxx"
 
 int VerticalNeigbourCountResult::getUpperNeighbours() const {
-	return upperNeighbours;
+    return upperNeighbours;
 }
 
 int VerticalNeigbourCountResult::getLowerNeighbours() const {
-	return lowerNeighbours;
+    return lowerNeighbours;
 }
 
-VerticalNeigbourCountResult::VerticalNeigbourCountResult(int upperNeighbours, int lowerNeighbours) : upperNeighbours(upperNeighbours),
-																					 lowerNeighbours(lowerNeighbours) {}
+VerticalNeigbourCountResult::VerticalNeigbourCountResult(int upperNeighbours, int lowerNeighbours) : upperNeighbours(
+        upperNeighbours),
+                                                                                                     lowerNeighbours(
+                                                                                                             lowerNeighbours) {
+}
 
 int VerticalNeigbourCountResult::getSameColorAreaCount() const {
-	return getUpperNeighbours() + getLowerNeighbours() + 1;
+    return getUpperNeighbours() + getLowerNeighbours() + 1;
 }

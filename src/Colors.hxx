@@ -5,9 +5,9 @@
 #ifndef BOXESGAME_COLORS_HXX
 #define BOXESGAME_COLORS_HXX
 
-enum Colors{
+enum Colors {
 
-	RED, GREEN, BLUE
+    RED, GREEN, BLUE
 
 };
 

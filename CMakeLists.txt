@@ -29,7 +29,9 @@ set(BOXES_GAME_SRC_FILES
         src/VerticalMover.hxx src/VerticalMover.cxx
         src/VerticalMovements.hxx src/VerticalMovements.cxx
         src/VerticalMovement.hxx src/VerticalMovement.cxx
-        )
+        tests/HorizontalMover.cxx tests/HorizontalMover.hxx
+        tests/HorizontalMovements.cxx tests/HorizontalMovements.hxx
+        tests/HorizontalMovement.cxx tests/HorizontalMovement.hxx)
 
 #definitions
 add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")

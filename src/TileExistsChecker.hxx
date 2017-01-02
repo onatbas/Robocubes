@@ -10,7 +10,7 @@
 class TileExistsChecker {
 
 public:
-	bool tileExists(const StackSet &set, const BoxPosition &position) const;
+    bool tileExists(const StackSet &set, const BoxPosition &position) const;
 };
 
 #endif //BOXESGAME_TILEEXISTSCHECKER_HXX
