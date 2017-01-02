@@ -12,6 +12,8 @@ public:
 
     int getSlideBy() const;
     int getStackOrder() const;
+    bool operator==(const HorizontalMovement &rhs) const;
+    bool operator!=(const HorizontalMovement &rhs) const;
 protected:
     int slideBy;
     int stackOrder;

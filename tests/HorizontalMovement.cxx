@@ -15,3 +15,11 @@ int HorizontalMovement::getSlideBy() const {
 int HorizontalMovement::getStackOrder() const {
     return stackOrder;
 }
+
+bool HorizontalMovement::operator==(const HorizontalMovement &rhs) const {
+    return slideBy == rhs.slideBy && stackOrder == rhs.stackOrder;
+}
+
+bool HorizontalMovement::operator!=(const HorizontalMovement &rhs) const {
+    return !(rhs == *this);
+}

@@ -25,7 +25,7 @@ TEST(HorizontalInstructionsTest, shouldDoNothingIfNoStackIsNull) {
 }
 
 TEST(HorizontalInstructionsTest, shouldSlideByOneIfOneColumnIsEmpty) {
-    StackSet set = getStackSetByCodeList("bgb bbbb bbbr");
+    StackSet set = getStackSetByCodeList("bgb bbbb bb bbb bbbr bbbb");
     AdjacentPopper popper;
     const AdjacentPopperResult result = popper.pop(set, BoxPosition(2, 0));
 
@@ -36,4 +36,7 @@ TEST(HorizontalInstructionsTest, shouldSlideByOneIfOneColumnIsEmpty) {
     const HorizontalMovements horizontalMovements = horizontalMover.move(set, verticalMovements);
 
     EXPECT_EQ(2, horizontalMovements.getMovementsSize());
+    const auto secondMovement = horizontalMovements.getMovementAt(1);
+    EXPECT_EQ(HorizontalMovement(4, 3), secondMovement);
+
 }
