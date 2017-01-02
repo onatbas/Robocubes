@@ -13,7 +13,7 @@
 #include "SameColorChecker.hxx"
 #include "NeighboursInVicinityCounter.hxx"
 
-class HorizontalAndVerticalNeigbourCounter {
+class AdjacentNeighbourCounter {
 
 public:
 	AdjacentNeighbourCountResult count(const StackSet &set, const BoxPosition &position) const;

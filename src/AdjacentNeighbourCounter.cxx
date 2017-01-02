@@ -6,7 +6,7 @@
 #include "AdjacentNeighbourCounter.hxx"
 
 AdjacentNeighbourCountResult
-HorizontalAndVerticalNeigbourCounter::count(const StackSet &set, const BoxPosition &position) const {
+AdjacentNeighbourCounter::count(const StackSet &set, const BoxPosition &position) const {
 
 	std::vector<BoxPosition> counted;
 	std::queue<BoxPosition> toBeCounted;
@@ -40,7 +40,7 @@ HorizontalAndVerticalNeigbourCounter::count(const StackSet &set, const BoxPositi
 	return result;
 }
 
-void HorizontalAndVerticalNeigbourCounter::addNeighboursToToBeProcessed(const StackSet &set, const BoxPosition position,
+void AdjacentNeighbourCounter::addNeighboursToToBeProcessed(const StackSet &set, const BoxPosition position,
 																		std::queue<BoxPosition> & queue,
 																		Colors originalColor) const {
 	NeighboursInVicinityCounter counter;
@@ -54,9 +54,9 @@ void HorizontalAndVerticalNeigbourCounter::addNeighboursToToBeProcessed(const St
 }
 
 void
-HorizontalAndVerticalNeigbourCounter::addToProcessedList(std::vector<BoxPosition> &counted, const BoxPosition &current) const { counted.push_back(current); }
+AdjacentNeighbourCounter::addToProcessedList(std::vector<BoxPosition> &counted, const BoxPosition &current) const { counted.push_back(current); }
 
-bool HorizontalAndVerticalNeigbourCounter::wasProcessedBefore(const std::vector<BoxPosition> &counted,
+bool AdjacentNeighbourCounter::wasProcessedBefore(const std::vector<BoxPosition> &counted,
 															  const BoxPosition &current) const {
 	return find(counted.begin(), counted.end(), current) != counted.end();
 }
