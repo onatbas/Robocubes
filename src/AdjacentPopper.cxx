@@ -2,7 +2,7 @@
 // Created by Onat Bas on 02/01/17.
 //
 
-#include <AdjacentNeighbourCounter.hxx>
+#include "AdjacentNeighbourCounter.hxx"
 #include "AdjacentPopper.hxx"
 
 AdjacentPopperResult AdjacentPopper::pop(const StackSet &set, const BoxPosition &position) const {

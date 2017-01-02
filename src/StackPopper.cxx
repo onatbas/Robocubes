@@ -2,8 +2,8 @@
 // Created by Onat Bas on 01/01/17.
 //
 
-#include <VerticalNeighbourCounter.hxx>
-#include <StackDivider.hxx>
+#include "VerticalNeighbourCounter.hxx"
+#include "StackDivider.hxx"
 #include "StackPopper.hxx"
 
 StackPopResult StackPopper::popOnStack(Stack stack, int i) {

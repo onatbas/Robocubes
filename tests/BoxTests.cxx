@@ -1,8 +1,8 @@
 #include <iostream>
-#include <Box.hxx>
-#include <BoxStacker.hxx>
+#include "../src/Box.hxx"
+#include "../src/BoxStacker.hxx"
 
-#include "Colors.hxx"
+#include "../src/Colors.hxx"
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
@@ -45,4 +45,5 @@ TEST(BoxTests, stacker_should_stack_in_order)
 	
 	EXPECT_FALSE(boxes[1] == first);
 	EXPECT_FALSE(boxes[0] == second);
+
 }

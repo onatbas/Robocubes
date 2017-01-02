@@ -3,10 +3,10 @@
 //
 
 
-#include <AdjacentPopper.hxx>
+#include "../src/AdjacentPopper.hxx"
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
-#include "StackSet.hxx"
+#include "../src/StackSet.hxx"
 
 
 TEST(AdjacentPopperTests, shouldPopVerticals)
