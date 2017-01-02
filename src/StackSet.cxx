@@ -24,3 +24,11 @@ int StackSet::getSize() const {
 Box StackSet::operator[](const BoxPosition &v) const {
 	return stacks[v.getX()][v.getY()];
 }
+
+bool StackSet::operator==(const StackSet &rhs) const {
+	return stacks == rhs.stacks;
+}
+
+bool StackSet::operator!=(const StackSet &rhs) const {
+	return !(rhs == *this);
+}

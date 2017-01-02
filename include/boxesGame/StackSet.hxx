@@ -15,7 +15,9 @@ public:
 	Stack operator[](int i) const;
 	Box operator[](const BoxPosition&) const;
 	int getSize() const;
-	
+	bool operator==(const StackSet &rhs) const;
+	bool operator!=(const StackSet &rhs) const;
+
 private:
 	std::vector<Stack> stacks;
 	
