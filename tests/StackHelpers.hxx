@@ -8,61 +8,85 @@
 #include <BoxStacker.hxx>
 #include <StackSet.hxx>
 
-Stack getallGreenStack()
+#include <boost/tokenizer.hpp>
+#include <boost/foreach.hpp>
+
+typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
+
+Stack getStackByCode(std::string colors)
 {
 	Stack s;
 	BoxStacker stacker;
-	s = stacker.stackOn(s, Box(GREEN));
-	s = stacker.stackOn(s, Box(GREEN));
-	s = stacker.stackOn(s, Box(GREEN));
+	for (char c : colors)
+		switch (c)
+		{
+			case 'r': s = stacker.stackOn(s, RED);   break;
+			case 'g': s = stacker.stackOn(s, GREEN); break;
+			case 'b': s = stacker.stackOn(s, BLUE);  break;
+		}
 	return s;
 }
 
+StackSet getStackSetByCodeList(std::string colors) {
+	StackSet set;
+	boost::char_separator<char> sep(" ");
+	tokenizer tokens(colors, sep);
+	for (std::string s : tokens) {
+		set.addStack(getStackByCode(s));
+	}
+	return set;
+}
+	
 
+Stack getallGreenStack()
+{
+	return getStackByCode("ggg");
+}
 
 Stack getBlueGreenBlueStack()
 {
-	Stack s;
-	BoxStacker stacker;
-	s = stacker.stackOn(s, Box(BLUE));
-	s = stacker.stackOn(s, Box(GREEN));
-	s = stacker.stackOn(s, Box(BLUE));
-	return s;
+	return getStackByCode("bgb");
 }
 
 Stack getBlueBlueGreenBlueStack()
 {
-	Stack s;
-	BoxStacker stacker;
-	s = stacker.stackOn(s, Box(BLUE));
-	s = stacker.stackOn(s, Box(BLUE));
-	s = stacker.stackOn(s, Box(GREEN));
-	s = stacker.stackOn(s, Box(BLUE));
-	return s;
+	return getStackByCode("bbgb");
 }
 
 
 Stack get_3_Blue_5_Green_3_Blue_Stack()
 {
+	return getStackByCode("bbbgggggbbb");
+}
+
+Stack getSingleStack(Colors c)
+{
 	Stack s;
 	BoxStacker stacker;
-	for (int i=0;i<3;i++)
-		s = stacker.stackOn(s, Box(BLUE));
-	for (int i=0;i<5;i++)
-		s = stacker.stackOn(s, Box(GREEN));
-	for (int i=0;i<3;i++)
-		s = stacker.stackOn(s, Box(BLUE));
-	return s;
+	return stacker.stackOn(s, Box(c));
 }
 
 StackSet get_3_stacks_one_box_each()
 {
-	return StackSet();
+	StackSet set;
+	for (int i=0; i<3; i++)
+		set.addStack(getSingleStack(GREEN));
+	return set;
 }
 
 StackSet get_4_stacks_bbrg()
 {
-	return StackSet();
+	StackSet set;
+	set.addStack(getSingleStack(BLUE));
+	set.addStack(getSingleStack(BLUE));
+	set.addStack(getSingleStack(RED));
+	set.addStack(getSingleStack(GREEN));
+	return set;
+}
+
+StackSet getGreenSquareStackSet()
+{
+	return getStackSetByCodeList("ggg gbg ggg");
 }
 
 #endif //BOXESGAME_BOXPOPPERTESTHELPERS_HXX

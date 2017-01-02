@@ -8,6 +8,11 @@
 class HorizontalAndVerticalNeighbourCountResult {
 public:
 	int getSameColorAreaCount() const;
+	
+private:
+	int neighbours;
+public:
+	HorizontalAndVerticalNeighbourCountResult(int neighbours);
 };
 
 #endif //BOXESGAME_HORIZONTALANDVERTICALNEIGHBOURCOUNTRESULT_HXX

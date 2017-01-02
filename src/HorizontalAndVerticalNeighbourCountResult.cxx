@@ -5,5 +5,8 @@
 #include "HorizontalAndVerticalNeighbourCountResult.hxx"
 
 int HorizontalAndVerticalNeighbourCountResult::getSameColorAreaCount() const {
-	return 1;
+	return neighbours;
 }
+
+HorizontalAndVerticalNeighbourCountResult::HorizontalAndVerticalNeighbourCountResult(int neighbours) : neighbours(
+		neighbours) {}

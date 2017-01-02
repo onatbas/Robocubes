@@ -15,6 +15,7 @@ public:
 	int getY() const;
 	bool operator==(const BoxPosition &rhs) const;
 	bool operator!=(const BoxPosition &rhs) const;
+	BoxPosition operator+(const BoxPosition &rhs) const;
 	
 };
 

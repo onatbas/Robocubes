@@ -22,3 +22,7 @@ bool BoxPosition::operator!=(const BoxPosition &rhs) const {
 int BoxPosition::getY() const {
 	return y;
 }
+
+BoxPosition BoxPosition::operator+(const BoxPosition &rhs) const {
+	return BoxPosition(x + rhs.x, y + rhs.y);
+}
