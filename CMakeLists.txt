@@ -21,7 +21,10 @@ set(CLASS_NAMES
         HorizontalAndVerticalNeigbourCounter
         StackSet
         BoxPosition
-        HorizontalAndVerticalNeighbourCountResult)
+        HorizontalAndVerticalNeighbourCountResult
+        TileExistsChecker
+        SameColorChecker
+        NeighboursInVicinityCounter)
 
 set(BOXES_GAME_HDR_FILES "" include/boxesGame/Colors.hxx)
 set(BOXES_GAME_SRC_FILES "")

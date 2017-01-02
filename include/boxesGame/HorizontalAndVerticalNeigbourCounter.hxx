@@ -9,6 +9,9 @@
 #include "HorizontalAndVerticalNeighbourCountResult.hxx"
 #include "StackSet.hxx"
 #include "BoxPosition.hxx"
+#include "TileExistsChecker.hxx"
+#include "SameColorChecker.hxx"
+#include "NeighboursInVicinityCounter.hxx"
 
 class HorizontalAndVerticalNeigbourCounter {
 
@@ -19,11 +22,6 @@ public:
 	void addNeighboursToToBeProcessed(const StackSet &set, const BoxPosition position,
 										  std::queue<BoxPosition> & queue,
 										  Colors originalColor) const;
-	bool hasEnoughNeighbours(const StackSet &set, const BoxPosition & position,
-								 Colors originalColor) const;
-	bool isSameColor(Colors colors, const StackSet &set, const BoxPosition &position) const;
-	bool tileExists(const StackSet &set, const BoxPosition &position) const;
-	std::vector<BoxPosition> getPositions(const BoxPosition &position) const;
 };
 
 #endif //BOXESGAME_HORIZONTALANDVERTICALNEIGBOURCOUNTER_HXX
