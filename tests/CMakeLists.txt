@@ -18,7 +18,7 @@ endmacro()
 ADD_NEW_TEST(BoxTests "boxesGame_tests")
 ADD_NEW_TEST(BoxDisapperanceTest "boxesGame_tests")
 ADD_NEW_TEST(VerticalNeighbourCountingTests "boxesGame_tests")
-ADD_NEW_TEST(HorizontalAndVerticalNeighbourCountingTests "boxesGame_tests")
+ADD_NEW_TEST(AdjacentNeighbourCountingTests "boxesGame_tests")
 
 
 
