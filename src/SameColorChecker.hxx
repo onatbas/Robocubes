@@ -10,7 +10,7 @@
 class SameColorChecker {
 
 public:
-	bool isSameColor(Colors colors, const StackSet &set, const BoxPosition &position) const;
+    bool isSameColor(Colors colors, const StackSet &set, const BoxPosition &position) const;
 };
 
 #endif //BOXESGAME_SAMECOLORCHECKER_HXX

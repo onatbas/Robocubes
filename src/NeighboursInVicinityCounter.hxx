@@ -10,9 +10,8 @@
 class NeighboursInVicinityCounter {
 
 public:
-	std::vector<BoxPosition> getPositions(const BoxPosition &position) const;
-	bool hasEnoughNeighbours(const StackSet &set, const BoxPosition & position,
-							 Colors originalColor) const;
+    std::vector<BoxPosition> getPositions(const BoxPosition &position) const;
+    bool hasEnoughNeighbours(const StackSet &set, const BoxPosition &position, Colors originalColor) const;
 };
 
 #endif //BOXESGAME_NEIGHBOURSINVICINITYCOUNTER_HXX

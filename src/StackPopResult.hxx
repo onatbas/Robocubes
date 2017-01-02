@@ -6,13 +6,14 @@
 #define BOXESGAME_STACKPOPRESULT_HXX
 
 #include "Stack.hxx"
+
 class StackPopResult {
 public:
-	StackPopResult(const std::vector<Stack> &stacks);
-	StackPopResult();
+    StackPopResult(const std::vector<Stack> &stacks);
+    StackPopResult();
 public:
-	std::vector<Stack> stacks;
-	
+    std::vector<Stack> stacks;
+
 };
 
 #endif //BOXESGAME_STACKPOPRESULT_HXX

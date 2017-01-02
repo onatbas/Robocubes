@@ -4,6 +4,8 @@
 
 #include "StackPopResult.hxx"
 
-StackPopResult::StackPopResult(const std::vector<Stack> &stacks) : stacks(stacks) {}
+StackPopResult::StackPopResult(const std::vector<Stack> &stacks) : stacks(stacks) {
+}
 
-StackPopResult::StackPopResult() {}
+StackPopResult::StackPopResult() {
+}

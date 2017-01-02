@@ -10,8 +10,8 @@
 class StackDivider {
 
 public:
-	Stack GetUpperThan(const Stack &stack, int from);
-	Stack GetLowerThan(const Stack &stack, int from);
+    Stack GetUpperThan(const Stack &stack, int from);
+    Stack GetLowerThan(const Stack &stack, int from);
 };
 
 #endif //BOXESGAME_STACKDIVIDER_HXX

@@ -12,9 +12,8 @@
 class BoxStacker {
 
 public:
-	Stack stackOnTop(const Box first_box, const Box second_box) const;
-	Stack stackOn(const Stack stack, Box box);
+    Stack stackOnTop(const Box first_box, const Box second_box) const;
+    Stack stackOn(const Stack stack, Box box);
 };
-
 
 #endif //BOXESGAME_BOXSTACKER_HXX

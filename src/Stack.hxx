@@ -10,14 +10,15 @@
 
 class Stack {
 public:
-	Box operator[](int value) const;
-	int size() const;
-	bool operator==(const Stack &rhs) const;
-	bool operator!=(const Stack &rhs) const;
+    Box operator[](int value) const;
+    int size() const;
+    bool operator==(const Stack &rhs) const;
+    bool operator!=(const Stack &rhs) const;
 
 protected:
-	std::vector<Box> boxes;
-	friend class BoxStacker;
+    std::vector<Box> boxes;
+
+    friend class BoxStacker;
 };
 
 #endif //BOXESGAME_STACK_HXX

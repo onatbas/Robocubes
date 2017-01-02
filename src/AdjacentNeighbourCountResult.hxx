@@ -16,6 +16,7 @@ public:
 
 protected:
     friend class AdjacentNeighbourCounter;
+
     std::vector<BoxPosition> neighbours;
 
 };

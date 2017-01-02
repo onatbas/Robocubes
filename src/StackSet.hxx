@@ -10,17 +10,17 @@
 
 class StackSet {
 public:
-	void addStack(const Stack &);
-	Stack getStackAt(int i) const;
-	Stack operator[](int i) const;
-	Box operator[](const BoxPosition&) const;
-	int getSize() const;
-	bool operator==(const StackSet &rhs) const;
-	bool operator!=(const StackSet &rhs) const;
+    void addStack(const Stack &);
+    Stack getStackAt(int i) const;
+    Stack operator[](int i) const;
+    Box operator[](const BoxPosition &) const;
+    int getSize() const;
+    bool operator==(const StackSet &rhs) const;
+    bool operator!=(const StackSet &rhs) const;
 
 private:
-	std::vector<Stack> stacks;
-	
+    std::vector<Stack> stacks;
+
 };
 
 #endif //BOXESGAME_STACKSET_HXX

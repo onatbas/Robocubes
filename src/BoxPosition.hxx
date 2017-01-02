@@ -6,17 +6,17 @@
 #define BOXESGAME_BOXPOSITION_HXX
 
 class BoxPosition {
-	int x;
-	int y;
+    int x;
+    int y;
 
 public:
-	BoxPosition(int x, int y);
-	int getX() const;
-	int getY() const;
-	bool operator==(const BoxPosition &rhs) const;
-	bool operator!=(const BoxPosition &rhs) const;
-	BoxPosition operator+(const BoxPosition &rhs) const;
-	
+    BoxPosition(int x, int y);
+    int getX() const;
+    int getY() const;
+    bool operator==(const BoxPosition &rhs) const;
+    bool operator!=(const BoxPosition &rhs) const;
+    BoxPosition operator+(const BoxPosition &rhs) const;
+
 };
 
 #endif //BOXESGAME_BOXPOSITION_HXX

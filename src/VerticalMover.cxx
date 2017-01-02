@@ -2,7 +2,6 @@
 // Created by Onat Bas on 02/01/17.
 //
 
-#include "VerticalMovement.hxx"
 #include "VerticalMover.hxx"
 
 VerticalMovements VerticalMover::move(const StackSet &set, const AdjacentPopperResult &result) const {

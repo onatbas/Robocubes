@@ -4,25 +4,26 @@
 
 #include "BoxPosition.hxx"
 
-BoxPosition::BoxPosition(int x, int y) : x(x), y(y) {}
+BoxPosition::BoxPosition(int x, int y) : x(x),
+                                         y(y) {
+}
 
 int BoxPosition::getX() const {
-	return x;
+    return x;
 }
 
 bool BoxPosition::operator==(const BoxPosition &rhs) const {
-	return x == rhs.x &&
-		   y == rhs.y;
+    return x == rhs.x && y == rhs.y;
 }
 
 bool BoxPosition::operator!=(const BoxPosition &rhs) const {
-	return !(rhs == *this);
+    return !(rhs == *this);
 }
 
 int BoxPosition::getY() const {
-	return y;
+    return y;
 }
 
 BoxPosition BoxPosition::operator+(const BoxPosition &rhs) const {
-	return BoxPosition(x + rhs.x, y + rhs.y);
+    return BoxPosition(x + rhs.x, y + rhs.y);
 }
