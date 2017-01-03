@@ -4,6 +4,7 @@ include(CTest)
 enable_testing()
 
 # sets
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 set (CMAKE_CXX_STANDARD 14)
 set(BOXES_GAME_SRC_FILES
         src/Colors.hxx
@@ -37,6 +38,7 @@ set(BOXES_GAME_SRC_FILES
 add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
 
 # includes/include directories
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_sdl2.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_boost.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_gtest.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_gmock.cmake)
@@ -46,7 +48,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 add_library(boxesGame STATIC ${BOXES_GAME_SRC_FILES}  )
 
 # linker
-target_link_libraries(boxesGame ${Boost_LIBRARIES} )
+target_link_libraries(boxesGame ${Boost_LIBRARIES} ${SDL2_LIBRARY})
 
 #tests
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)

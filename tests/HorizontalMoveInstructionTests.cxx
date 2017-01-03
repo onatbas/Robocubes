@@ -38,5 +38,4 @@ TEST(HorizontalInstructionsTest, shouldSlideByOneIfOneColumnIsEmpty) {
     EXPECT_EQ(2, horizontalMovements.getMovementsSize());
     const auto secondMovement = horizontalMovements.getMovementAt(1);
     EXPECT_EQ(HorizontalMovement(4, 3), secondMovement);
-
 }
