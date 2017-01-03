@@ -30,9 +30,27 @@ set(BOXES_GAME_SRC_FILES
         src/VerticalMover.hxx src/VerticalMover.cxx
         src/VerticalMovements.hxx src/VerticalMovements.cxx
         src/VerticalMovement.hxx src/VerticalMovement.cxx
-        tests/HorizontalMover.cxx tests/HorizontalMover.hxx
-        tests/HorizontalMovements.cxx tests/HorizontalMovements.hxx
-        tests/HorizontalMovement.cxx tests/HorizontalMovement.hxx)
+        src/HorizontalMover.cxx src/HorizontalMover.hxx
+        src/HorizontalMovements.cxx src/HorizontalMovements.hxx
+        src/WindowRefGetter.cxx src/WindowRefGetter.hxx
+        src/HorizontalMovement.cxx src/HorizontalMovement.hxx
+        src/Window.cxx
+        src/Window.hxx src/WindowOpener.cxx
+        src/WindowOpener.hxx src/GameLooper.cxx
+        src/GameLooper.hxx src/WindowRenamer.cxx
+        src/WindowRenamer.hxx src/WindowRefGetter.cxx
+        src/WindowRefGetter.hxx
+        src/BoxDrawer.cxx src/BoxDrawer.hxx
+        src/PNGLoader.cxx src/PNGLoader.hxx
+        src/PNG.cxx src/PNG.hxx src/PNGDrawer.cxx
+        src/PNGDrawer.hxx src/PNGSurfaceGetter.cxx
+        src/PNGSurfaceGetter.hxx src/RectBuilder.cxx
+        src/RectBuilder.hxx src/DimensionCalculator.cxx
+        src/DimensionCalculator.hxx src/Dimension.cxx
+        src/Dimension.hxx src/DrawPosition.cxx src/DrawPosition.hxx
+        src/WindowUpdater.cxx src/WindowUpdater.hxx
+        src/IMGInitializer.cxx src/IMGInitializer.hxx
+        src/Vector2D.cxx src/Vector2D.hxx)
 
 #definitions
 add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
@@ -48,7 +66,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 add_library(boxesGame STATIC ${BOXES_GAME_SRC_FILES}  )
 
 # linker
-target_link_libraries(boxesGame ${Boost_LIBRARIES} ${SDL2_LIBRARY})
+target_link_libraries(boxesGame ${Boost_LIBRARIES} ${SDL2_LIBRARY_SET})
 
 #tests
+
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)
