@@ -12,6 +12,7 @@
 #include "GameLooper.hxx"
 #include "WindowRenamer.hxx"
 #include "BoxDrawer.hxx"
+#include "LoopTerminator.hxx"
 
 TEST(SDLInitializationTests, shouldOpenWindow)
 {
@@ -23,6 +24,8 @@ TEST(SDLInitializationTests, shouldOpenWindow)
     renamer.rename(window, "A white window should open");
 
     GameLooper looper;
+    LoopTerminator terminator(looper);
+
     looper.loop();
 }
 
@@ -44,6 +47,8 @@ TEST(SDLInitializationTests, shouldRenderGreenBox)
     renamer.rename(window, "A green box should appear at the corner");
 
     GameLooper looper;
+    LoopTerminator terminator(looper);
+
     looper.loop();
 }
 
@@ -66,6 +71,8 @@ TEST(SDLInitializationTests, shouldRenderRedBox)
     renamer.rename(window, "A green box should appear in the middle");
 
     GameLooper looper;
+    LoopTerminator terminator(looper);
+
     looper.loop();
 }
 

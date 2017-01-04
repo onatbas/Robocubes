@@ -7,11 +7,12 @@
 VerticalMovements VerticalMover::move(const StackSet &set, const AdjacentPopperResult &result) const {
     VerticalMovements movements;
     const PoppedPositions positions = result.getPopped();
-    PoppedStackList divided = dividePoppedByStacks(positions);
+    PoppedStackList dividedIntoStacks = dividePoppedByStacks(positions);
 
     const int stackAmount = set.getSize();
     for (int i = 0; i < stackAmount; i++) {
-        SingleStackPoppedList popped = divided[i];
+        SingleStackPoppedList popped = dividedIntoStacks[i];
+
         Stack stack = set[i];
         int moveDown = 0;
 
@@ -36,8 +37,6 @@ PoppedStackList VerticalMover::dividePoppedByStacks(const PoppedPositions &posit
     const auto size = positions.getSize();
     for (int i = 0; i < size; i++) {
         const BoxPosition position = positions[i];
-        while (list.size() <= position.getX())
-            list.push_back(SingleStackPoppedList());
         list[position.getX()].push_back(position);
     }
     return list;
