@@ -13,8 +13,6 @@
 TEST(GameSceneTests, shouldDisplayBackground)
 {
     GameLooper looper;
-
-
     WindowOpener opener;
     const std::shared_ptr<Window> &window = opener.open();
 

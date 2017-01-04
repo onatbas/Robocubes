@@ -11,22 +11,14 @@
 void BackgroundRenderer::render() {
     DimensionCalculator calculator;
     PNGDrawer drawer(window.get());
-    WindowUpdater updater;
+    WindowDimensionGetter getter;
 
     Dimension pngDimensions = calculator.calculate(png);
-    Dimension dimensions = getDimensionsOfWindows();
+    Dimension dimensions = getter.getDimensionsOfWindows(window.get());
 
     Dimension difference = pngDimensions - dimensions;
     DrawPosition origin(-difference.getWidth(), -difference.getHeight());
-
     drawer.draw(png, origin);
-    updater.updateWindow(window.get());
-}
-
-Dimension BackgroundRenderer::getDimensionsOfWindows() const {
-    WindowRefGetter getter(window.get());
-    SDL_Surface *const pSurface = SDL_GetWindowSurface(getter.getWindowRef());
-    return Dimension(pSurface->w, pSurface->h);
 }
 
 BackgroundRenderer::BackgroundRenderer(const std::string &pathToPng, const std::shared_ptr<Window> &window,
@@ -35,7 +27,7 @@ BackgroundRenderer::BackgroundRenderer(const std::string &pathToPng, const std::
     PNGLoader loader;
     this->png = loader.load(pathToPng, window.get());
 
-    looper.observe(SDL_WINDOWEVENT, SDL_WINDOWEVENT_SIZE_CHANGED, [&](SDL_Event e) {
+    looper.observe(BOXESEVENT_ENTER_FRAME, 0, [&](SDL_Event e) {
         render();
     });
     render();

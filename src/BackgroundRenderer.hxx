@@ -9,8 +9,8 @@
 #include <Window.hxx>
 #include <memory>
 #include <PNG.hxx>
-#include <Dimension.hxx>
 #include <GameLooper.hxx>
+#include "WindowDimensionGetter.hxx"
 
 class BackgroundRenderer {
 public:
@@ -18,12 +18,11 @@ public:
     void render();
     BackgroundRenderer(const std::string &pathToPng, const std::shared_ptr<Window> &window, GameLooper &looper);
 
-protected:
     std::shared_ptr<Window> window;
+protected:
     PNG png;
     std::string pathToPng;
 
-    Dimension getDimensionsOfWindows() const;
 };
 
 #endif //BOXESGAME_BACKGROUNDRENDERER_HXX

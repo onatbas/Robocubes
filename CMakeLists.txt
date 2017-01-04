@@ -51,7 +51,10 @@ set(BOXES_GAME_SRC_FILES
         src/WindowUpdater.cxx src/WindowUpdater.hxx
         src/IMGInitializer.cxx src/IMGInitializer.hxx
         src/Vector2D.cxx src/Vector2D.hxx
-        src/BackgroundRenderer.cxx src/BackgroundRenderer.hxx src/LoopTerminator.cxx src/LoopTerminator.hxx)
+        src/BackgroundRenderer.cxx src/BackgroundRenderer.hxx
+        src/LoopTerminator.cxx src/LoopTerminator.hxx
+        src/StackDrawer.cxx src/StackDrawer.hxx
+        src/WindowDimensionGetter.cxx src/WindowDimensionGetter.hxx)
 
 #definitions
 add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
