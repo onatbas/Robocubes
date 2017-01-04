@@ -6,10 +6,12 @@
 #define BOXESGAME_WINDOWUPDATER_HXX
 
 #include "Window.hxx"
+#include "GameLooper.hxx"
 
 class WindowUpdater {
-
 public:
+    WindowUpdater();
+    WindowUpdater(GameLooper *looper, const Window *window);
     void updateWindow(const Window *window) const;
 };
 

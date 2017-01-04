@@ -8,9 +8,15 @@
 #include <vector>
 #include <map>
 #include <boost/signals2.hpp>
+#include <SDL2/SDL.h>
 
 typedef Uint8 SubType;
 typedef Uint32 Type;
+
+enum {
+    BOXESEVENT_ENTER_FRAME = SDL_LASTEVENT + 1,
+    BOXESEVENT_LEAVE_FRAME
+};
 
 #define CALLBACK void(SDL_Event)
 typedef std::function< CALLBACK > Callback;

@@ -5,11 +5,19 @@
 #include <SDL2/SDL_events.h>
 #include "GameLooper.hxx"
 
+#include <iostream>
+
 void GameLooper::loop() {
     SDL_Event event;
-    while ((!shouldExit) && (SDL_WaitEvent(&event))) {
-        (*getSignal(event.type, 0))(event);
-        (*getSignal(event.type, event.window.event))(event);
+    while (!shouldExit) {
+
+        (*getSignal(BOXESEVENT_ENTER_FRAME, 0))(event);
+        while(SDL_PollEvent(&event)){
+            (*getSignal(event.type, 0))(event);
+            (*getSignal(event.type, event.window.event))(event);
+        }
+        (*getSignal(BOXESEVENT_LEAVE_FRAME, 0))(event);
+        SDL_Delay(100);
     }
 }
 

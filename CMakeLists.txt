@@ -51,7 +51,10 @@ set(BOXES_GAME_SRC_FILES
         src/WindowUpdater.cxx src/WindowUpdater.hxx
         src/IMGInitializer.cxx src/IMGInitializer.hxx
         src/Vector2D.cxx src/Vector2D.hxx
-        src/BackgroundRenderer.cxx src/BackgroundRenderer.hxx src/LoopTerminator.cxx src/LoopTerminator.hxx)
+        src/BackgroundRendererEntityFactory.cxx src/BackgroundRendererEntityFactory.hxx
+        src/LoopTerminator.cxx src/LoopTerminator.hxx
+        src/StackSetEntityMaker.cxx src/StackSetEntityMaker.hxx
+        src/WindowDimensionGetter.cxx src/WindowDimensionGetter.hxx tests/EntityFactory.cxx tests/EntityFactory.hxx tests/RenderingSystem.cxx tests/RenderingSystem.hxx src/BackgroundComponent.cxx src/BackgroundComponent.hxx tests/GameSystem.cxx tests/GameSystem.hxx)
 
 #definitions
 add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
@@ -61,13 +64,14 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_sdl2.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_boost.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_gtest.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_gmock.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_entityx.cmake)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # binaries/executables/libraries
 add_library(boxesGame STATIC ${BOXES_GAME_SRC_FILES}  )
 
 # linker
-target_link_libraries(boxesGame ${Boost_LIBRARIES} ${SDL2_LIBRARY_SET})
+target_link_libraries(boxesGame ${Boost_LIBRARIES} ${SDL2_LIBRARY_SET} ${ENTITYX_BINARIES})
 
 #tests
 

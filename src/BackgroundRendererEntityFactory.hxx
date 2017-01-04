@@ -9,21 +9,18 @@
 #include <Window.hxx>
 #include <memory>
 #include <PNG.hxx>
-#include <Dimension.hxx>
 #include <GameLooper.hxx>
+#include "WindowDimensionGetter.hxx"
+#include "../tests/EntityFactory.hxx"
 
-class BackgroundRenderer {
+class BackgroundRendererEntityFactory {
 public:
 
-    void render();
-    BackgroundRenderer(const std::string &pathToPng, const std::shared_ptr<Window> &window, GameLooper &looper);
+    BackgroundRendererEntityFactory(const std::string &pathToPng, EntityFactory *factory);
 
 protected:
-    std::shared_ptr<Window> window;
-    PNG png;
     std::string pathToPng;
 
-    Dimension getDimensionsOfWindows() const;
 };
 
 #endif //BOXESGAME_BACKGROUNDRENDERER_HXX

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1)
 
-set(BOXES_GAME_TEST_DEPENDENCIES boxesGame ${GTEST_BOTH_LIBRARIES} ${GMOCK_BOTH_LIBRARIES} ${SDL2_LIBRARY_SET})
+set(BOXES_GAME_TEST_DEPENDENCIES boxesGame ${GTEST_BOTH_LIBRARIES} ${GMOCK_BOTH_LIBRARIES} ${SDL2_LIBRARY_SET} ${ENTITYX_BINARIES})
 set(BOXES_GAME_TEST_HEADERS StackHelpers.hxx)
 
 
@@ -25,4 +25,5 @@ ADD_NEW_TEST(VerticalMoveInstructionTests "boxesGame_tests")
 ADD_NEW_TEST(HorizontalMoveInstructionTests "boxesGame_tests")
 ADD_NEW_TEST(GameSceneTests "boxesGame_tests")
 ADD_NEW_TEST(SDLInitializationTests "boxesGame_tests")
+ADD_NEW_TEST(StackRendererTests "boxesGame_tests")
 

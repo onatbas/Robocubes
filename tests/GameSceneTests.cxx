@@ -5,7 +5,7 @@
 
 #include <WindowOpener.hxx>
 #include "gtest/gtest.h"
-#include "BackgroundRenderer.hxx"
+#include "BackgroundRendererEntityFactory.hxx"
 #include <string>
 #include <GameLooper.hxx>
 #include "LoopTerminator.hxx"
@@ -13,8 +13,6 @@
 TEST(GameSceneTests, shouldDisplayBackground)
 {
     GameLooper looper;
-
-
     WindowOpener opener;
     const std::shared_ptr<Window> &window = opener.open();
 
@@ -24,7 +22,7 @@ TEST(GameSceneTests, shouldDisplayBackground)
 
     // Decorators
     LoopTerminator terminator(looper);
-    BackgroundRenderer renderer(path, window, looper);
+    BackgroundRendererEntityFactory renderer(path, nullptr);
 
     looper.loop();
 }
