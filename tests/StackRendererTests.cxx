@@ -13,6 +13,7 @@
 #include "StackSetEntityMaker.hxx"
 #include "EntityFactory.hxx"
 #include "RenderingSystem.hxx"
+#include "ZoomOutAnimationSystem.hxx"
 #include <memory>
 
 TEST(StackRendererTests, shouldDisplayStack)
@@ -35,6 +36,7 @@ TEST(StackRendererTests, shouldDisplayStack)
     EntityFactory factory(&looper);
     BackgroundRendererEntityFactory backgroundRenderer(path, &factory);
     factory.addSystem<RenderingSystem>(std::make_shared<RenderingSystem>(&factory, window.get()));
+    factory.addSystem<ZoomOutAnimationSystem>(std::make_shared<ZoomOutAnimationSystem>());
 
 
     renamer.rename(window, "Should display blue green blue stack");

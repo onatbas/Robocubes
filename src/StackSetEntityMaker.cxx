@@ -3,38 +3,24 @@
 //
 
 #include "StackSetEntityMaker.hxx"
-#include "BoxDrawer.hxx"
-#include "WindowDimensionGetter.hxx"
-#include "GameLooper.hxx"
-#include "../tests/EntityFactory.hxx"
-#include "StackSet.hxx"
-#include <map>
+#include "Scale.hxx"
 
-std::string operator<<(std::string s, const char *rhs) {
-    s.append(std::string(rhs));
-    return s;
-}
+void StackSetEntityMaker::makeEntities(const StackSet &set) {
 
-void StackSetEntityMaker::makeEntities(const StackSet &stack) {
+    const int size = set.getSize();
+    for (int i=0; i < size;i++) {
+        const Stack &stack = set[i];
+        const int size1 = stack.size();
+        for(int j=0; j < size1; j++)
+        {
+            auto entity = factory->entities.create();
+            entity.assign_from_copy<Box>(stack[j]);
+            entity.assign_from_copy<BoxPosition>(BoxPosition(i,j));
+            entity.assign<Scale>(1);
+        }
+    }
 }
 
 StackSetEntityMaker::StackSetEntityMaker(EntityFactory *factory) : factory(factory) {
-}
-
-
-std::string getMaterialsPath() {
-    return "boxesGame_tests_materials/";
-}
-std::string getBoxPath(const Box &box) {
-
-    switch (box.getColor()) {
-        case GREEN:
-            return getMaterialsPath() << "alienGreen_square.png";
-        case BLUE:
-            return getMaterialsPath() << "alienBlue_square.png";
-        case RED:
-            return getMaterialsPath() << "alienPink_square.png";
-    }
-    return "";
 }
 

@@ -9,7 +9,6 @@
 
 void WindowUpdater::updateWindow(const Window *window) const {
     WindowRefGetter windowGetter(window);
-    std::cout << window << std::endl;
     SDL_UpdateWindowSurface(windowGetter.getWindowRef());
 }
 

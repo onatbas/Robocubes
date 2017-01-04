@@ -40,7 +40,7 @@ TEST(SDLInitializationTests, shouldRenderGreenBox)
     EXPECT_TRUE(window->is_open());
 
     Box box(GREEN);
-    BoxDrawer renderer(path);
+    BoxDrawer renderer(PNG());
     renderer.draw(window.get(), box);
 
     WindowRenamer renamer;
@@ -64,7 +64,7 @@ TEST(SDLInitializationTests, shouldRenderRedBox)
     EXPECT_TRUE(window->is_open());
 
     Box box(RED);
-    BoxDrawer renderer(path);
+    BoxDrawer renderer(PNG());
     renderer.drawAt(window.get(), box, DrawPosition(50, 50));
 
     WindowRenamer renamer;

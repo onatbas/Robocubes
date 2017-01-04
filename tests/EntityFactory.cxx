@@ -7,7 +7,7 @@
 
 EntityFactory::EntityFactory(GameLooper *looper) : looper(looper) {
     looper->observe(BOXESEVENT_ENTER_FRAME, 0, [&](SDL_Event e){
-        update(100);
+        update(10);
     });
 }
 

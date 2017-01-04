@@ -9,15 +9,19 @@
 #include "PNG.hxx"
 #include "DrawPosition.hxx"
 #include "RectBuilder.hxx"
+#include "Renderable.hxx"
+#include "Scale.hxx"
 
 class PNGDrawer {
 
 public:
-    void draw(const PNG &png, const DrawPosition &position);
-    PNGDrawer(Window *pWindow);
-    Window *window;
+    void draw(const PNG &png, const DrawPosition &position, Scale scale);
+    PNGDrawer(Renderable *renderSurface);
     SDL_Rect getDrawingRegion(const PNG &png) const;
-    SDL_Rect getDrawToRegion(const DrawPosition &position) const;
+    SDL_Rect getDrawToRegion(const DrawPosition &position, Scale scale, PNG png) const;
+
+private:
+    Renderable *surface;
 };
 
 #endif //BOXESGAME_PNGDRAWER_HXX

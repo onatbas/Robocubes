@@ -15,7 +15,7 @@ class StackSetEntityMaker {
 
 public:
     StackSetEntityMaker(EntityFactory *factory);
-    void makeEntities(const StackSet &stack);
+    void makeEntities(const StackSet &set);
 
 private:
     EntityFactory *factory;

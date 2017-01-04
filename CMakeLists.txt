@@ -54,7 +54,8 @@ set(BOXES_GAME_SRC_FILES
         src/BackgroundRendererEntityFactory.cxx src/BackgroundRendererEntityFactory.hxx
         src/LoopTerminator.cxx src/LoopTerminator.hxx
         src/StackSetEntityMaker.cxx src/StackSetEntityMaker.hxx
-        src/WindowDimensionGetter.cxx src/WindowDimensionGetter.hxx tests/EntityFactory.cxx tests/EntityFactory.hxx tests/RenderingSystem.cxx tests/RenderingSystem.hxx src/BackgroundComponent.cxx src/BackgroundComponent.hxx tests/GameSystem.cxx tests/GameSystem.hxx)
+        src/Renderable.hxx src/Renderable.cxx
+        src/WindowDimensionGetter.cxx src/WindowDimensionGetter.hxx tests/EntityFactory.cxx tests/EntityFactory.hxx tests/RenderingSystem.cxx tests/RenderingSystem.hxx src/BackgroundComponent.cxx src/BackgroundComponent.hxx tests/GameSystem.cxx tests/GameSystem.hxx src/DrawCanvas.cxx src/DrawCanvas.hxx src/Scale.cxx src/Scale.hxx src/GameBeginZoomOut.cxx src/GameBeginZoomOut.hxx tests/ZoomOutAnimationSystem.cxx tests/ZoomOutAnimationSystem.hxx)
 
 #definitions
 add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
