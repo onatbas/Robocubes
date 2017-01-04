@@ -50,7 +50,8 @@ set(BOXES_GAME_SRC_FILES
         src/Dimension.hxx src/DrawPosition.cxx src/DrawPosition.hxx
         src/WindowUpdater.cxx src/WindowUpdater.hxx
         src/IMGInitializer.cxx src/IMGInitializer.hxx
-        src/Vector2D.cxx src/Vector2D.hxx)
+        src/Vector2D.cxx src/Vector2D.hxx
+        src/BackgroundRenderer.cxx src/BackgroundRenderer.hxx src/LoopTerminator.cxx src/LoopTerminator.hxx)
 
 #definitions
 add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")

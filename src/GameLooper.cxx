@@ -5,20 +5,29 @@
 #include <SDL2/SDL_events.h>
 #include "GameLooper.hxx"
 
-void GameLooper::loop() const {
-    bool done = false;
+void GameLooper::loop() {
     SDL_Event event;
+    while ((!shouldExit) && (SDL_WaitEvent(&event))) {
+        (*getSignal(event.type, 0))(event);
+        (*getSignal(event.type, event.window.event))(event);
+    }
+}
 
-    while ((!done) && (SDL_WaitEvent(&event))) {
-        switch (event.type) {
-            case SDL_QUIT:
-                done = true;
-                break;
+void GameLooper::observe(Type type, SubType event, Callback callback) {
+    getSignal(type, event)->connect(callback);
+}
 
-            default:
-                break;
-        }   // End switch
+Signal &GameLooper::getSignal(Type type, SubType event) {
+    std::tuple<Type, SubType> tuple = std::make_tuple(type, event);
+    Signal &s = observers[tuple];
+    if (s == nullptr)
+        s = std::make_shared<boost::signals2::signal<CALLBACK>>();
+    return s;
+}
 
-    }   // End while
+void GameLooper::exit() {
+    shouldExit = true;
+}
 
+GameLooper::GameLooper() : shouldExit(false){
 }

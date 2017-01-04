@@ -15,3 +15,7 @@ int Dimension::getHeight() const {
 Dimension::Dimension(int x, int y) : Vector2D(x, y) {
 
 }
+
+Dimension Dimension::operator-(const Dimension &rhs) const {
+    return Dimension(w - rhs.w, h - rhs.h);
+}

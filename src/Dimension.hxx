@@ -13,6 +13,8 @@ public:
     Dimension(int x, int y);
     int getWidth() const;
     int getHeight() const;
+
+    Dimension operator-(const Dimension &rhs) const;
 };
 
 #endif //BOXESGAME_DIMENSION_HXX

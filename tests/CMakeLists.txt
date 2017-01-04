@@ -23,5 +23,6 @@ ADD_NEW_TEST(AdjacentNeighbourCountingTests "boxesGame_tests")
 ADD_NEW_TEST(AdjacentPopperTests "boxesGame_tests")
 ADD_NEW_TEST(VerticalMoveInstructionTests "boxesGame_tests")
 ADD_NEW_TEST(HorizontalMoveInstructionTests "boxesGame_tests")
+ADD_NEW_TEST(GameSceneTests "boxesGame_tests")
 ADD_NEW_TEST(SDLInitializationTests "boxesGame_tests")
 
