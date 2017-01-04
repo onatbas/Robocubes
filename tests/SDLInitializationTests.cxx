@@ -21,7 +21,7 @@ TEST(SDLInitializationTests, shouldOpenWindow)
     EXPECT_TRUE(window->is_open());
 
     WindowRenamer renamer;
-    renamer.rename(window, "A white window should open");
+    renamer.rename(window, "A white factory should open");
 
     GameLooper looper;
     LoopTerminator terminator(looper);

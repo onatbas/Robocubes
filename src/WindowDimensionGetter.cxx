@@ -2,7 +2,7 @@
 // Created by Onat Bas on 04/01/17.
 //
 
-#include "BackgroundRenderer.hxx"
+#include "BackgroundRendererEntityFactory.hxx"
 #include "WindowDimensionGetter.hxx"
 #include "WindowRefGetter.hxx"
 

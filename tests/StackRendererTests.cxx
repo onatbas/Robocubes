@@ -2,20 +2,22 @@
 // Created by Onat Bas on 04/01/17.
 //
 
-#include <Stack.hxx>
+#include <StackSet.hxx>
 #include <GameLooper.hxx>
 #include <WindowOpener.hxx>
 #include <WindowRenamer.hxx>
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
 #include "LoopTerminator.hxx"
-#include "BackgroundRenderer.hxx"
-#include "StackDrawer.hxx"
-
+#include "BackgroundRendererEntityFactory.hxx"
+#include "StackSetEntityMaker.hxx"
+#include "EntityFactory.hxx"
+#include "RenderingSystem.hxx"
+#include <memory>
 
 TEST(StackRendererTests, shouldDisplayStack)
 {
-    Stack stack = getStackByCode("bgb");
+    StackSet stack = getStackSetByCodeList("bgb");
     GameLooper looper;
     WindowOpener opener;
     const std::shared_ptr<Window> &window = opener.open();
@@ -26,13 +28,19 @@ TEST(StackRendererTests, shouldDisplayStack)
 
     // Decorators
     LoopTerminator terminator(looper);
-    BackgroundRenderer backgroundRenderer(path, window, looper);
     WindowUpdater updater(&looper, window.get());
     WindowRenamer renamer;
+
+    //ECS Classes
+    EntityFactory factory(&looper);
+    BackgroundRendererEntityFactory backgroundRenderer(path, &factory);
+    factory.addSystem<RenderingSystem>(std::make_shared<RenderingSystem>(&factory, window.get()));
+
+
     renamer.rename(window, "Should display blue green blue stack");
 
-    StackDrawer drawer(window.get(), looper);
-    drawer.draw(stack);
+    StackSetEntityMaker maker(&factory);
+    maker.makeEntities(stack);
 
     looper.loop();
 }

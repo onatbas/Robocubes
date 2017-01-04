@@ -11,16 +11,14 @@
 #include <PNG.hxx>
 #include <GameLooper.hxx>
 #include "WindowDimensionGetter.hxx"
+#include "../tests/EntityFactory.hxx"
 
-class BackgroundRenderer {
+class BackgroundRendererEntityFactory {
 public:
 
-    void render();
-    BackgroundRenderer(const std::string &pathToPng, const std::shared_ptr<Window> &window, GameLooper &looper);
+    BackgroundRendererEntityFactory(const std::string &pathToPng, EntityFactory *factory);
 
-    std::shared_ptr<Window> window;
 protected:
-    PNG png;
     std::string pathToPng;
 
 };

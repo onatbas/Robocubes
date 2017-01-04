@@ -3,12 +3,14 @@
 //
 
 #include <PNGLoader.hxx>
-#include "BackgroundRenderer.hxx"
+#include "BackgroundRendererEntityFactory.hxx"
+#include "../tests/EntityFactory.hxx"
+#include "BackgroundComponent.hxx"
 #include <PNGDrawer.hxx>
 #include <WindowUpdater.hxx>
 #include <DimensionCalculator.hxx>
-
-void BackgroundRenderer::render() {
+/*
+void BackgroundRendererEntityFactory::render() {
     DimensionCalculator calculator;
     PNGDrawer drawer(window.get());
     WindowDimensionGetter getter;
@@ -19,18 +21,20 @@ void BackgroundRenderer::render() {
     Dimension difference = pngDimensions - dimensions;
     DrawPosition origin(-difference.getWidth(), -difference.getHeight());
     drawer.draw(png, origin);
-}
+}*/
 
-BackgroundRenderer::BackgroundRenderer(const std::string &pathToPng, const std::shared_ptr<Window> &window,
-                                       GameLooper &looper) {
-    this->window = window;
+BackgroundRendererEntityFactory::BackgroundRendererEntityFactory(const std::string &pathToPng, EntityFactory *factory) {
+    auto e = factory->entities.create();
+    e.assign<BackgroundComponent>(pathToPng);
+
+    /*this->window = window;
     PNGLoader loader;
     this->png = loader.load(pathToPng, window.get());
 
     looper.observe(BOXESEVENT_ENTER_FRAME, 0, [&](SDL_Event e) {
         render();
     });
-    render();
+    render();*/
 }
 
 
