@@ -8,9 +8,10 @@
 #include "VerticalMovements.hxx"
 #include "StackSet.hxx"
 #include "AdjacentPopperResult.hxx"
+#include <map>
 
 typedef std::vector<BoxPosition> SingleStackPoppedList;
-typedef std::vector<SingleStackPoppedList> PoppedStackList;
+typedef std::map<StackOrder, SingleStackPoppedList> PoppedStackList;
 
 class VerticalMover {
 
