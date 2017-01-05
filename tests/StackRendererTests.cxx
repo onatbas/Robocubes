@@ -13,32 +13,29 @@
 #include "StackSetEntityMaker.hxx"
 #include "EntityFactory.hxx"
 #include "RenderingSystem.hxx"
+#include "ZoomOutAnimationSystem.hxx"
 #include <memory>
 
 TEST(StackRendererTests, shouldDisplayStack)
 {
-    StackSet stack = getStackSetByCodeList("bgb");
+    StackSet stack = getStackSetByCodeList("bgb rrr bgbg brbrgb brbrbrbgbbgbgb bgbgbbbrrrrgbb bgbgbbbbbr rbgbrbrrrbrgbg");
     GameLooper looper;
     WindowOpener opener;
     const std::shared_ptr<Window> &window = opener.open();
-
 
     std::string path(MATERIALS_FOLDER);
     path.append("colored_grass.png");
 
     // Decorators
     LoopTerminator terminator(looper);
-    WindowUpdater updater(&looper, window.get());
     WindowRenamer renamer;
+    renamer.rename(window, "A stack should appear, and background should zoom out.");
 
     //ECS Classes
     EntityFactory factory(&looper);
     BackgroundRendererEntityFactory backgroundRenderer(path, &factory);
     factory.addSystem<RenderingSystem>(std::make_shared<RenderingSystem>(&factory, window.get()));
-
-
-    renamer.rename(window, "Should display blue green blue stack");
-
+    factory.addSystem<ZoomOutAnimationSystem>(std::make_shared<ZoomOutAnimationSystem>());
     StackSetEntityMaker maker(&factory);
     maker.makeEntities(stack);
 

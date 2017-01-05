@@ -3,9 +3,15 @@
 //
 
 #include "PNGLoader.hxx"
+#include "IMGInitializer.hxx"
 #include <iostream>
 
 PNG PNGLoader::load(std::string pathToPng, const Window *window) const {
+
+    IMGInitializer initializer;
+    if (!initializer.initializeIMG())
+        return PNG();
+
     SDL_Surface *optimizedSurface = nullptr;
     {
         SDL_Surface *png = IMG_Load(pathToPng.c_str());

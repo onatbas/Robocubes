@@ -12,16 +12,16 @@
 #include "PNG.hxx"
 #include <string>
 #include "DrawPosition.hxx"
+#include "Renderable.hxx"
+#include "Scale.hxx"
 
 class BoxDrawer {
 public:
-    BoxDrawer(std::string path);
-    bool draw(Window *window, const Box &box);
-    bool drawAt(Window *window, const Box &box, const DrawPosition& position);
+    BoxDrawer(PNG png);
+    bool draw(Renderable *renderable, const Box &box);
+    bool drawAt(Renderable *renderable, const Box &box, const DrawPosition &position, Scale scale);
 
 private:
-    std::string texturePath;
-    void loadPNG(const Window *window);
     PNG png;
 };
 

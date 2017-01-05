@@ -8,25 +8,22 @@
 #include "RectBuilder.hxx"
 #include "DimensionCalculator.hxx"
 #include "Dimension.hxx"
+#include "Scale.hxx"
 
-
-
-void PNGDrawer::draw(const PNG &png, const DrawPosition &position) {
-    WindowRefGetter getter(window);
+void PNGDrawer::draw(const PNG &png, const DrawPosition &position, Scale scale) {
     PNGSurfaceGetter surfaceGetter(const_cast<PNG *>(&png));
 
-    SDL_Window *pWindow = getter.getWindowRef();
     SDL_Surface *surface = surfaceGetter.getSurfaceRef();
 
-    SDL_Rect drawAt = getDrawToRegion(position);
+    SDL_Rect drawAt = getDrawToRegion(position, scale, png);
     SDL_Rect drawFrom = getDrawingRegion(png);
 
-    SDL_BlitSurface( surface, &drawFrom, SDL_GetWindowSurface(pWindow), &drawAt );
+    this->surface->draw(surface, drawAt, drawFrom);
 }
 
-SDL_Rect PNGDrawer::getDrawToRegion(const DrawPosition &position) const {
+SDL_Rect PNGDrawer::getDrawToRegion(const DrawPosition &position, Scale scale, PNG png) const {
     RectBuilder builder;
-    return builder.buildFromPosition(position);
+    return builder.buildTargetRect(position, scale, png);
 }
 
 SDL_Rect PNGDrawer::getDrawingRegion(const PNG &png) const {
@@ -37,5 +34,5 @@ SDL_Rect PNGDrawer::getDrawingRegion(const PNG &png) const {
     return drawFrom;
 }
 
-PNGDrawer::PNGDrawer(Window *pWindow) : window(pWindow){
+PNGDrawer::PNGDrawer(Renderable *renderSurface) : surface(renderSurface){
 }
