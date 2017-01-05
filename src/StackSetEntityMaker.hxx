@@ -10,8 +10,9 @@
 #include "BoxDrawer.hxx"
 #include "GameLooper.hxx"
 #include "EntityFactory.hxx"
+#include "BoxDrawingConfiguration.hxx"
 
-class StackSetEntityMaker {
+class StackSetEntityMaker : public BoxDrawingConfiguration {
 
 public:
     StackSetEntityMaker(EntityFactory *factory);

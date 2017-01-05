@@ -15,10 +15,11 @@ void StackSetEntityMaker::makeEntities(const StackSet &set) {
         for(int j=0; j < size1; j++)
         {
             auto entity = factory->entities.create();
-            entity.assign_from_copy<Box>(stack[j]);
-            entity.assign_from_copy<BoxPosition>(BoxPosition(i,j));
+            entity.assign<Box>(stack[j].getColor());
+            entity.assign<BoxPosition>(i,j);
             entity.assign<Scale>(1);
-            entity.assign<GameBeginZoomOut>(500, 0.25, 0.5);
+            BoxDrawingConfiguration config;
+            entity.assign<GameBeginZoomOut>(500, config.getBoxScaleFactor(), config.getBoxFinalScale());
         }
     }
 }

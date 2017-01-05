@@ -55,7 +55,8 @@ set(BOXES_GAME_SRC_FILES
         src/LoopTerminator.cxx src/LoopTerminator.hxx
         src/StackSetEntityMaker.cxx src/StackSetEntityMaker.hxx
         src/Renderable.hxx src/Renderable.cxx
-        src/WindowDimensionGetter.cxx src/WindowDimensionGetter.hxx src/EntityFactory.cxx src/EntityFactory.hxx src/RenderingSystem.cxx src/RenderingSystem.hxx src/BackgroundComponent.cxx src/BackgroundComponent.hxx src/GameSystem.cxx src/GameSystem.hxx src/DrawCanvas.cxx src/DrawCanvas.hxx src/Scale.cxx src/Scale.hxx src/GameBeginZoomOut.cxx src/GameBeginZoomOut.hxx src/ZoomOutAnimationSystem.cxx src/ZoomOutAnimationSystem.hxx src/TerrainRenderer.cxx src/TerrainRenderer.hxx src/ResourceUtil.cxx src/ResourceUtil.hxx src/TerrainComponent.cxx src/TerrainComponent.hxx)
+        src/WindowPositioner.cxx src/WindowPositioner.hxx
+        src/WindowDimensionGetter.cxx src/WindowDimensionGetter.hxx src/EntityFactory.cxx src/BoxDrawingConfiguration.cxx src/BoxDrawingConfiguration.hxx src/EntityFactory.hxx src/RenderingSystem.cxx src/RenderingSystem.hxx src/BackgroundComponent.cxx src/BackgroundComponent.hxx src/GameSystem.cxx src/GameSystem.hxx src/DrawCanvas.cxx src/DrawCanvas.hxx src/Scale.cxx src/Scale.hxx src/GameBeginZoomOut.cxx src/GameBeginZoomOut.hxx src/ZoomOutAnimationSystem.cxx src/ZoomOutAnimationSystem.hxx src/TerrainRenderer.cxx src/TerrainRenderer.hxx src/ResourceUtil.cxx src/ResourceUtil.hxx src/TerrainComponent.cxx src/TerrainComponent.hxx src/MouseClickTracker.cxx src/MouseClickTracker.hxx src/MouseClicked.cxx src/MouseClicked.hxx src/BoxPositionCalculator.cxx src/BoxPositionCalculator.hxx)
 
 #definitions
 add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")

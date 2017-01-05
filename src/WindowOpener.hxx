@@ -6,9 +6,10 @@
 #define BOXESGAME_WINDOWOPENER_HXX
 
 #include "Window.hxx"
+#include "WindowPositioner.hxx"
 #include <memory>
 
-class WindowOpener{
+class WindowOpener {
 public:
     std::shared_ptr<Window> open() const;
 };

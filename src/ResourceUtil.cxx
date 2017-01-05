@@ -17,16 +17,6 @@ std::string ResourceUtil::getMaterialsPath() const {
 }
 
 std::string ResourceUtil::getBoxPath(const Box &box) const {
-/*
-    robot_blueDrive2.png
-    robot_greenDrive1.png
-    robot_greenDrive2.png
-    robot_redDrive1.png
-    robot_redDrive2.png
-    robot_yellowDrive1.png
-    robot_yellowDrive2.png
-*/
-
     bool second = std::rand() > RAND_MAX/20.0;
     switch (box.getColor()) {
         case GREEN:
@@ -41,5 +31,9 @@ std::string ResourceUtil::getBoxPath(const Box &box) const {
 
 std::string ResourceUtil::getTerrainPath() const {
     return getMaterialsPath() << "terrain.png";
+}
+
+std::string ResourceUtil::getBackgroundPath() const {
+    return getMaterialsPath() << "colored_grass.png";
 }
 

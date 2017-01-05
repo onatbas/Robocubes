@@ -11,6 +11,9 @@
 #include "EntityFactory.hxx"
 #include "GameSystem.hxx"
 #include "Window.hxx"
+#include "Dimension.hxx"
+#include "BoxPosition.hxx"
+#include "Scale.hxx"
 
 class RenderingSystem : public GameSystem<RenderingSystem>{
 

@@ -14,6 +14,7 @@
 #include "RenderingSystem.hxx"
 #include "ResourceUtil.hxx"
 #include "TerrainComponent.hxx"
+#include "BoxPositionCalculator.hxx"
 
 RenderingSystem::RenderingSystem(EntityFactory *factory, Window *window) : factory(factory),
                                                                            window(window) {
@@ -24,7 +25,7 @@ void RenderingSystem::update(entityx::EntityManager &entities, entityx::EventMan
 
     WindowRefGetter getter(window);
     WindowDimensionGetter dimGetter;
-    Dimension dimensions = dimGetter.getDimensionsOfWindows(window);
+    Dimension windowDimensions = dimGetter.getDimensionsOfWindows(window);
     DimensionCalculator calculator;
 
     SDL_Surface *const pSurface = SDL_GetWindowSurface(getter.getWindowRef());
@@ -41,7 +42,7 @@ void RenderingSystem::update(entityx::EntityManager &entities, entityx::EventMan
         Dimension pngDimensions = calculator.calculate(*png);
         pngDimensions = Dimension(pngDimensions.getWidth() * s.scale, pngDimensions.getHeight() * s.scale);
 
-        Dimension difference = pngDimensions - dimensions;
+        Dimension difference = pngDimensions - windowDimensions;
         DrawPosition origin(-difference.getWidth(), -difference.getHeight());
         drawer.draw(*png, origin, s);
     });
@@ -49,7 +50,7 @@ void RenderingSystem::update(entityx::EntityManager &entities, entityx::EventMan
 
     entities.each<TerrainComponent, Scale>([&](entityx::Entity entity, TerrainComponent &background, Scale &s) {
         PNG *png = getPNG(background.getPath());
-        DrawPosition origin(-2, dimensions.getHeight() - 90);
+        DrawPosition origin(-2, windowDimensions.getHeight() - 90);
         drawer.draw(*png, origin, s);
     });
 
@@ -58,11 +59,9 @@ void RenderingSystem::update(entityx::EntityManager &entities, entityx::EventMan
     entities.each<Box, BoxPosition, Scale>([&](entityx::Entity entity, Box &box, BoxPosition &position, Scale &s) {
         PNG *png = getPNG(resourceUtil.getBoxPath(box));
         BoxDrawer drawer(*png);
-        const Dimension &pngDimension = Dimension(170, 150);
-        const Dimension &addedDimension = Dimension(pngDimension.getWidth() - 1, pngDimension.getHeight() - 1);
 
-        DrawPosition drawPosition(position.getX() * addedDimension.getWidth() * s.scale,
-                                  dimensions.getHeight() - (position.getY() + 1) * (addedDimension.getHeight()) * s.scale - 90);
+        BoxPositionCalculator boxPositionCalculator;
+        DrawPosition drawPosition = boxPositionCalculator.boxToDrawing(position, windowDimensions, s);
         drawer.drawAt(&renderable, box, drawPosition, s);
     });
 
