@@ -13,12 +13,13 @@
 #include <string>
 #include "DrawPosition.hxx"
 #include "Renderable.hxx"
+#include "Scale.hxx"
 
 class BoxDrawer {
 public:
     BoxDrawer(PNG png);
     bool draw(Renderable *renderable, const Box &box);
-    bool drawAt(Renderable *renderable, const Box &box, const DrawPosition &position);
+    bool drawAt(Renderable *renderable, const Box &box, const DrawPosition &position, Scale scale);
 
 private:
     PNG png;

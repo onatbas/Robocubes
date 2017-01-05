@@ -16,7 +16,7 @@ BackgroundRendererEntityFactory::BackgroundRendererEntityFactory(const std::stri
     auto e = factory->entities.create();
     e.assign<BackgroundComponent>(pathToPng);
     e.assign<Scale>(1);
-    e.assign<GameBeginZoomOut>(500, 0.985, 0.60);
+    e.assign<GameBeginZoomOut>(500, 0.25, 0.60);
 }
 
 

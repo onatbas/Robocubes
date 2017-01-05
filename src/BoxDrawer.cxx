@@ -9,16 +9,16 @@
 #include "PNGDrawer.hxx"
 
 bool BoxDrawer::draw(Renderable *renderable, const Box &box) {
-    return drawAt(renderable, box, DrawPosition(0, 0));
+    return drawAt(renderable, box, DrawPosition(0, 0), Scale(1));
 }
 
 
 BoxDrawer::BoxDrawer(PNG png) : png(png){
 }
 
-bool BoxDrawer::drawAt(Renderable *renderable, const Box &box, const DrawPosition &position) {
+bool BoxDrawer::drawAt(Renderable *renderable, const Box &box, const DrawPosition &position, Scale scale) {
     PNGDrawer drawer(renderable);
-    drawer.draw(png, position, 1);
+    drawer.draw(png, position, scale);
 
     return true;
 }

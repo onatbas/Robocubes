@@ -19,14 +19,13 @@ ZoomOutAnimationSystem::update(entityx::EntityManager &entities, entityx::EventM
             z.waitedDuration += dt;
             const float durationToWait = z.getDurationToWait();
             if (z.waitedDuration >= durationToWait) {
+                const float to = z.getSetZoomTo();
 
-                s.scale *= z.getScaleFactor();
-                if (std::abs(s.scale - z.getSetZoomTo()) < 0.01)
+                s.scale = (to - s.scale) * z.getScaleFactor()  + s.scale;
+                if (std::abs(s.scale - to) < 0.01) {
                     e.remove<GameBeginZoomOut>();
-                else{
-                    std::cout << s.scale << std::endl;
+                    s.scale = to;
                 }
-
             }
         }
     });
