@@ -3,7 +3,7 @@
 //
 
 
-#include "../src/AdjacentPopper.hxx"
+#include "AdjacentPopper.hxx"
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
 

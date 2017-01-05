@@ -2,7 +2,7 @@
 // Created by Onat Bas on 01/01/17.
 //
 
-#include "../src/VerticalNeighbourCounter.hxx"
+#include "VerticalNeighbourCounter.hxx"
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
 

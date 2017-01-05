@@ -13,7 +13,7 @@
 #include <BoxDrawer.hxx>
 #include "RenderingSystem.hxx"
 #include "ResourceUtil.hxx"
-#include "../tests/TerrainComponent.hxx"
+#include "TerrainComponent.hxx"
 
 RenderingSystem::RenderingSystem(EntityFactory *factory, Window *window) : factory(factory),
                                                                            window(window) {
