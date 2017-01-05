@@ -13,6 +13,7 @@
 #include "WindowRenamer.hxx"
 #include "BoxDrawer.hxx"
 #include "LoopTerminator.hxx"
+#include "BackgroundRendererEntityFactory.hxx"
 
 TEST(SDLInitializationTests, shouldOpenWindow)
 {

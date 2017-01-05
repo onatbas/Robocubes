@@ -18,7 +18,7 @@ void StackSetEntityMaker::makeEntities(const StackSet &set) {
             entity.assign_from_copy<Box>(stack[j]);
             entity.assign_from_copy<BoxPosition>(BoxPosition(i,j));
             entity.assign<Scale>(1);
-            entity.assign<GameBeginZoomOut>(500, 0.25, 0.85);
+            entity.assign<GameBeginZoomOut>(500, 0.25, 0.5);
         }
     }
 }

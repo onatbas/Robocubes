@@ -11,7 +11,7 @@
 #include <PNG.hxx>
 #include <GameLooper.hxx>
 #include "WindowDimensionGetter.hxx"
-#include "../tests/EntityFactory.hxx"
+#include "EntityFactory.hxx"
 
 class BackgroundRendererEntityFactory {
 public:

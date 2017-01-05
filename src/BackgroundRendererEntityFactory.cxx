@@ -4,7 +4,7 @@
 
 #include <PNGLoader.hxx>
 #include "BackgroundRendererEntityFactory.hxx"
-#include "../tests/EntityFactory.hxx"
+#include "EntityFactory.hxx"
 #include "BackgroundComponent.hxx"
 #include "Scale.hxx"
 #include "GameBeginZoomOut.hxx"

@@ -23,7 +23,7 @@ public:
 protected:
     EntityFactory *factory;
     Window *window;
-    PNG *getPNG(const BackgroundComponent &background);
+    PNG *getPNG(std::string path);
     std::map<std::string, std::shared_ptr<PNG> > pngs;
 };
 

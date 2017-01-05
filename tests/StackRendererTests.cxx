@@ -28,7 +28,6 @@ TEST(StackRendererTests, shouldDisplayStack)
 
     // Decorators
     LoopTerminator terminator(looper);
-    WindowUpdater updater(&looper, window.get());
     WindowRenamer renamer;
     renamer.rename(window, "A stack should appear, and background should zoom out.");
 

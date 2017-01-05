@@ -26,4 +26,5 @@ ADD_NEW_TEST(HorizontalMoveInstructionTests "boxesGame_tests")
 ADD_NEW_TEST(GameSceneTests "boxesGame_tests")
 ADD_NEW_TEST(SDLInitializationTests "boxesGame_tests")
 ADD_NEW_TEST(StackRendererTests "boxesGame_tests")
+ADD_NEW_TEST(TerrainDrawTests "boxesGame_tests")
 

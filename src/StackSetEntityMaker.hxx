@@ -9,7 +9,7 @@
 #include "Box.hxx"
 #include "BoxDrawer.hxx"
 #include "GameLooper.hxx"
-#include "../tests/EntityFactory.hxx"
+#include "EntityFactory.hxx"
 
 class StackSetEntityMaker {
 

@@ -17,7 +17,7 @@ void GameLooper::loop() {
             (*getSignal(event.type, event.window.event))(event);
         }
         (*getSignal(BOXESEVENT_LEAVE_FRAME, 0))(event);
-        SDL_Delay(10);
+        SDL_Delay(5);
     }
 }
 
