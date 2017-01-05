@@ -9,6 +9,7 @@
 #include <string>
 #include <GameLooper.hxx>
 #include <RenderingSystem.hxx>
+#include <ResourceUtil.hxx>
 #include "LoopTerminator.hxx"
 
 TEST(GameSceneTests, shouldDisplayBackground)
@@ -17,11 +18,8 @@ TEST(GameSceneTests, shouldDisplayBackground)
     WindowOpener opener;
     const std::shared_ptr<Window> &window = opener.open();
 
-
-    std::string path(MATERIALS_FOLDER);
-    path.append("colored_grass.png");
-
-
+    ResourceUtil util;
+    std::string path = util.getBackgroundPath();
 
     // Decorators
     EntityFactory factory(&looper);

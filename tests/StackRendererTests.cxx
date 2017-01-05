@@ -41,23 +41,3 @@ TEST(StackRendererTests, shouldDisplayStack)
 
     looper.loop();
 }
-
-TEST(StackRendererTests, shouldDisplayStackCorrectColors)
-{
-
-}
-
-TEST(StackRendererTests, shouldDisplayStackOnPlace)
-{
-
-}
-
-TEST(StackRendererTests, shouldDisplayStackSetWithCorrectColors)
-{
-
-}
-
-TEST(StackRendererTests, shouldDisplayStackSetOnPlace)
-{
-
-}
