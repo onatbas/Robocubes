@@ -2,9 +2,9 @@
 // Created by Onat Bas on 01/01/17.
 //
 
-#include "../src/StackSet.hxx"
+#include "StackSet.hxx"
 #include "gtest/gtest.h"
-#include "../src/AdjacentNeighbourCounter.hxx"
+#include "AdjacentNeighbourCounter.hxx"
 #include "StackHelpers.hxx"
 
 TEST(HorizontalAndVerticalNeighbourCounting, three_single_box_column_counting) {

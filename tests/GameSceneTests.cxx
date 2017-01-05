@@ -8,6 +8,7 @@
 #include "BackgroundRendererEntityFactory.hxx"
 #include <string>
 #include <GameLooper.hxx>
+#include <RenderingSystem.hxx>
 #include "LoopTerminator.hxx"
 
 TEST(GameSceneTests, shouldDisplayBackground)
@@ -20,9 +21,13 @@ TEST(GameSceneTests, shouldDisplayBackground)
     std::string path(MATERIALS_FOLDER);
     path.append("colored_grass.png");
 
+
+
     // Decorators
+    EntityFactory factory(&looper);
+    factory.addSystem(std::make_shared<RenderingSystem>(&factory, window.get()));
     LoopTerminator terminator(looper);
-    BackgroundRendererEntityFactory renderer(path, nullptr);
+    BackgroundRendererEntityFactory renderer(path, &factory);
 
     looper.loop();
 }
