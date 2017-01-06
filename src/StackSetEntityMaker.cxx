@@ -5,6 +5,7 @@
 #include "StackSetEntityMaker.hxx"
 #include "Scale.hxx"
 #include "GameBeginZoomOut.hxx"
+#include "../tests/Offset.hxx"
 
 void StackSetEntityMaker::makeEntities(const StackSet &set) {
 
@@ -18,6 +19,7 @@ void StackSetEntityMaker::makeEntities(const StackSet &set) {
             entity.assign<Box>(stack[j].getColor());
             entity.assign<BoxPosition>(i,j);
             entity.assign<Scale>(1);
+            entity.assign<Offset>();
             BoxDrawingConfiguration config;
             entity.assign<GameBeginZoomOut>(500, config.getBoxScaleFactor(), config.getBoxFinalScale());
         }

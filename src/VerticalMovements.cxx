@@ -22,7 +22,7 @@ std::vector<VerticalMovement> VerticalMovements::getMovesInStack(int i) {
     return movements[i];
 }
 
-std::vector<StackOrder> VerticalMovements::getStackOrdersWhichExist() const {
+std::vector<StackOrder> VerticalMovements::getStackOrdersWhichExist()  {
     std::vector<StackOrder> orders;
     for (auto it: movements)
         orders.push_back(it.first);

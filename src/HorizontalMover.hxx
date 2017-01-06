@@ -12,7 +12,7 @@
 class HorizontalMover {
 
 public:
-    const HorizontalMovements move(const StackSet &set, const VerticalMovements &verticalMovements);
+    const HorizontalMovements move(const StackSet &set, VerticalMovements &verticalMovements);
     bool stackRemains(const std::vector<StackOrder> &remainingStacks, int i) const;
 };
 

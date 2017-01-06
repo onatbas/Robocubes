@@ -17,7 +17,7 @@ public:
     int getMoveSizeInStack(int i);
     void addMovement(const BoxPosition &position, int moveDownBy);
     std::vector<VerticalMovement> getMovesInStack(int i);
-    std::vector<StackOrder> getStackOrdersWhichExist() const;
+    std::vector<StackOrder> getStackOrdersWhichExist();
 
 protected:
     std::map<StackOrder, std::vector<VerticalMovement>> movements;

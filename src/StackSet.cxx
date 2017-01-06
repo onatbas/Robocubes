@@ -4,6 +4,7 @@
 
 #include "BoxPosition.hxx"
 #include "StackSet.hxx"
+#include "BoxStacker.hxx"
 
 void StackSet::addStack(const Stack &v) {
     stacks.push_back(v);
@@ -31,4 +32,9 @@ bool StackSet::operator==(const StackSet &rhs) const {
 
 bool StackSet::operator!=(const StackSet &rhs) const {
     return !(rhs == *this);
+}
+
+void StackSet::insert(BoxPosition &p, Box box) {
+    BoxStacker stacker;
+    stacks[p.getX()] = stacker.stackOn(stacks[p.getX()], box);
 }

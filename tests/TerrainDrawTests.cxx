@@ -31,7 +31,11 @@ TEST(TerrainDrawTests, shouldRenderTerrain)
     StackSet set = getStackSetByCodeList("rrg  gr bbggr brb bbgbr rrrgbb");
 
     EntityFactory factory(&looper);
-    factory.addSystem(std::make_shared<RenderingSystem>(&factory, window.get()));
+    const std::shared_ptr<RenderingSystem> &renderingSystem = std::make_shared<RenderingSystem>(&factory, window.get());
+    renderingSystem->addSubSystem(std::make_shared<BackgroundRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<BoxRendererSubSystem>());
+    factory.addSystem(renderingSystem);
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
 
     TerrainRenderer terrain(&factory);

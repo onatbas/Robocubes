@@ -17,7 +17,8 @@ public:
 protected:
     int currentHeight;
     int moveByUnit;
-
+public:
+    VerticalMovement();
 };
 
 #endif //BOXESGAME_VERTICALMOVEMENT_HXX
