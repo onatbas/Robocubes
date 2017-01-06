@@ -3,7 +3,7 @@
 //
 
 #include <Window.hxx>
-#include <DimensionCalculator.hxx>
+#include <PNGDimensionGetter.hxx>
 #include <PNGDrawer.hxx>
 #include <WindowDimensionGetter.hxx>
 #include <PNGLoader.hxx>

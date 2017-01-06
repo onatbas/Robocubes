@@ -3,7 +3,7 @@
 //
 
 #include "RenderingSystem.hxx"
-#include <DimensionCalculator.hxx>
+#include <PNGDimensionGetter.hxx>
 #include "BackgroundRendererSubSystem.hxx"
 #include "WindowDimensionGetter.hxx"
 #include "PNGDrawer.hxx"
@@ -12,7 +12,7 @@ void BackgroundRendererSubSystem::render(entityx::EntityManager &entities, Rende
     entities.each<BackgroundComponent, Scale>([&](entityx::Entity entity, BackgroundComponent &background, Scale &s) {
         PNGFactory factory(window);
         WindowDimensionGetter getter;
-        DimensionCalculator calculator;
+        PNGDimensionGetter calculator;
 
         PNG *png = factory.getPNG(background.getPath());
         const Dimension &windowDimension = getter.getDimensionsOfWindows(window);

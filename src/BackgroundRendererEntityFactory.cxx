@@ -10,7 +10,7 @@
 #include "GameBeginZoomOut.hxx"
 #include <PNGDrawer.hxx>
 #include <WindowUpdater.hxx>
-#include <DimensionCalculator.hxx>
+#include <PNGDimensionGetter.hxx>
 
 BackgroundRendererEntityFactory::BackgroundRendererEntityFactory(const std::string &pathToPng, EntityFactory *factory) {
     auto e = factory->entities.create();

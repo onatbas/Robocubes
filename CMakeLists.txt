@@ -45,8 +45,8 @@ set(BOXES_GAME_SRC_FILES
         src/PNG.cxx src/PNG.hxx src/PNGDrawer.cxx
         src/PNGDrawer.hxx src/PNGSurfaceGetter.cxx
         src/PNGSurfaceGetter.hxx src/RectBuilder.cxx
-        src/RectBuilder.hxx src/DimensionCalculator.cxx
-        src/DimensionCalculator.hxx src/Dimension.cxx
+        src/RectBuilder.hxx src/PNGDimensionGetter.cxx
+        src/PNGDimensionGetter.hxx src/Dimension.cxx
         src/Dimension.hxx src/DrawPosition.cxx src/DrawPosition.hxx
         src/WindowUpdater.cxx src/WindowUpdater.hxx
         src/IMGInitializer.cxx src/IMGInitializer.hxx

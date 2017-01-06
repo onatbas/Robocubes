@@ -30,13 +30,15 @@ void TilePopperSystem::makePoppedDisappear(EntityManager &entities) const {
 
         AnimationSet animation;
         animation.setOneShot(true);
-        animation.setPassInterval(100);
+        animation.setPassInterval(40);
         animation.addSprite(path, baseScale.scale * 1);
         animation.addSprite(path, baseScale.scale * 1.05);
+        animation.addSprite(path, baseScale.scale * 1.1);
         animation.addSprite(path, baseScale.scale * 1);
         animation.addSprite(path, baseScale.scale * 0.8);
         animation.addSprite(path, baseScale.scale * 0.4);
         animation.addSprite(path, baseScale.scale * 0.1);
+        animation.addSprite(path, baseScale.scale * 0.05);
 
         WindowDimensionGetter getter;
         const Dimension windowDimensions = getter.getDimensionsOfWindows(window);
@@ -74,13 +76,15 @@ void TilePopperSystem::markBoxesToPop(EntityManager &entities) const {
 }
 
 std::vector<BoxPosition> TilePopperSystem::getNeighbours(const MouseClicked &clicked) const {
-    std::__1::vector<BoxPosition> positions;
+    std::vector<BoxPosition> positions;
     {
         BoxPosition boxPosition = clicked.getPosition();
         AdjacentNeighbourCounter counter;
         AdjacentNeighbourCountResult result = counter.count(*set, boxPosition);
 
         const int size = result.getSameColorAreaCount();
+        if (size == 1)
+            return std::vector<BoxPosition>();
         for (int i = 0; i < size; i++)
             positions.push_back(result.getNeighbourAt(i));
     }
