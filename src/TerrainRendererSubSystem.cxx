@@ -9,7 +9,7 @@
 #include "TerrainComponent.hxx"
 #include "WindowDimensionGetter.hxx"
 
-void TerrainRendererSubSystem::render(entityx::EntityManager &entities, Renderable &renderable, Window *window) {
+void TerrainRendererSubSystem::render(entityx::EntityManager &entities, Renderable &renderable, Window *window, entityx::TimeDelta delta) {
     entities.each<TerrainComponent, Scale>([&](entityx::Entity entity, TerrainComponent &background, Scale &s) {
         PNGFactory factory(window);
         WindowDimensionGetter getter;

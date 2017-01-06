@@ -12,3 +12,7 @@ double BoxDrawingConfiguration::getBoxFinalScale() const {
 double BoxDrawingConfiguration::getBoxScaleFactor() const {
     return 0.25;
 }
+
+Dimension BoxDrawingConfiguration::getBoxDimensions() const {
+    return Dimension(169, 149);
+}

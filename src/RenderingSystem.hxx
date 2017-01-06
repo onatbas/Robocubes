@@ -29,7 +29,7 @@ public:
 private:
     Window *window;
     EntityFactory *factory;
-    void renderSubsystems(entityx::EntityManager &entities, Renderable &renderable) const;
+    void renderSubsystems(entityx::EntityManager &entities, Renderable &renderable, entityx::TimeDelta dt) const;
     std::vector<std::shared_ptr<RenderingSubSystem> > subsystems;
 };
 

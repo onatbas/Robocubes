@@ -12,7 +12,8 @@
 class BackgroundRendererSubSystem : public RenderingSubSystem {
 
 public:
-    virtual void render(entityx::EntityManager &entities, Renderable &renderable, Window *window) override;
+    virtual void
+    render(entityx::EntityManager &entities, Renderable &renderable, Window *window, entityx::TimeDelta delta) override;
 };
 
 #endif //BOXESGAME_BACKGROUNDRENDERER_HXX

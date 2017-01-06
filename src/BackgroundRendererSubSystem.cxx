@@ -8,7 +8,7 @@
 #include "WindowDimensionGetter.hxx"
 #include "PNGDrawer.hxx"
 
-void BackgroundRendererSubSystem::render(entityx::EntityManager &entities, Renderable &renderable, Window *window) {
+void BackgroundRendererSubSystem::render(entityx::EntityManager &entities, Renderable &renderable, Window *window, entityx::TimeDelta delta) {
     entities.each<BackgroundComponent, Scale>([&](entityx::Entity entity, BackgroundComponent &background, Scale &s) {
         PNGFactory factory(window);
         WindowDimensionGetter getter;

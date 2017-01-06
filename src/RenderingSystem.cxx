@@ -26,14 +26,14 @@ void RenderingSystem::update(entityx::EntityManager &entities, entityx::EventMan
     WindowUpdater updater;
 
     cleaner.clean(renderable, window);
-    renderSubsystems(entities, renderable);
+    renderSubsystems(entities, renderable, dt);
     updater.updateWindow(window);
 }
 
-void RenderingSystem::renderSubsystems(entityx::EntityManager &entities, Renderable &renderable) const {
+void RenderingSystem::renderSubsystems(entityx::EntityManager &entities, Renderable &renderable, entityx::TimeDelta dt) const {
 
     for (auto sub : subsystems)
-        sub->render(entities, renderable, window);
+        sub->render(entities, renderable, window, dt);
 }
 
 void RenderingSystem::addSubSystem(std::shared_ptr<RenderingSubSystem> sub) {

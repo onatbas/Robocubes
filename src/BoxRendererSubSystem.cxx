@@ -12,7 +12,7 @@
 #include "BoxPositionCalculator.hxx"
 #include "WindowDimensionGetter.hxx"
 
-void BoxRendererSubSystem::render(entityx::EntityManager &entities, Renderable &renderable, Window *window) {
+void BoxRendererSubSystem::render(entityx::EntityManager &entities, Renderable &renderable, Window *window, entityx::TimeDelta delta) {
     entities.each<Box, BoxPosition, Scale>([&](entityx::Entity entity, Box &box, BoxPosition &position, Scale &s) {
         BoxPositionCalculator boxPositionCalculator;
         PNGFactory factory(window);

@@ -16,11 +16,15 @@
 #include <WindowDimensionGetter.hxx>
 #include <ResourceUtil.hxx>
 #include <BoxPositionCalculator.hxx>
+#include <AdjacentNeighbourCounter.hxx>
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
 #include "MouseClicked.hxx"
 #include "Window.hxx"
 #include "AnimationSet.hxx"
+#include "AnimationSubSystem.hxx"
+#include "AdjacentNeighbourCounter.hxx"
+#include "TilePopperSystem.hxx"
 
 class AnimateSmokeOnClick : public GameSystem<AnimateSmokeOnClick>
 {
@@ -30,35 +34,36 @@ public:
     virtual void
     update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) override {
         entities.each<MouseClicked, Box>([&](entityx::Entity entity, MouseClicked &clicked, Box &box){
-
-            entityx::Entity smokeAnimator = entities.create();
-            ResourceUtil util;
-            AnimationSet animations;
-            animations.setPassInterval(10);
-            animations.setOneShot(true);
-            for (int i=0; i<10; i++)
-                animations.addSprite(util.getRandomSmoke());
-
             BoxPositionCalculator calculator;
-            const BoxPosition &boxPosition = clicked.getPosition();
-
+            AdjacentNeighbourCounter counter;
             WindowDimensionGetter getter;
-            const Dimension &windowDimensions = getter.getDimensionsOfWindows(window.get());
-
             BoxDrawingConfiguration configuration;
+            ResourceUtil util;
+
+
+            const Dimension &windowDimensions = getter.getDimensionsOfWindows(window.get());
             const Scale boxScale = configuration.getBoxFinalScale();
 
-            smokeAnimator.assign_from_copy<AnimationSet>(animations);
-            smokeAnimator.assign_from_copy<DrawPosition>(calculator.boxToDrawing(boxPosition, windowDimensions, boxScale));
+            std::vector<BoxPosition> positions;
+            {
+                BoxPosition boxPosition = clicked.getPosition();
+                AdjacentNeighbourCountResult result = counter.count(set, boxPosition);
 
-            entity.remove<MouseClicked>();
+                const int size = result.getSameColorAreaCount();
+                for (int i=0; i < size; i++)
+                    positions.push_back(result.getNeighbourAt(i));
+            }
+
+
+
         });
     }
 
-    AnimateSmokeOnClick(std::shared_ptr<Window> window) : window(window) {}
+    AnimateSmokeOnClick(std::shared_ptr<Window> window, StackSet &set) : window(window), set(set) {}
 
 private:
     std::shared_ptr<Window> window;
+    StackSet &set;
 };
 
 TEST(DisapperanceAnimationTest, shouldAnimateSmokeOnClick)
@@ -66,7 +71,9 @@ TEST(DisapperanceAnimationTest, shouldAnimateSmokeOnClick)
     WindowOpener opener;
     auto window = opener.open();
     WindowRenamer renamer;
-    renamer.rename(window, "Stacks should animate smoke on click.");
+    renamer.rename(window, "Stacks should animate smoke on click and their neighbours, and they disappear.");
+
+    StackSet set = getStackSetByCodeList("brb ggg bbbbrggbbgr gbgrbgbb gbgbrb bgbggbgrrrrb g g gbgbg ");
 
     GameLooper looper;
     LoopTerminator terminator(looper);
@@ -77,8 +84,8 @@ TEST(DisapperanceAnimationTest, shouldAnimateSmokeOnClick)
     renderingSystem->addSubSystem(std::make_shared<AnimationSubSystem>());
     factory.addSystem(renderingSystem);
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
-    factory.addSystem(std::make_shared<AnimateSmokeOnClick>(window));
-    StackSet set = getStackSetByCodeList("brb ggg");
+   // factory.addSystem(std::make_shared<AnimateSmokeOnClick>(window, set));
+    factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get()));
     StackSetEntityMaker maker(&factory);
     maker.makeEntities(set);
 
