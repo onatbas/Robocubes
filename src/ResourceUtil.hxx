@@ -17,6 +17,9 @@ public:
     std::string getBackgroundPath() const;
     std::string getTerrainPath() const;
 
+    std::string getRandomSmoke() const;
+
+
 };
 
 #endif //BOXESGAME_RESOURCEUTIL_HXX

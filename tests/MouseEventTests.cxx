@@ -19,6 +19,8 @@
 #include "MouseClicked.hxx"
 #include "StackHelpers.hxx"
 #include "TerrainRenderer.hxx"
+#include "BackgroundRendererEntityFactory.hxx"
+#include "WindowDimensionGetter.hxx"
 
 class WindowRenemeOnClick : public GameSystem<WindowRenemeOnClick>
 {
@@ -39,8 +41,7 @@ public:
 
             renames.rename(window, name);
 
-
-            entity.destroy();
+            entity.remove<MouseClicked>();
         });
     }
 
@@ -59,7 +60,11 @@ TEST(MouseEventTests, shouldCatchBoxColorOnClick)
     GameLooper looper;
 
     EntityFactory factory(&looper);
-    factory.addSystem(std::make_shared<RenderingSystem>(&factory, window.get()));
+    const std::shared_ptr<RenderingSystem> &renderingSystem = std::make_shared<RenderingSystem>(&factory, window.get());
+    renderingSystem->addSubSystem(std::make_shared<BackgroundRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<BoxRendererSubSystem>());
+    factory.addSystem(renderingSystem);
     factory.addSystem(std::make_shared<WindowRenemeOnClick>(window));
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
 
@@ -75,6 +80,8 @@ TEST(MouseEventTests, shouldCatchBoxColorOnClick)
     maker.makeEntities(set);
     TerrainRenderer terrain(&factory);
 
+    WindowRenamer renames;
+    renames.rename(window, "clicking on boxes should rename the window with box's color.");
 
     LoopTerminator terminator(looper);
     looper.loop();
