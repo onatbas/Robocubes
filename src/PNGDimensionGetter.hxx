@@ -8,7 +8,7 @@
 #include "Dimension.hxx"
 #include "PNG.hxx"
 
-class DimensionCalculator {
+class PNGDimensionGetter {
 
 public:
     Dimension calculate(const PNG &png) const;

@@ -4,7 +4,7 @@
 
 #include "RenderingSystem.hxx"
 #include <BoxDrawer.hxx>
-#include <DimensionCalculator.hxx>
+#include <PNGDimensionGetter.hxx>
 #include <BackgroundComponent.hxx>
 #include "PNGFactory.hxx"
 #include "PNGLoader.hxx"

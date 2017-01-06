@@ -6,7 +6,7 @@
 #include "PNGDrawer.hxx"
 #include "PNGSurfaceGetter.hxx"
 #include "RectBuilder.hxx"
-#include "DimensionCalculator.hxx"
+#include "PNGDimensionGetter.hxx"
 #include "Dimension.hxx"
 #include "Scale.hxx"
 
@@ -28,7 +28,7 @@ SDL_Rect PNGDrawer::getDrawToRegion(const DrawPosition &position, Scale scale, P
 
 SDL_Rect PNGDrawer::getDrawingRegion(const PNG &png) const {
     RectBuilder builder;
-    DimensionCalculator calculator;
+    PNGDimensionGetter calculator;
     Dimension dimensions = calculator.calculate(png);
     SDL_Rect drawFrom = builder.buildFromDimension(dimensions);
     return drawFrom;

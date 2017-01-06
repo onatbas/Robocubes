@@ -12,13 +12,20 @@ void SmokeAdder::add(entityx::EntityManager &entities, const DrawPosition &drawP
     ResourceUtil util;
     entityx::Entity smokeEntity = entities.create();
     AnimationSet animations;
-    animations.setPassInterval(100);
+    animations.setPassInterval(40);
     animations.setOneShot(true);
-    animations.addSprite(util.getRandomSmoke(), Scale(0.15));
-    animations.addSprite(util.getRandomSmoke(), Scale(0.20));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.29));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.32));
     animations.addSprite(util.getRandomSmoke(), Scale(0.25));
-    animations.addSprite(util.getRandomSmoke(), Scale(0.13));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.26));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.27));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.22));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.18));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.14));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.06));
     animations.addSprite(util.getRandomSmoke(), Scale(0.04));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.02));
+    animations.addSprite(util.getRandomSmoke(), Scale(0.01));
 
     smokeEntity.assign_from_copy<AnimationSet>(animations);
     smokeEntity.assign_from_copy(drawPosition);

@@ -4,7 +4,7 @@
 
 #include "RenderingSystem.hxx"
 #include <PNGDrawer.hxx>
-#include <DimensionCalculator.hxx>
+#include <PNGDimensionGetter.hxx>
 #include "TerrainRenderer.hxx"
 #include "TerrainComponent.hxx"
 #include "WindowDimensionGetter.hxx"

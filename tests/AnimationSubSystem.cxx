@@ -5,6 +5,7 @@
 #include <PNGFactory.hxx>
 #include <PNGDrawer.hxx>
 #include <BoxDrawingConfiguration.hxx>
+#include <PNGDimensionGetter.hxx>
 #include "AnimationSubSystem.hxx"
 #include "AnimationSet.hxx"
 
@@ -23,7 +24,17 @@ void AnimationSubSystem::render(entityx::EntityManager &entities, Renderable &re
             entity.remove<AnimationSet>();
         }else {
             PNG *pPNG = factory.getPNG(step.getPath());
-            drawer.draw(*pPNG, position, step.getScale());
+            PNGDimensionGetter getter;
+            const Dimension pngDimensions = getter.calculate(*pPNG);
+            const Dimension boxDimensions = config.getBoxDimensions();
+            float s = step.getScale().scale;
+
+            double boxFinalScale = config.getBoxFinalScale();
+            const DrawPosition center = DrawPosition(position.getX() - pngDimensions.getWidth() / 2.0 * s + boxDimensions.getWidth() *
+                                                                                                            boxFinalScale / 2,
+                                                position.getY() - pngDimensions.getHeight() / 2.0 * s + boxDimensions.getHeight() *
+                                                                                                        boxFinalScale / 2);
+            drawer.draw(*pPNG, center, step.getScale());
         }
     });
 }
