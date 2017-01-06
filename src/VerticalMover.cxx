@@ -23,7 +23,6 @@ VerticalMovements VerticalMover::move(const StackSet &set, const AdjacentPopperR
             } else
                 moveDown++;
         }
-
     }
     return movements;
 }

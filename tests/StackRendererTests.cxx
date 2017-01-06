@@ -34,7 +34,11 @@ TEST(StackRendererTests, shouldDisplayStack)
     //ECS Classes
     EntityFactory factory(&looper);
     BackgroundRendererEntityFactory backgroundRenderer(path, &factory);
-    factory.addSystem<RenderingSystem>(std::make_shared<RenderingSystem>(&factory, window.get()));
+    const std::shared_ptr<RenderingSystem> &renderingSystem = std::make_shared<RenderingSystem>(&factory, window.get());
+    renderingSystem->addSubSystem(std::make_shared<BackgroundRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<BoxRendererSubSystem>());
+    factory.addSystem(renderingSystem);
     factory.addSystem<ZoomOutAnimationSystem>(std::make_shared<ZoomOutAnimationSystem>());
     StackSetEntityMaker maker(&factory);
     maker.makeEntities(stack);

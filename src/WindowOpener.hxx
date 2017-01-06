@@ -12,6 +12,7 @@
 class WindowOpener {
 public:
     std::shared_ptr<Window> open() const;
+    WindowOpener();
 };
 
 #endif //BOXESGAME_WINDOWOPENER_HXX

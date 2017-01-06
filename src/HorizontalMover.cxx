@@ -4,7 +4,7 @@
 
 #include "HorizontalMover.hxx"
 
-const HorizontalMovements HorizontalMover::move(const StackSet &set, const VerticalMovements &verticalMovements) {
+const HorizontalMovements HorizontalMover::move(const StackSet &set, VerticalMovements &verticalMovements) {
     HorizontalMovements result;
     const auto remainingStacks = verticalMovements.getStackOrdersWhichExist();
     const unsigned long size = set.getSize();

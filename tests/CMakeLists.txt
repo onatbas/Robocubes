@@ -29,4 +29,5 @@ ADD_NEW_TEST(StackRendererTests "boxesGame_tests")
 ADD_NEW_TEST(TerrainDrawTests "boxesGame_tests")
 ADD_NEW_TEST(MouseEventTests "boxesGame_tests")
 ADD_NEW_TEST(DisapperanceAnimationTests "boxesGame_tests")
+ADD_NEW_TEST(FallDownTests "boxesGame_tests")
 

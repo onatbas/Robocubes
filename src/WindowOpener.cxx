@@ -21,3 +21,6 @@ std::shared_ptr<Window> WindowOpener::open() const {
     return result;
 }
 
+WindowOpener::WindowOpener() {
+}
+
