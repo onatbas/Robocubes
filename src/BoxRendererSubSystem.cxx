@@ -11,7 +11,7 @@
 #include "BoxDrawer.hxx"
 #include "BoxPositionCalculator.hxx"
 #include "WindowDimensionGetter.hxx"
-#include "../tests/Offset.hxx"
+#include "Offset.hxx"
 
 DrawPosition operator-(const DrawPosition &position, const Offset &offset)
 {

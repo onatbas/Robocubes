@@ -6,7 +6,7 @@
 #include "AdjacentNeighbourCountResult.hxx"
 #include "AdjacentNeighbourCounter.hxx"
 #include "WillPop.hxx"
-#include "../tests/AnimationSet.hxx"
+#include "AnimationSet.hxx"
 #include "ResourceUtil.hxx"
 #include "BoxDrawingConfiguration.hxx"
 #include "BoxPositionCalculator.hxx"
