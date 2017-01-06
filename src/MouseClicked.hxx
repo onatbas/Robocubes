@@ -12,6 +12,8 @@ class MouseClicked {
 private:
     BoxPosition position;
 public:
+    const BoxPosition &getPosition() const;
+public:
     MouseClicked(const BoxPosition &position);
 };
 

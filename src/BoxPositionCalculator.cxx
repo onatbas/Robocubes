@@ -19,8 +19,6 @@ BoxPositionCalculator::clickToBox(const DrawPosition &position, Dimension window
     const int i = (float)position.getX() / box.getWidth() / scale.scale;
     const int j = -(float)(position.getY() + 90 - windowDimensions.getHeight()) / (box.getHeight() * scale.scale);
 
-    std::cout << "Box position : " << i << ", " << j << std::endl;
-
     return BoxPosition(i,j);
 }
 

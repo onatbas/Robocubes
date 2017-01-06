@@ -20,15 +20,12 @@ MouseClickTracker::MouseClickTracker(GameLooper *looper, EntityFactory *factory,
         BoxPositionCalculator calculator;
         BoxPosition boxPosition = calculator.clickToBox(clickPosition, windowDimensions);
 
-        entityx::Entity resultEntity = factory->entities.create();
-        resultEntity.assign<MouseClicked>(boxPosition);
-
         ComponentHandle<Box> box;
         ComponentHandle<BoxPosition> position;
         for (auto entity : factory->entities.entities_with_components<Box, BoxPosition>(box, position)) {
             if (*position.get() == boxPosition)
             {
-                resultEntity.assign<Box>(box.get()->getColor());
+                entity.assign<MouseClicked>(boxPosition);
             }
         }
     });

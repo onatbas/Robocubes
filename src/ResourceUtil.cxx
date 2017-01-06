@@ -12,6 +12,11 @@ std::string operator<<(std::string ss, const char *c) {
     return ss;
 }
 
+std::string operator<<(std::string ss, int c) {
+    ss.append(std::to_string(c));
+    return ss;
+}
+
 std::string ResourceUtil::getMaterialsPath() const {
         return "boxesGame_tests_materials/";
 }
@@ -35,5 +40,10 @@ std::string ResourceUtil::getTerrainPath() const {
 
 std::string ResourceUtil::getBackgroundPath() const {
     return getMaterialsPath() << "colored_grass.png";
+}
+
+std::string ResourceUtil::getRandomSmoke() const {
+    int random = int(std::rand() / (float)RAND_MAX * 10.0); // random number of 0-9
+    return getMaterialsPath() << "whitePuff0" << random << ".png";
 }
 

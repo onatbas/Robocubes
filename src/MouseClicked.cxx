@@ -7,3 +7,7 @@
 
 MouseClicked::MouseClicked(const BoxPosition &position) : position(position) {
 }
+
+const BoxPosition &MouseClicked::getPosition() const {
+    return position;
+}
