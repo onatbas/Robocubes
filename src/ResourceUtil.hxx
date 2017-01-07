@@ -11,7 +11,7 @@
 class ResourceUtil {
 public:
     std::string getMaterialsPath() const;
-    std::string getBoxPath(const Box &box) const;
+    std::string getBoxPath(const Box &box, bool alternative) const;
     std::string getBackgroundPath() const;
     std::string getTerrainPath() const;
 

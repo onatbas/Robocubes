@@ -6,9 +6,11 @@
 #include "Scale.hxx"
 #include "GameBeginZoomOut.hxx"
 #include "Offset.hxx"
+#include "GraphicsHolder.hxx"
 
 void StackSetEntityMaker::makeEntities(const StackSet &set) {
 
+    BoxDrawingConfiguration config;
     const int size = set.getSize();
     for (int i=0; i < size;i++) {
         const Stack &stack = set[i];
@@ -20,7 +22,7 @@ void StackSetEntityMaker::makeEntities(const StackSet &set) {
             entity.assign<BoxPosition>(i,j);
             entity.assign<Scale>(1);
             entity.assign<Offset>();
-            BoxDrawingConfiguration config;
+            entity.assign<GraphicsHolder>();
             entity.assign<GameBeginZoomOut>(500, config.getBoxScaleFactor(), config.getBoxFinalScale());
         }
     }
@@ -28,4 +30,5 @@ void StackSetEntityMaker::makeEntities(const StackSet &set) {
 
 StackSetEntityMaker::StackSetEntityMaker(EntityFactory *factory) : factory(factory) {
 }
+
 

@@ -37,7 +37,7 @@ set(BOXES_GAME_SRC_FILES
         src/SingleDataHolder.hxx src/SquaredDistanceModeler.cxx src/SquaredDistanceModeler.hxx src/HorizontalStackInserter.cxx src/HorizontalStackInserter.hxx
         src/HorizontalStackInserterResult.cxx src/HorizontalStackInserterResult.hxx src/StackSetFactory.cxx src/StackSetFactory.hxx src/StackFactory.cxx src/StackFactory.hxx src/CharToColorConverter.cxx
         src/CharToColorConverter.hxx src/StackInsertionSystem.cxx src/StackInsertionSystem.hxx src/GameConfig.cxx src/GameConfig.hxx
-        src/MovementChecker.hxx src/MovementChecker.cxx)
+        src/MovementChecker.hxx src/MovementChecker.cxx src/GraphicsHolder.cxx src/GraphicsHolder.hxx)
 
 #definitions
 #add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")

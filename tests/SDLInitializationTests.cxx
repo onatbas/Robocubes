@@ -44,7 +44,7 @@ TEST(SDLInitializationTests, shouldRenderGreenBox)
 
     ResourceUtil util;
     PNGLoader loader;
-    const PNG &png = loader.load(util.getBoxPath(Box(GREEN)), window.get());
+    const PNG &png = loader.load(util.getBoxPath(Box(GREEN), false), window.get());
     Box box(GREEN);
     BoxDrawer renderer(png);
     WindowRefGetter getter(window.get());
@@ -80,7 +80,7 @@ TEST(SDLInitializationTests, shouldRenderRedBox)
     Box box(RED);
     ResourceUtil util;
     PNGLoader loader;
-    PNG png = loader.load(util.getBoxPath(box), window.get());
+    PNG png = loader.load(util.getBoxPath(box, false), window.get());
     BoxDrawer boxDrawer(png);
 
     Renderable renderable(SDL_GetWindowSurface(getter.getWindowRef()));
