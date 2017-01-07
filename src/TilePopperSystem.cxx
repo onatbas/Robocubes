@@ -27,7 +27,7 @@ void TilePopperSystem::update(entityx::EntityManager &entities, entityx::EventMa
 void TilePopperSystem::makePoppedDisappear(EntityManager &entities) const {
     entities.each<WillPop, Box, BoxPosition>([&](Entity entity, WillPop &pop, Box &box, BoxPosition &boxPosition) {
         ResourceUtil util;
-        const std::string &path = util.getBoxPath(box);
+        const std::string &path = util.getBoxPath(box, false);
 
         BoxDrawingConfiguration config;
         Scale baseScale = config.getBoxFinalScale();

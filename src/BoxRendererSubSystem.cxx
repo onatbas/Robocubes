@@ -12,6 +12,7 @@
 #include "BoxPositionCalculator.hxx"
 #include "WindowDimensionGetter.hxx"
 #include "Offset.hxx"
+#include "GraphicsHolder.hxx"
 
 DrawPosition operator-(const DrawPosition &position, const Offset &offset)
 {
@@ -19,14 +20,13 @@ DrawPosition operator-(const DrawPosition &position, const Offset &offset)
 }
 
 void BoxRendererSubSystem::render(entityx::EntityManager &entities, Renderable &renderable, Window *window, entityx::TimeDelta delta) {
-    entities.each<Box, BoxPosition, Scale, Offset>([&](entityx::Entity entity, Box &box, BoxPosition &position, Scale &s, Offset &offset) {
+    entities.each<Box, BoxPosition, Scale, Offset, GraphicsHolder>([&](entityx::Entity entity, Box &box, BoxPosition &position, Scale &s, Offset &offset, GraphicsHolder &graphics) {
         BoxPositionCalculator boxPositionCalculator;
         PNGFactory factory(window);
         ResourceUtil resourceUtil;
         WindowDimensionGetter getter;
 
-
-        PNG *png = factory.getPNG(resourceUtil.getBoxPath(box));
+        PNG *png = factory.getPNG(resourceUtil.getBoxPath(box, graphics.getGraphics()));
         BoxDrawer drawer(*png);
         auto windowDimensions = getter.getDimensionsOfWindows(window);
 

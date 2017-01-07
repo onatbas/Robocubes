@@ -9,6 +9,7 @@
 #include "GameConfig.hxx"
 #include "StackSetEntityMaker.hxx"
 #include "Offset.hxx"
+#include "GraphicsHolder.hxx"
 
 using namespace entityx;
 
@@ -67,6 +68,7 @@ void StackInsertionSystem::insertNewColumn(EntityManager &entities) {
                     Entity entity = entities.create();
                     entity.assign<BoxPosition>(0, i);
                     entity.assign_from_copy<Box>(generated[i]);
+                    entity.assign<GraphicsHolder>();
                     entity.assign<Offset>(0, 0);
                     entity.assign<Scale>(drawingConfiguration.getBoxFinalScale());
                 }
