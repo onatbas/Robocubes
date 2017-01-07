@@ -16,6 +16,7 @@
 #include <ResourceUtil.hxx>
 #include <BoxPositionCalculator.hxx>
 #include <AdjacentNeighbourCounter.hxx>
+#include <StackSetFactory.hxx>
 #include "gtest/gtest.h"
 #include "tests/StackHelpers.hxx"
 #include "MouseClicked.hxx"
@@ -39,7 +40,8 @@ int main(int argc, const char *argv[])
     WindowRenamer renamer;
     renamer.rename(window, "Stacks should slide left if columns are emptied.");
 
-    StackSet set = getStackSetByCodeList("gggggggg gggggbggggggg gggggg bbbbbbbb rgbrgbrgb");
+    StackSetFactory stackSetFactory;
+    StackSet set = stackSetFactory.createFrom("rgb", 10, 8);
 
     GameLooper looper;
     LoopTerminator terminator(looper);

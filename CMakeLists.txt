@@ -34,7 +34,8 @@ set(BOXES_GAME_SRC_FILES
         src/AnimationSubSystem.hxx src/AnimationStep.cxx src/AnimationStep.hxx src/TilePopperSystem.cxx src/TilePopperSystem.hxx src/WillPop.cxx
         src/WillPop.hxx tests/FallDownTests.cxx src/TileVerticalMover.cxx src/TileVerticalMover.hxx src/Offset.cxx src/Offset.hxx
         src/StackSetInserter.cxx src/StackSetInserter.hxx src/TileHorizontalMover.cxx src/TileHorizontalMover.hxx tests/MergeBackTests.cxx src/SingleDataHolder.cxx
-        src/SingleDataHolder.hxx src/SquaredDistanceModeler.cxx src/SquaredDistanceModeler.hxx)
+        src/SingleDataHolder.hxx src/SquaredDistanceModeler.cxx src/SquaredDistanceModeler.hxx src/HorizontalStackInserter.cxx src/HorizontalStackInserter.hxx
+        tests/HorizontalStackInserterResult.cxx tests/HorizontalStackInserterResult.hxx src/StackSetFactory.cxx src/StackSetFactory.hxx src/StackFactory.cxx src/StackFactory.hxx src/CharToColorConverter.cxx src/CharToColorConverter.hxx)
 
 #definitions
 #add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
