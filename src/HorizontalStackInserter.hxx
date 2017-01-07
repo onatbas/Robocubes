@@ -5,7 +5,7 @@
 #ifndef BOXESGAME_HORIZONTALSTACKINSERTER_HXX
 #define BOXESGAME_HORIZONTALSTACKINSERTER_HXX
 
-#include "../tests/HorizontalStackInserterResult.hxx"
+#include "HorizontalStackInserterResult.hxx"
 #include "StackSet.hxx"
 
 class HorizontalStackInserter {

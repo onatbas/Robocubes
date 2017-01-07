@@ -12,6 +12,7 @@
 #include <Scale.hxx>
 #include <SquaredDistanceModeler.hxx>
 #include "TileHorizontalMover.hxx"
+#include "MovementChecker.hxx"
 
 using namespace entityx;
 
@@ -31,17 +32,28 @@ TileHorizontalMover::TileHorizontalMover(StackSet &set, GameLooper &looper) : se
         HorizontalMover mover;
         movements = mover.move(set, result);
     });
+    looper.observe(BOXESEVENT_FORCE_HORIZONTAL_CHECK, 0, [&](const char *data){
+        const EntityManager *entities_const = (EntityManager *)data;
+        EntityManager *entities = const_cast<EntityManager *>(entities_const);
+        update(*entities);
+    });
 
 }
 
 void TileHorizontalMover::update(EntityManager &entities, EventManager &events, TimeDelta dt) {
-    if (!verticalMovesEnded)
-        return;
-    verticalMovesEnded = false; // reset it.
+    update(entities);
+
+}
+
+void TileHorizontalMover::update(EntityManager &entities) {
+
+    MovementChecker checker;
+    if (!checker.isSomethingMoving(entities))
+    {
 
     HorizontalMovements moves;
     if (movements.getClick(moves)) {
-        std::map<int, HorizontalMovement> orders;
+        std::__1::map<int, HorizontalMovement> orders;
         int size = moves.getMovementsSize();
         for (int i = 0; i < size; i++) {
             const HorizontalMovement &movement = moves.getMovementAt(i);
@@ -57,6 +69,8 @@ void TileHorizontalMover::update(EntityManager &entities, EventManager &events, 
             }
         });
     }
+    }
+
 
     entities.each<BoxPosition, HorizontalMovement, Offset>([&](Entity entity, BoxPosition &position, HorizontalMovement &movement, Offset &offset){
         BoxDrawingConfiguration config;

@@ -8,13 +8,19 @@
 #include "GameLooper.hxx"
 #include "EntityFactory.hxx"
 #include "Dimension.hxx"
+#include "GameSystem.hxx"
+#include "SingleDataHolder.hxx"
+#include "BoxPosition.hxx"
 
-class MouseClickTracker {
+class MouseClickTracker : public GameSystem<MouseClickTracker>{
 
 public:
     MouseClickTracker(GameLooper *looper, EntityFactory *factory, Dimension windowDimensions);
+    virtual void
+    update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) override;
 private:
     GameLooper &looper;
+    SingleDataHolder<BoxPosition> clickPosition;
 };
 
 #endif //BOXESGAME_MOUSECLICKTRACKER_HXX

@@ -23,6 +23,7 @@ public:
 private:
     SingleDataHolder<HorizontalMovements> movements;
     bool verticalMovesEnded;
+    void update(entityx::EntityManager &entities);
 };
 
 #endif //BOXESGAME_TILEHORIZONTALMOVER_HXX

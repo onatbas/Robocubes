@@ -7,6 +7,7 @@
 #include "BoxPositionCalculator.hxx"
 #include "MouseClicked.hxx"
 #include "Box.hxx"
+#include "MovementChecker.hxx"
 #include <iostream>
 
 using namespace entityx;
@@ -20,8 +21,18 @@ MouseClickTracker::MouseClickTracker(GameLooper *looper, EntityFactory *factory,
 
         BoxPositionCalculator calculator;
         BoxPosition boxPosition = calculator.clickToBox(clickPosition, windowDimensions);
-
-        looper->sendSignal(BOXESEVENT_BOX_CLICKED, 0, (char*)&boxPosition);
+        this->clickPosition = boxPosition;
     });
 }
 
+void MouseClickTracker::update(EntityManager &entities, EventManager &events, TimeDelta dt) {
+    BoxPosition click;
+    if (clickPosition.getClick(click))
+    {
+        MovementChecker checker;
+        if (! checker.isSomethingMoving(entities))
+        {
+            looper.sendSignal(BOXESEVENT_BOX_CLICKED, 0, (char*)&click);
+        }
+    }
+}
