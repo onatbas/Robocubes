@@ -1,25 +1,34 @@
 cmake_minimum_required(VERSION 3.1)
-macro(ADD_NEW_TEST TEST_SOURCE TEST_DEPENDENCIES FOLDER_NAME)
-	set (TARGET_NAME ${TEST_SOURCE}_TESTTARGET)
-	add_executable(${TARGET_NAME} ${TEST_SOURCE}.cxx)
-	target_link_libraries(${TARGET_NAME} ${${TEST_DEPENDENCIES}})
-	add_test(NAME ${TEST_SOURCE} COMMAND ${TARGET_NAME})
-	set_property(TARGET ${TARGET_NAME} PROPERTY FOLDER ${FOLDER_NAME})
-endmacro()
 
-set(BOXES_GAME_TEST_DEPENDENCIES boxesGame ${GTEST_BOTH_LIBRARIES} ${GMOCK_BOTH_LIBRARIES})
+set(BOXES_GAME_TEST_DEPENDENCIES boxesGame ${GTEST_BOTH_LIBRARIES} ${GMOCK_BOTH_LIBRARIES} ${SDL2_LIBRARY_SET} ${ENTITYX_BINARIES})
+set(BOXES_GAME_TEST_HEADERS StackHelpers.hxx)
+
 
 set(MATERIALS_FOLDER ${CMAKE_CURRENT_BINARY_DIR}/boxesGame_tests_materials/)
-
-# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/materials/ DESTINATION ${MATERIALS_FOLDER})
-
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/materials/ DESTINATION ${MATERIALS_FOLDER})
 add_definitions(-DMATERIALS_FOLDER="${MATERIALS_FOLDER}")
 
-#add tests like this:
-# ADD_NEW_TEST(boxesGame_add_test   BOXES_GAME_TEST_DEPENDENCIES "boxesGame_tests")
+macro(ADD_NEW_TEST TEST_SOURCE FOLDER_NAME)
+    set(TARGET_NAME ${TEST_SOURCE}_TESTTARGET)
+    add_executable(${TARGET_NAME} ${TEST_SOURCE}.cxx ${BOXES_GAME_TEST_HEADERS})
+    target_link_libraries(${TARGET_NAME} ${BOXES_GAME_TEST_DEPENDENCIES})
+    add_test(NAME ${TEST_SOURCE} COMMAND ${TARGET_NAME})
+    set_property(TARGET ${TARGET_NAME} PROPERTY FOLDER ${FOLDER_NAME})
+endmacro()
 
-set(TEST_NAMES BoxTests )
+ADD_NEW_TEST(BoxTests "boxesGame_tests")
+ADD_NEW_TEST(BoxDisapperanceTest "boxesGame_tests")
+ADD_NEW_TEST(VerticalNeighbourCountingTests "boxesGame_tests")
+ADD_NEW_TEST(AdjacentNeighbourCountingTests "boxesGame_tests")
+ADD_NEW_TEST(AdjacentPopperTests "boxesGame_tests")
+ADD_NEW_TEST(VerticalMoveInstructionTests "boxesGame_tests")
+ADD_NEW_TEST(HorizontalMoveInstructionTests "boxesGame_tests")
+ADD_NEW_TEST(GameSceneTests "boxesGame_tests")
+ADD_NEW_TEST(SDLInitializationTests "boxesGame_tests")
+ADD_NEW_TEST(StackRendererTests "boxesGame_tests")
+ADD_NEW_TEST(TerrainDrawTests "boxesGame_tests")
+ADD_NEW_TEST(MouseEventTests "boxesGame_tests")
+ADD_NEW_TEST(DisapperanceAnimationTests "boxesGame_tests")
+ADD_NEW_TEST(FallDownTests "boxesGame_tests")
+ADD_NEW_TEST(MergeBackTests "boxesGame_tests")
 
-FOREACH(TEST_NAME ${TEST_NAMES})
-	ADD_NEW_TEST(${TEST_NAME} BOXES_GAME_TEST_DEPENDENCIES "boxesGame_tests")
-ENDFOREACH()
