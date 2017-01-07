@@ -84,7 +84,7 @@ void TileHorizontalMover::update(EntityManager &entities) {
         int shouldBeInPlace = modeler.getAfterTravelByTime(offset.getX(), 10);
 
         offset.setX(shouldBeInPlace);
-        if (shouldBeInPlace > totalDistanceToTravel)
+        if (std::abs(shouldBeInPlace) > std::abs(totalDistanceToTravel))
         {
             offset = Offset();
             position = BoxPosition(movement.getStackOrder() - movement.getSlideBy(), position.getY());

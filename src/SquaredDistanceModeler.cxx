@@ -14,6 +14,7 @@ int SquaredDistanceModeler::getAfterTravelByTime(int currentPlace, int timetoTra
     const float travelledSoFar = currentPlace;
     const float travelledTime = std::sqrtf( travelledSoFar / scalingFactorOfX2 );
     const float travelTimeAdded = travelledTime + timetoTravel;
-    const float shouldBeInPlace = scalingFactorOfX2 * (travelTimeAdded * travelTimeAdded) + 1;
+    const float result = scalingFactorOfX2 * (travelTimeAdded * travelTimeAdded);
+    const float shouldBeInPlace = result < 0 ? result-1 : result+1;
     return shouldBeInPlace;
 }
