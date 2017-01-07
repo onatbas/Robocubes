@@ -17,7 +17,7 @@ TEST(HorizontalStackInsertion, shouldAddAStack)
     HorizontalStackInserter inserter;
     HorizontalStackInserterResult result = inserter.insertTo(set, stack);
     StackSet updated = result.getSet();
-    HorizontalMovements movements = result.getMoveme"nts();
+    HorizontalMovements movements = result.getMovements();
 
     EXPECT_EQ(set.getSize()+1, updated.getSize());
     EXPECT_EQ(stack, updated.getStackAt(0));

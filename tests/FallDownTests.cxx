@@ -34,7 +34,7 @@ TEST(FallDownTests, shouldFallDownWhenPopped)
     WindowOpener opener;
     auto window = opener.open();
     WindowRenamer renamer;
-    renamer.rename(window, "Stacks should animate smoke on click and their neighbours, and they disappear.");
+    renamer.rename(window, "Boxes should fall down upon successfull selection.");
 
     StackSet set = getStackSetByCodeList("rgbgbbr rrbgbbgbr rgbgbbr rrrgbbgbbr rgbgbbr rrrgbbgbr rgbgbbr rgbbgbr rrrgbgbr rgbbgbbr");
 
