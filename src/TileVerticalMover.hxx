@@ -6,18 +6,23 @@
 #define BOXESGAME_TILEVERTICALMOVER_HXX
 
 #include "GameSystem.hxx"
+#include "GameLooper.hxx"
+#include "SingleDataHolder.hxx"
 
 class TileVerticalMover : public GameSystem<TileVerticalMover> {
 public:
-    TileVerticalMover(StackSet &set);
+    TileVerticalMover(StackSet &set, GameLooper &looper);
 public:
     virtual void
     update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) override;
-    StackSet &set;
 
 private:
-    void markVerticalMovingTiles(entityx::EntityManager &entities);
+    void markVerticalMovingTiles(entityx::EntityManager &entities, BoxPosition &clicked);
     void moveOffsets(entityx::EntityManager &manager, entityx::TimeDelta dt);
+    StackSet &set;
+    GameLooper &looper;
+
+    SingleDataHolder<BoxPosition> clicked;
 };
 
 #endif //BOXESGAME_TILEVERTICALMOVER_HXX

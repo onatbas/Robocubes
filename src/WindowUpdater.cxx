@@ -13,7 +13,7 @@ void WindowUpdater::updateWindow(const Window *window) const {
 }
 
 WindowUpdater::WindowUpdater(GameLooper *looper, const Window *window) {
-    looper->observe(BOXESEVENT_LEAVE_FRAME, 0, [=](SDL_Event e) {
+    looper->observe(BOXESEVENT_LEAVE_FRAME, 0, [=](const char *e) {
         updateWindow(window);
     });
 }

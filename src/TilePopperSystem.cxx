@@ -12,18 +12,24 @@
 #include "BoxPositionCalculator.hxx"
 #include "Window.hxx"
 #include "WindowDimensionGetter.hxx"
+#include "GameLooper.hxx"
 
 using namespace entityx;
 
 void TilePopperSystem::update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) {
-    markBoxesToPop(entities);
+
+    BoxPosition clickedPos(0,0);
+    if (!clicked.getClick(clickedPos))
+        return;
+
+    markBoxesToPop(entities, clickedPos);
     makePoppedDisappear(entities);
 }
 
 void TilePopperSystem::makePoppedDisappear(EntityManager &entities) const {
     entities.each<WillPop, Box, BoxPosition>([&](Entity entity, WillPop &pop, Box &box, BoxPosition &boxPosition){
         ResourceUtil util;
-        const std::__1::string &path = util.getBoxPath(box);
+        const std::string &path = util.getBoxPath(box);
 
         BoxDrawingConfiguration config;
         Scale baseScale = config.getBoxFinalScale();
@@ -58,20 +64,14 @@ void TilePopperSystem::makePoppedDisappear(EntityManager &entities) const {
     });
 }
 
-void TilePopperSystem::markBoxesToPop(EntityManager &entities) const {
-    entities.each<MouseClicked, Box>([&](Entity entity, MouseClicked &clicked, Box &box) {
-        std::vector<BoxPosition> positions = getNeighbours(clicked);
-        ComponentHandle<BoxPosition> positionHandle;
+void TilePopperSystem::markBoxesToPop(entityx::EntityManager &entities, BoxPosition clickedPos) const {
 
-        for (Entity entity : entities.entities_with_components<BoxPosition>(positionHandle)) {
-            BoxPosition position = *positionHandle.get();
+    std::vector<BoxPosition> positions = getNeighbours(clickedPos);
 
-            if (find(positions.begin(), positions.end(), position) != positions.end()) {
+    entities.each<BoxPosition>([&](Entity entity, BoxPosition &position) {
+        if (std::find(positions.begin(), positions.end(), position) != positions.end()) {
                 entity.assign<WillPop>();
             }
-        }
-
-        entity.remove<MouseClicked>();
     });
 }
 
@@ -91,8 +91,12 @@ std::vector<BoxPosition> TilePopperSystem::getNeighbours(const MouseClicked &cli
     return positions;
 }
 
-TilePopperSystem::TilePopperSystem(StackSet *set, Window *window) : set(set),
-                                                                    window(window) {
+TilePopperSystem::TilePopperSystem(StackSet *set, Window *window, GameLooper *looper) : set(set),
+                                                                                        window(window){
+    looper->observe(BOXESEVENT_BOX_CLICKED, 0, [&](const char *data){
+       BoxPosition clickedPosition = *(BoxPosition *)data;
+        clicked = clickedPosition;
+    });
 }
 
 
@@ -104,6 +108,6 @@ TilePopperSystem::TilePopperSystem(StackSet *set, Window *window) : set(set),
                     animations.addSprite(util.getRandomSmoke(), Scale(0.10 * i));
 
                 entity.assign_from_copy<AnimationSet>(animations);
-                entity.assign_from_copy<DrawPosition>(calculator.boxToDrawing(position, windowDimensions, boxScale));
+                entity.assign_from_copy<DrawPosition>(calculator.boxToDrawing(data, windowDimensions, boxScale));
                     */
 

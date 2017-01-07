@@ -47,3 +47,6 @@ int BoxPosition::getY() const {
 BoxPosition BoxPosition::operator+(const BoxPosition &rhs) const {
     return BoxPosition(x + rhs.x, y + rhs.y);
 }
+
+BoxPosition::BoxPosition() :x(0), y(0){
+}

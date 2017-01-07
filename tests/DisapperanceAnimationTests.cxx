@@ -85,7 +85,7 @@ TEST(DisapperanceAnimationTest, shouldAnimateSmokeOnClick)
     factory.addSystem(renderingSystem);
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
    // factory.addSystem(std::make_shared<AnimateSmokeOnClick>(window, set));
-    factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get()));
+    factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get(), &looper));
     StackSetEntityMaker maker(&factory);
     maker.makeEntities(set);
 

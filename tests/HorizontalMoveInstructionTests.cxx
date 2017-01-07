@@ -16,10 +16,10 @@ TEST(HorizontalInstructionsTest, shouldDoNothingIfNoStackIsNull) {
     const AdjacentPopperResult result = popper.pop(set, BoxPosition(1, 0));
 
     VerticalMover verticalMover;
-    const VerticalMovements verticalMovements = verticalMover.move(set, result);
+    VerticalMovements verticalMovements = verticalMover.move(set, result);
 
     HorizontalMover horizontalMover;
-    const HorizontalMovements horizontalMovements = horizontalMover.move(set, verticalMovements);
+    HorizontalMovements horizontalMovements = horizontalMover.move(set, verticalMovements);
 
     EXPECT_EQ(3, horizontalMovements.getMovementsSize());
 }
@@ -30,10 +30,10 @@ TEST(HorizontalInstructionsTest, shouldSlideByOneIfOneColumnIsEmpty) {
     const AdjacentPopperResult result = popper.pop(set, BoxPosition(2, 0));
 
     VerticalMover verticalMover;
-    const VerticalMovements verticalMovements = verticalMover.move(set, result);
+    VerticalMovements verticalMovements = verticalMover.move(set, result);
 
     HorizontalMover horizontalMover;
-    const HorizontalMovements horizontalMovements = horizontalMover.move(set, verticalMovements);
+    HorizontalMovements horizontalMovements = horizontalMover.move(set, verticalMovements);
 
     EXPECT_EQ(2, horizontalMovements.getMovementsSize());
     const auto secondMovement = horizontalMovements.getMovementAt(1);

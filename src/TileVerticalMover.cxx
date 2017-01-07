@@ -10,13 +10,17 @@
 #include "TileVerticalMover.hxx"
 #include "Offset.hxx"
 #include "StackSetInserter.hxx"
+#include "GameLooper.hxx"
 #include <map>
 #include <vector>
 
 using namespace entityx;
 
 void TileVerticalMover::update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) {
-    markVerticalMovingTiles(entities);
+
+    BoxPosition clickPos(0,0);
+    if (clicked.getClick(clickPos))
+        markVerticalMovingTiles(entities, clickPos);
     moveOffsets(entities, dt);
 }
 
@@ -59,20 +63,14 @@ void TileVerticalMover::moveOffsets(entityx::EntityManager &manager, entityx::Ti
         manager.each<BoxPosition, Box>([&](Entity entity, BoxPosition &position, Box &b){
             inserter.insert(position, b);
         });
+
+        looper.sendSignal(BOXESEVENT_CHECK_HORIZONTAL_SLIDE, 0, 0);
         set = updated;
     }
 }
 
-void TileVerticalMover::markVerticalMovingTiles(entityx::EntityManager &entities)
+void TileVerticalMover::markVerticalMovingTiles(entityx::EntityManager &entities, BoxPosition &clicked)
 {
-    BoxPosition clicked(0,0);
-    bool found = false;
-    entities.each<MouseClicked, BoxPosition>([&](Entity entity, MouseClicked &clicked_tmp, BoxPosition &position){
-        clicked = position;
-        found = true;
-    });
-
-    if (!found) return;
 
     AdjacentPopper popper;
     AdjacentPopperResult result = popper.pop(set, clicked);
@@ -100,7 +98,12 @@ void TileVerticalMover::markVerticalMovingTiles(entityx::EntityManager &entities
             }
         }
     });
+
+    looper.sendSignal(BOXESEVENT_VERTICAL_MOVEMENTS_APPLIED, 0, (char *)&result);
 }
 
-TileVerticalMover::TileVerticalMover(StackSet &set) : set(set) {
+TileVerticalMover::TileVerticalMover(StackSet &set, GameLooper &looper) : set(set), looper(looper) {
+    looper.observe(BOXESEVENT_BOX_CLICKED, 0, [&](const char *data){
+        clicked = *(BoxPosition *)data;
+    });
 }
