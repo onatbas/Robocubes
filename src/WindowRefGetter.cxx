@@ -8,5 +8,5 @@ SDL_Window *WindowRefGetter::getWindowRef() const {
     return window->pWindow;
 }
 
-WindowRefGetter::WindowRefGetter(const Window *wind) : window(wind){
+WindowRefGetter::WindowRefGetter(const Window *wind) : window(wind) {
 }

@@ -5,7 +5,7 @@ enable_testing()
 
 # sets
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
-set (CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 14)
 set(BOXES_GAME_SRC_FILES
         src/Colors.hxx src/Game.hxx src/Game.cxx src/Box.hxx src/Box.cxx src/BoxStacker.hxx
         src/BoxStacker.cxx src/Stack.hxx src/Stack.cxx src/StackPopper.hxx src/StackPopper.cxx src/VerticalNeighbourCounter.hxx
@@ -51,7 +51,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_entityx.cmake)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # binaries/executables/libraries
-add_library(boxesGame STATIC ${BOXES_GAME_SRC_FILES}  )
+add_library(boxesGame STATIC ${BOXES_GAME_SRC_FILES})
 add_executable(boxesGameExe main.cxx)
 
 # linker

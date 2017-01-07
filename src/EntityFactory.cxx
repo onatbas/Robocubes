@@ -6,7 +6,7 @@
 #include "EntityFactory.hxx"
 
 EntityFactory::EntityFactory(GameLooper *looper) : looper(looper) {
-    looper->observe(BOXESEVENT_ENTER_FRAME, 0, [&](const char* e){
+    looper->observe(BOXESEVENT_ENTER_FRAME, 0, [&](const char *e) {
         update(10);
     });
 }

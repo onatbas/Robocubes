@@ -3,14 +3,13 @@
 //
 
 #include "StackSetFactory.hxx"
-#include "StackSetInserter.hxx"
 #include "StackFactory.hxx"
 
 StackSet StackSetFactory::createFrom(std::string choices, int columns, int row) const {
 
     StackSet set;
     StackFactory factory;
-    for (int i=0; i<columns ;i++)
+    for (int i = 0; i < columns; i++)
         set.addStack(factory.createFrom(choices, row));
     return set;
 }

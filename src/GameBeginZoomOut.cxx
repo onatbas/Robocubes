@@ -4,10 +4,12 @@
 
 #include "GameBeginZoomOut.hxx"
 
-GameBeginZoomOut::GameBeginZoomOut(float durationToWait, float scaleFactor, float setZoomTo)
-        : durationToWait(durationToWait), scaleFactor(scaleFactor),setZoomTo(setZoomTo) {
+GameBeginZoomOut::GameBeginZoomOut(float durationToWait, float scaleFactor, float setZoomTo) : durationToWait(
+        durationToWait),
+                                                                                               scaleFactor(scaleFactor),
+                                                                                               setZoomTo(setZoomTo) {
     waitedDuration = 0;
-     startedListening = 0;
+    startedListening = 0;
 }
 
 float GameBeginZoomOut::getDurationToWait() const {

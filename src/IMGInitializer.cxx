@@ -4,7 +4,6 @@
 
 #include <SDL_image.h>
 #include "BoxDrawer.hxx"
-#include "IMGInitializer.hxx"
 
 bool IMGInitializer::initializeIMG() const {
     int imgFlags = IMG_INIT_PNG;

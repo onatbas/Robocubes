@@ -3,13 +3,10 @@
 //
 
 #include "RenderingSystem.hxx"
-#include <PNGDrawer.hxx>
-#include <Window.hxx>
-#include "WindowCleaner.hxx"
 #include "WindowRefGetter.hxx"
 
 void WindowCleaner::clean(Renderable &renderable, Window *window) const {
     WindowRefGetter getter(window);
     SDL_Surface *const pSurface = SDL_GetWindowSurface(getter.getWindowRef());
-    SDL_FillRect(pSurface, NULL, SDL_MapRGB(pSurface->format, 0xD0, 0xF4, 0xF7 ) );
+    SDL_FillRect(pSurface, NULL, SDL_MapRGB(pSurface->format, 0xD0, 0xF4, 0xF7));
 }

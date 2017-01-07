@@ -9,7 +9,6 @@
 #include "GameLooper.hxx"
 #include <vector>
 
-
 class EntityFactory : public entityx::EntityX {
 
 private:
@@ -17,10 +16,10 @@ private:
 public:
     EntityFactory(GameLooper *looper);
 
-    template <typename T>
-    void addSystem(std::shared_ptr<T> system){
+    template<typename T>
+    void addSystem(std::shared_ptr<T> system) {
         systems.add(system);
-        systemUpdates.push_back([&](entityx::TimeDelta delta){
+        systemUpdates.push_back([&](entityx::TimeDelta delta) {
             systems.update<T>(delta);
         });
         systems.configure();

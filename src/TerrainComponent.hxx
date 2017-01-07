@@ -6,6 +6,7 @@
 #define BOXESGAME_TERRAINCOMPONENT_HXX
 
 #include <string>
+
 class TerrainComponent {
 public:
     TerrainComponent(const std::string &path);

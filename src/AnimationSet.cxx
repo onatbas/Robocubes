@@ -25,7 +25,7 @@ AnimationStep AnimationSet::getNext(double timeDelta) {
     if (ifOneShotAnimationEnds())
         return AnimationStep();
 
-    int index =  getNextPathIndex();
+    int index = getNextPathIndex();
     return AnimationStep(spritePaths[index], scales[index]);
 }
 
@@ -38,7 +38,7 @@ double AnimationSet::getTotalAnimationLength() const {
 }
 
 int AnimationSet::getNextPathIndex() {
-    int howManyIntervals = passedTime / (float)interval;
+    int howManyIntervals = passedTime / (float) interval;
     int whichFrameToRender = howManyIntervals % spritePaths.size();
     return whichFrameToRender;
 }

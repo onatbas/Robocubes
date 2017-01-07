@@ -7,7 +7,7 @@
 
 #include "Vector2D.hxx"
 
-class DrawPosition : public Vector2D{
+class DrawPosition : public Vector2D {
 
 public:
     int getX() const;

@@ -7,21 +7,23 @@
 
 #include "BoxPosition.hxx"
 
-template <typename T>
+template<typename T>
 class SingleDataHolder {
 public:
-    bool getClick(T &data){
+    bool getClick(T &data) {
         data = this->data;
         bool result = isSet;
         isSet = false;
         return result;
     }
-    SingleDataHolder()  : isSet(false) {}
-    void operator=(const T &rhs){
+
+    SingleDataHolder() : isSet(false) {
+    }
+
+    void operator=(const T &rhs) {
         data = rhs;
         isSet = true;
     }
-
 
 private:
     T data;

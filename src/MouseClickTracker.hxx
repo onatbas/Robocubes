@@ -12,7 +12,7 @@
 #include "SingleDataHolder.hxx"
 #include "BoxPosition.hxx"
 
-class MouseClickTracker : public GameSystem<MouseClickTracker>{
+class MouseClickTracker : public GameSystem<MouseClickTracker> {
 
 public:
     MouseClickTracker(GameLooper *looper, EntityFactory *factory, Dimension windowDimensions);

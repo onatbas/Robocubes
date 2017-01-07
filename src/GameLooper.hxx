@@ -23,10 +23,10 @@ enum {
 };
 
 #define CALLBACK void(const char *ptr)
-typedef std::function< CALLBACK > Callback;
+typedef std::function<CALLBACK> Callback;
 typedef std::pair<SubType, Callback> Observer;
 typedef std::vector<Observer> ObserverList;
-typedef std::shared_ptr<boost::signals2::signal< CALLBACK > > Signal;
+typedef std::shared_ptr<boost::signals2::signal<CALLBACK> > Signal;
 
 class GameLooper {
 public:

@@ -24,5 +24,6 @@ int VerticalMovement::getMoveByUnit() const {
     return moveByUnit;
 }
 
-VerticalMovement::VerticalMovement() : currentHeight(0), moveByUnit(0) {
+VerticalMovement::VerticalMovement() : currentHeight(0),
+                                       moveByUnit(0) {
 }

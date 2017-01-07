@@ -16,6 +16,7 @@ public:
 
 private:
     friend class PNGSurfaceGetter;
+
     SDL_Surface *surface;
 };
 

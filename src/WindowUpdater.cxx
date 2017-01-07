@@ -5,8 +5,6 @@
 #include <WindowRefGetter.hxx>
 #include "BoxDrawer.hxx"
 
-#include <iostream>
-
 void WindowUpdater::updateWindow(const Window *window) const {
     WindowRefGetter windowGetter(window);
     SDL_UpdateWindowSurface(windowGetter.getWindowRef());

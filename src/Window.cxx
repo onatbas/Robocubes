@@ -3,7 +3,6 @@
 //
 
 #include <SDL2/SDL_video.h>
-#include <SDL2/SDL_system.h>
 #include <SDL2/SDL.h>
 #include "Window.hxx"
 
@@ -11,8 +10,7 @@ Window::Window(SDL_Window *pWindow) {
     this->pWindow = pWindow;
 }
 
-bool Window::is_open() const
-{
+bool Window::is_open() const {
     return pWindow != nullptr;
 }
 

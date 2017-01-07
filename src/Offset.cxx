@@ -8,7 +8,8 @@ Offset::Offset(int x, int y) : x(x),
                                y(y) {
 }
 
-Offset::Offset() : x(0), y(0){
+Offset::Offset() : x(0),
+                   y(0) {
 }
 
 int Offset::getX() const {

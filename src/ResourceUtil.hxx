@@ -5,10 +5,8 @@
 #ifndef BOXESGAME_RESOURCEUTIL_HXX
 #define BOXESGAME_RESOURCEUTIL_HXX
 
-
 #include <string>
 #include "Box.hxx"
-
 
 class ResourceUtil {
 public:
@@ -18,7 +16,6 @@ public:
     std::string getTerrainPath() const;
 
     std::string getRandomSmoke() const;
-
 
 };
 

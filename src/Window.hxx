@@ -17,6 +17,7 @@ public:
 
 private:
     friend class WindowRefGetter;
+
     SDL_Window *pWindow;
 };
 

@@ -3,7 +3,6 @@
 //
 
 #include "MouseClicked.hxx"
-#include "BoxPosition.hxx"
 
 MouseClicked::MouseClicked(const BoxPosition &position) : position(position) {
 }

@@ -8,7 +8,7 @@ PNG::PNG(SDL_Surface *pSurface) {
     this->surface = pSurface;
 }
 
-PNG::PNG() : surface(NULL){
+PNG::PNG() : surface(NULL) {
 }
 
 bool PNG::isInitialized() const {

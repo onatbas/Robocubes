@@ -9,17 +9,19 @@ bool AnimationStep::isNextStepValid() const {
     return (nextPath.size() != 0);
 }
 
-AnimationStep::AnimationStep() : nextPath(""), scale(1){
+AnimationStep::AnimationStep() : nextPath(""),
+                                 scale(1) {
 }
 
 std::string AnimationStep::getPath() const {
     return nextPath;
 }
 
-AnimationStep::AnimationStep(std::string path, Scale scale) : nextPath(path), scale(scale) {
+AnimationStep::AnimationStep(std::string path, Scale scale) : nextPath(path),
+                                                              scale(scale) {
 
 }
 
-Scale AnimationStep::getScale() const{
+Scale AnimationStep::getScale() const {
     return scale;
 }

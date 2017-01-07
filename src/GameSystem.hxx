@@ -7,7 +7,7 @@
 
 #include <entityx/entityx.h>
 
-template <typename T>
+template<typename T>
 class GameSystem : public entityx::System<T> {
 };
 

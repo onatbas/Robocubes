@@ -19,12 +19,11 @@ using namespace entityx;
 
 void TileVerticalMover::update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) {
 
-    BoxPosition clickPos(0,0);
+    BoxPosition clickPos(0, 0);
     if (clicked.getClick(clickPos))
         markVerticalMovingTiles(entities, clickPos);
     moveOffsets(entities, dt);
 }
-
 
 void TileVerticalMover::moveOffsets(entityx::EntityManager &manager, entityx::TimeDelta dt) {
 
@@ -33,32 +32,31 @@ void TileVerticalMover::moveOffsets(entityx::EntityManager &manager, entityx::Ti
     const Scale pngScale = config.getBoxFinalScale();
 
     bool allMoved = true;
-    manager.each<Offset, VerticalMovement, BoxPosition>([&](Entity entity, Offset &offset, VerticalMovement &movement, BoxPosition &boxPosition){
-        allMoved = false;
-        float totalDistanceToTravel = movement.getMoveByUnit() * pngDims.getHeight() * pngScale.scale;
-        float totalMovementDuration = 200 + (movement.getCurrentHeight()-movement.getMoveByUnit()) * 60;
+    manager.each<Offset, VerticalMovement, BoxPosition>(
+            [&](Entity entity, Offset &offset, VerticalMovement &movement, BoxPosition &boxPosition) {
+                allMoved = false;
+                float totalDistanceToTravel = movement.getMoveByUnit() * pngDims.getHeight() * pngScale.scale;
+                float totalMovementDuration = 200 + (movement.getCurrentHeight() - movement.getMoveByUnit()) * 60;
 
-        // Distance travelled is x^2. Modelling that.
-        SquaredDistanceModeler modeler(totalDistanceToTravel, totalMovementDuration);
-        int shouldBeInPlace = modeler.getAfterTravelByTime(-offset.getY(), 10);
-        offset.setY(-shouldBeInPlace);
+                // Distance travelled is x^2. Modelling that.
+                SquaredDistanceModeler modeler(totalDistanceToTravel, totalMovementDuration);
+                int shouldBeInPlace = modeler.getAfterTravelByTime(-offset.getY(), 10);
+                offset.setY(-shouldBeInPlace);
 
-        if (std::abs(shouldBeInPlace > totalDistanceToTravel))
-        {
-            int columnOrder = boxPosition.getX();
-            entity.remove<BoxPosition>();
-            entity.remove<Offset>();
-            entity.remove<VerticalMovement>();
-            entity.assign<BoxPosition>(columnOrder, movement.getCurrentHeight() - movement.getMoveByUnit());
-            entity.assign<Offset>();
-        }
+                if (std::abs(shouldBeInPlace > totalDistanceToTravel)) {
+                    int columnOrder = boxPosition.getX();
+                    entity.remove<BoxPosition>();
+                    entity.remove<Offset>();
+                    entity.remove<VerticalMovement>();
+                    entity.assign<BoxPosition>(columnOrder, movement.getCurrentHeight() - movement.getMoveByUnit());
+                    entity.assign<Offset>();
+                }
 
-    });
-    if (allMoved)
-    {
+            });
+    if (allMoved) {
         StackSet updated;
         StackSetInserter inserter(updated);
-        manager.each<BoxPosition, Box>([&](Entity entity, BoxPosition &position, Box &b){
+        manager.each<BoxPosition, Box>([&](Entity entity, BoxPosition &position, Box &b) {
             inserter.insert(position, b);
         });
 
@@ -67,15 +65,14 @@ void TileVerticalMover::moveOffsets(entityx::EntityManager &manager, entityx::Ti
     }
 }
 
-void TileVerticalMover::markVerticalMovingTiles(entityx::EntityManager &entities, BoxPosition &clicked)
-{
+void TileVerticalMover::markVerticalMovingTiles(entityx::EntityManager &entities, BoxPosition &clicked) {
 
     AdjacentPopper popper;
     AdjacentPopperResult result = popper.pop(set, clicked);
     VerticalMover mover;
     VerticalMovements movements = mover.move(set, result);
 
-    std::map<BoxPosition, VerticalMovement > movementsMap;
+    std::map<BoxPosition, VerticalMovement> movementsMap;
     {
         const std::vector<StackOrder> vector = movements.getStackOrdersWhichExist();
         for (StackOrder order : vector) {
@@ -86,22 +83,21 @@ void TileVerticalMover::markVerticalMovingTiles(entityx::EntityManager &entities
         }
     }
 
-    entities.each<BoxPosition>([&](Entity e, BoxPosition &position){
-        if (movementsMap.find(position) != movementsMap.end())
-        {
+    entities.each<BoxPosition>([&](Entity e, BoxPosition &position) {
+        if (movementsMap.find(position) != movementsMap.end()) {
             const auto &m = movementsMap[position];
-            if (m.getMoveByUnit() > 0 && m.getCurrentHeight() == position.getY())
-            {
+            if (m.getMoveByUnit() > 0 && m.getCurrentHeight() == position.getY()) {
                 e.assign_from_copy(m);
             }
         }
     });
 
-    looper.sendSignal(BOXESEVENT_VERTICAL_MOVEMENTS_APPLIED, 0, (char *)&movements);
+    looper.sendSignal(BOXESEVENT_VERTICAL_MOVEMENTS_APPLIED, 0, (char *) &movements);
 }
 
-TileVerticalMover::TileVerticalMover(StackSet &set, GameLooper &looper) : set(set), looper(looper) {
-    looper.observe(BOXESEVENT_BOX_CLICKED, 0, [&](const char *data){
-        clicked = *(BoxPosition *)data;
+TileVerticalMover::TileVerticalMover(StackSet &set, GameLooper &looper) : set(set),
+                                                                          looper(looper) {
+    looper.observe(BOXESEVENT_BOX_CLICKED, 0, [&](const char *data) {
+        clicked = *(BoxPosition *) data;
     });
 }

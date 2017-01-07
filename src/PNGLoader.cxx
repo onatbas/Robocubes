@@ -22,7 +22,6 @@ PNG PNGLoader::load(std::string pathToPng, const Window *window) const {
         SDL_FreeSurface(png);
     }
 
-
     if (optimizedSurface == nullptr) {
         std::cout << "SDL_LoadBMP Error: " << SDL_GetError() << std::endl;
     }

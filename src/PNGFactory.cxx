@@ -3,15 +3,12 @@
 //
 
 #include "RenderingSystem.hxx"
-#include <BoxDrawer.hxx>
-#include <PNGDimensionGetter.hxx>
-#include <BackgroundComponent.hxx>
-#include "PNGFactory.hxx"
 #include "PNGLoader.hxx"
 
 std::map<std::string, std::shared_ptr<PNG> > pngs;
 
-PNGFactory::PNGFactory(Window *window) : window(window) {}
+PNGFactory::PNGFactory(Window *window) : window(window) {
+}
 
 PNG *PNGFactory::getPNG(std::string path) {
 

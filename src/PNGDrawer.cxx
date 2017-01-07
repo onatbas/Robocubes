@@ -5,10 +5,7 @@
 #include <WindowRefGetter.hxx>
 #include "PNGDrawer.hxx"
 #include "PNGSurfaceGetter.hxx"
-#include "RectBuilder.hxx"
 #include "PNGDimensionGetter.hxx"
-#include "Dimension.hxx"
-#include "Scale.hxx"
 
 void PNGDrawer::draw(const PNG &png, const DrawPosition &position, Scale scale) {
     PNGSurfaceGetter surfaceGetter(const_cast<PNG *>(&png));
@@ -34,5 +31,5 @@ SDL_Rect PNGDrawer::getDrawingRegion(const PNG &png) const {
     return drawFrom;
 }
 
-PNGDrawer::PNGDrawer(Renderable *renderSurface) : surface(renderSurface){
+PNGDrawer::PNGDrawer(Renderable *renderSurface) : surface(renderSurface) {
 }

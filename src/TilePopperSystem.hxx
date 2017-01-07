@@ -13,7 +13,7 @@
 #include "GameLooper.hxx"
 #include "SingleDataHolder.hxx"
 
-class TilePopperSystem : public GameSystem<TilePopperSystem>{
+class TilePopperSystem : public GameSystem<TilePopperSystem> {
 public:
     virtual void
     update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) override;

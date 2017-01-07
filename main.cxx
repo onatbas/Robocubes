@@ -14,27 +14,17 @@
 #include <MouseClickTracker.hxx>
 #include <WindowDimensionGetter.hxx>
 #include <ResourceUtil.hxx>
-#include <BoxPositionCalculator.hxx>
 #include <AdjacentNeighbourCounter.hxx>
 #include <StackSetFactory.hxx>
 #include "gtest/gtest.h"
-#include "tests/StackHelpers.hxx"
-#include "MouseClicked.hxx"
-#include "Window.hxx"
-#include "AnimationSet.hxx"
 #include "AnimationSubSystem.hxx"
-#include "AdjacentNeighbourCounter.hxx"
 #include "TilePopperSystem.hxx"
 #include "TileVerticalMover.hxx"
 #include "TileHorizontalMover.hxx"
 #include "BackgroundRendererEntityFactory.hxx"
 #include "TerrainRenderer.hxx"
-#include "TerrainRendererSubSystem.hxx"
-#include "BackgroundRendererSubSystem.hxx"
-#include "ResourceUtil.hxx"
 
-int main(int argc, const char *argv[])
-{
+int main(int argc, const char *argv[]) {
     WindowOpener opener;
     auto window = opener.open();
     WindowRenamer renamer;
@@ -63,7 +53,6 @@ int main(int argc, const char *argv[])
     factory.addSystem(std::make_shared<TileHorizontalMover>(set, looper));
     factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get(), &looper));
     factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
-
 
     ResourceUtil util;
     std::string path = util.getBackgroundPath();

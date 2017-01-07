@@ -3,7 +3,7 @@
 //
 
 #include "Dimension.hxx"
-#include "Vector2D.hxx"
 
-Vector2D::Vector2D(int w, int h): w(w), h(h) {
+Vector2D::Vector2D(int w, int h) : w(w),
+                                   h(h) {
 }

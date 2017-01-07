@@ -4,7 +4,6 @@
 
 #include "BoxPositionCalculator.hxx"
 #include "TilePopperSystem.hxx"
-#include "SmokeAdder.hxx"
 #include "ResourceUtil.hxx"
 #include "AnimationSet.hxx"
 

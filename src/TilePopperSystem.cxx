@@ -10,15 +10,13 @@
 #include "ResourceUtil.hxx"
 #include "BoxDrawingConfiguration.hxx"
 #include "BoxPositionCalculator.hxx"
-#include "Window.hxx"
 #include "WindowDimensionGetter.hxx"
-#include "GameLooper.hxx"
 
 using namespace entityx;
 
 void TilePopperSystem::update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) {
 
-    BoxPosition clickedPos(0,0);
+    BoxPosition clickedPos(0, 0);
     if (!clicked.getClick(clickedPos))
         return;
 
@@ -27,7 +25,7 @@ void TilePopperSystem::update(entityx::EntityManager &entities, entityx::EventMa
 }
 
 void TilePopperSystem::makePoppedDisappear(EntityManager &entities) const {
-    entities.each<WillPop, Box, BoxPosition>([&](Entity entity, WillPop &pop, Box &box, BoxPosition &boxPosition){
+    entities.each<WillPop, Box, BoxPosition>([&](Entity entity, WillPop &pop, Box &box, BoxPosition &boxPosition) {
         ResourceUtil util;
         const std::string &path = util.getBoxPath(box);
 
@@ -48,7 +46,7 @@ void TilePopperSystem::makePoppedDisappear(EntityManager &entities) const {
 
         WindowDimensionGetter getter;
         const Dimension windowDimensions = getter.getDimensionsOfWindows(window);
-        
+
         BoxPositionCalculator calculator;
         const DrawPosition drawPosition = calculator.boxToDrawing(boxPosition, windowDimensions, baseScale.scale);
 
@@ -70,8 +68,8 @@ void TilePopperSystem::markBoxesToPop(entityx::EntityManager &entities, BoxPosit
 
     entities.each<BoxPosition>([&](Entity entity, BoxPosition &position) {
         if (std::find(positions.begin(), positions.end(), position) != positions.end()) {
-                entity.assign<WillPop>();
-            }
+            entity.assign<WillPop>();
+        }
     });
 }
 
@@ -92,9 +90,9 @@ std::vector<BoxPosition> TilePopperSystem::getNeighbours(const MouseClicked &cli
 }
 
 TilePopperSystem::TilePopperSystem(StackSet *set, Window *window, GameLooper *looper) : set(set),
-                                                                                        window(window){
-    looper->observe(BOXESEVENT_BOX_CLICKED, 0, [&](const char *data){
-       BoxPosition clickedPosition = *(BoxPosition *)data;
+                                                                                        window(window) {
+    looper->observe(BOXESEVENT_BOX_CLICKED, 0, [&](const char *data) {
+        BoxPosition clickedPosition = *(BoxPosition *) data;
         clicked = clickedPosition;
     });
 }

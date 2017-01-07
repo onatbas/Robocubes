@@ -10,13 +10,11 @@
 
 class StackSetInserter {
 
-
     StackSet *set;
 public:
     StackSetInserter(StackSet &set);
     void insert(BoxPosition position, Box box);
     StackSet insertStackToBegin(Stack &stack);
 };
-
 
 #endif //BOXESGAME_STACKSETINSERTER_HXX

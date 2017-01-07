@@ -3,13 +3,10 @@
 //
 
 #include <Window.hxx>
-#include <PNGDimensionGetter.hxx>
 #include <PNGDrawer.hxx>
-#include <WindowDimensionGetter.hxx>
 #include <PNGLoader.hxx>
 #include <BoxDrawer.hxx>
 #include "RenderingSystem.hxx"
-#include "ResourceUtil.hxx"
 
 RenderingSystem::RenderingSystem(EntityFactory *factory, Window *window) : factory(factory),
                                                                            window(window) {
@@ -30,7 +27,8 @@ void RenderingSystem::update(entityx::EntityManager &entities, entityx::EventMan
     updater.updateWindow(window);
 }
 
-void RenderingSystem::renderSubsystems(entityx::EntityManager &entities, Renderable &renderable, entityx::TimeDelta dt) const {
+void RenderingSystem::renderSubsystems(entityx::EntityManager &entities, Renderable &renderable,
+                                       entityx::TimeDelta dt) const {
 
     for (auto sub : subsystems)
         sub->render(entities, renderable, window, dt);
