@@ -17,7 +17,7 @@
 #include <BoxPositionCalculator.hxx>
 #include <AdjacentNeighbourCounter.hxx>
 #include "gtest/gtest.h"
-#include "StackHelpers.hxx"
+#include "tests/StackHelpers.hxx"
 #include "MouseClicked.hxx"
 #include "Window.hxx"
 #include "AnimationSet.hxx"
@@ -26,8 +26,13 @@
 #include "TilePopperSystem.hxx"
 #include "TileVerticalMover.hxx"
 #include "TileHorizontalMover.hxx"
+#include "BackgroundRendererEntityFactory.hxx"
+#include "TerrainRenderer.hxx"
+#include "TerrainRendererSubSystem.hxx"
+#include "BackgroundRendererSubSystem.hxx"
+#include "ResourceUtil.hxx"
 
-TEST(MergeBackTests, shouldMergeBack)
+int main(int argc, const char *argv[])
 {
     WindowOpener opener;
     auto window = opener.open();
@@ -42,8 +47,11 @@ TEST(MergeBackTests, shouldMergeBack)
     StackSetEntityMaker maker(&factory);
     maker.makeEntities(set);
     auto renderingSystem = std::make_shared<RenderingSystem>(&factory, window.get());
+    renderingSystem->addSubSystem(std::make_shared<BackgroundRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<BoxRendererSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<AnimationSubSystem>());
+
     factory.addSystem(renderingSystem);
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
     factory.addSystem(std::make_shared<TileVerticalMover>(set, looper));
@@ -54,5 +62,13 @@ TEST(MergeBackTests, shouldMergeBack)
     const Dimension &windowDimensions = dimensionGetter.getDimensionsOfWindows(window.get());
     MouseClickTracker tracker(&looper, &factory, windowDimensions);
 
+
+    ResourceUtil util;
+    std::string path = util.getBackgroundPath();
+
+    TerrainRenderer terrain(&factory);
+    BackgroundRendererEntityFactory renderer(path, &factory);
+
     looper.loop();
+    return 0;
 }
