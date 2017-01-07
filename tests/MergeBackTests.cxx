@@ -52,7 +52,7 @@ TEST(MergeBackTests, shouldMergeBack)
 
     WindowDimensionGetter dimensionGetter;
     const Dimension &windowDimensions = dimensionGetter.getDimensionsOfWindows(window.get());
-    MouseClickTracker tracker(&looper, &factory, windowDimensions);
+    factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
 
     looper.loop();
 }

@@ -69,7 +69,7 @@ TEST(MouseEventTests, shouldCatchBoxColorOnClick)
 
     WindowDimensionGetter windowDimensionGetter;
     const Dimension &windowDimensions = windowDimensionGetter.getDimensionsOfWindows(window.get());
-    MouseClickTracker tracker(&looper, &factory, windowDimensions);
+    factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
 
     StackSet set = getStackSetByCodeList("brbrgb ggggbg brrrgr bbrgbr bbggrr bbrgrr");
     StackSetEntityMaker maker(&factory);

@@ -15,6 +15,7 @@ class StackSetInserter {
 public:
     StackSetInserter(StackSet &set);
     void insert(BoxPosition position, Box box);
+    StackSet insertStackToBegin(Stack &stack);
 };
 
 
