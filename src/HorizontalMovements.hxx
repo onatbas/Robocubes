@@ -15,6 +15,7 @@ public:
 
     HorizontalMovement getMovementAt(int i) const;
     HorizontalMovement operator[](int i) const;
+    HorizontalMovements();
 protected:
     std::vector<HorizontalMovement> movements;
 };

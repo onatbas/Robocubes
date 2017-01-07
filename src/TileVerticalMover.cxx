@@ -11,6 +11,7 @@
 #include "Offset.hxx"
 #include "StackSetInserter.hxx"
 #include "GameLooper.hxx"
+#include "SquaredDistanceModeler.hxx"
 #include <map>
 #include <vector>
 
@@ -38,11 +39,8 @@ void TileVerticalMover::moveOffsets(entityx::EntityManager &manager, entityx::Ti
         float totalMovementDuration = 200 + (movement.getCurrentHeight()-movement.getMoveByUnit()) * 60;
 
         // Distance travelled is x^2. Modelling that.
-        const float scalingFactorOfX2 = totalDistanceToTravel / (totalMovementDuration * totalMovementDuration);
-        const float travelledSoFar = -offset.getY();
-        const float travelledTime = std::sqrt( travelledSoFar / scalingFactorOfX2 );
-        const float travelTimeAdded = travelledTime + dt;
-        const float shouldBeInPlace = scalingFactorOfX2 * (travelTimeAdded * travelTimeAdded) + 1;
+        SquaredDistanceModeler modeler(totalDistanceToTravel, totalMovementDuration);
+        int shouldBeInPlace = modeler.getAfterTravelByTime(-offset.getY(), 10);
         offset.setY(-shouldBeInPlace);
 
         if (std::abs(shouldBeInPlace > totalDistanceToTravel))
@@ -99,7 +97,7 @@ void TileVerticalMover::markVerticalMovingTiles(entityx::EntityManager &entities
         }
     });
 
-    looper.sendSignal(BOXESEVENT_VERTICAL_MOVEMENTS_APPLIED, 0, (char *)&result);
+    looper.sendSignal(BOXESEVENT_VERTICAL_MOVEMENTS_APPLIED, 0, (char *)&movements);
 }
 
 TileVerticalMover::TileVerticalMover(StackSet &set, GameLooper &looper) : set(set), looper(looper) {

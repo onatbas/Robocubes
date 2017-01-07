@@ -40,7 +40,6 @@ TEST(FallDownTests, shouldFallDownWhenPopped)
 
     GameLooper looper;
     LoopTerminator terminator(looper);
-    TileHorizontalMover mover(&set, &looper);
 
     EntityFactory factory(&looper);
     StackSetEntityMaker maker(&factory);

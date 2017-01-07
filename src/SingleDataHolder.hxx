@@ -16,7 +16,7 @@ public:
         isSet = false;
         return result;
     }
-    SingleDataHolder()  : isSet(false), data(T(0,0)) {}
+    SingleDataHolder()  : isSet(false) {}
     void operator=(const T &rhs){
         data = rhs;
         isSet = true;

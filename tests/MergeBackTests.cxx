@@ -34,17 +34,15 @@
 
 TEST(MergeBackTests, shouldMergeBack)
 {
-
     WindowOpener opener;
     auto window = opener.open();
     WindowRenamer renamer;
     renamer.rename(window, "Stacks should slide left if columns are emptied.");
 
-    StackSet set = getStackSetByCodeList("rgbgbbr rrbgbbgbr rgbgbbr rrrgbbgbbr rgbgbbr rrrgbbgbr rgbgbbr rgbbgbr rrrgbgbr rgbbgbbr");
+    StackSet set = getStackSetByCodeList("gggggggg gggggbggggggg gggggg bbbbbbbb rgbrgbrgb");
 
     GameLooper looper;
     LoopTerminator terminator(looper);
-    TileHorizontalMover mover(&set, &looper);
     EntityFactory factory(&looper);
     StackSetEntityMaker maker(&factory);
     maker.makeEntities(set);
@@ -54,6 +52,7 @@ TEST(MergeBackTests, shouldMergeBack)
     factory.addSystem(renderingSystem);
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
     factory.addSystem(std::make_shared<TileVerticalMover>(set, looper));
+    factory.addSystem(std::make_shared<TileHorizontalMover>(set, looper));
     factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get(), &looper));
 
     WindowDimensionGetter dimensionGetter;
