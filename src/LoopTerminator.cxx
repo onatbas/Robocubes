@@ -6,7 +6,7 @@
 #include "LoopTerminator.hxx"
 
 LoopTerminator::LoopTerminator(GameLooper &looper) {
-    looper.observe(SDL_QUIT, 0, [&](SDL_Event e) {
+    looper.observe(SDL_QUIT, 0, [&](const char* e) {
         looper.exit();
     });
 }

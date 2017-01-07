@@ -7,7 +7,7 @@
 const HorizontalMovements HorizontalMover::move(const StackSet &set, VerticalMovements &verticalMovements) {
     HorizontalMovements result;
     const auto remainingStacks = verticalMovements.getStackOrdersWhichExist();
-    const unsigned long size = set.getSize();
+    const int size = set.getSize();
     int slideBy = 0;
     for (int i = 0; i < size; i++) {
         if (stackRemains(remainingStacks, i)) {

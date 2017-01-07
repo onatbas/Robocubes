@@ -10,6 +10,7 @@ class BoxPosition {
     int y;
 
 public:
+    BoxPosition();
     BoxPosition(int x, int y);
     int getX() const;
     int getY() const;

@@ -16,7 +16,15 @@ public:
     bool operator!=(const HorizontalMovement &rhs) const;
 protected:
     int slideBy;
+public:
+    HorizontalMovement();
+protected:
     int stackOrder;
+public:
+    bool operator<(const HorizontalMovement &rhs) const;
+    bool operator>(const HorizontalMovement &rhs) const;
+    bool operator<=(const HorizontalMovement &rhs) const;
+    bool operator>=(const HorizontalMovement &rhs) const;
 };
 
 #endif //BOXESGAME_HORIZONTALMOVEMENT_HXX

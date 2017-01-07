@@ -6,7 +6,7 @@
 #include "TilePopperSystem.hxx"
 #include "SmokeAdder.hxx"
 #include "ResourceUtil.hxx"
-#include "../tests/AnimationSet.hxx"
+#include "AnimationSet.hxx"
 
 void SmokeAdder::add(entityx::EntityManager &entities, const DrawPosition &drawPosition) const {
     ResourceUtil util;

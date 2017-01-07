@@ -11,12 +11,13 @@ void GameLooper::loop() {
     SDL_Event event;
     while (!shouldExit) {
 
-        (*getSignal(BOXESEVENT_ENTER_FRAME, 0))(event);
+        sendSignal(BOXESEVENT_ENTER_FRAME, 0, (char *)&event);
         while(SDL_PollEvent(&event)){
-            (*getSignal(event.type, 0))(event);
-            (*getSignal(event.type, event.window.event))(event);
+            if (event.window.event != 0)
+                sendSignal(event.type, 0, (char *)&event);
+            sendSignal(event.type, event.window.event, (char *)&event);
         }
-        (*getSignal(BOXESEVENT_LEAVE_FRAME, 0))(event);
+        sendSignal(BOXESEVENT_LEAVE_FRAME, 0, (char *)&event);
         SDL_Delay(5);
     }
 }
@@ -38,4 +39,9 @@ void GameLooper::exit() {
 }
 
 GameLooper::GameLooper() : shouldExit(false){
+}
+
+void GameLooper::sendSignal(Type type, SubType event, const char *e)
+{
+    (*getSignal(type, event))(e);
 }

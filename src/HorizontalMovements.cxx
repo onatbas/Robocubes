@@ -19,3 +19,6 @@ HorizontalMovement HorizontalMovements::getMovementAt(int i) const {
 HorizontalMovement HorizontalMovements::operator[](int i) const {
     return getMovementAt(i);
 }
+
+HorizontalMovements::HorizontalMovements() {
+}

@@ -15,10 +15,13 @@ typedef Uint32 Type;
 
 enum {
     BOXESEVENT_ENTER_FRAME = SDL_LASTEVENT + 1,
-    BOXESEVENT_LEAVE_FRAME
+    BOXESEVENT_LEAVE_FRAME,
+    BOXESEVENT_CHECK_HORIZONTAL_SLIDE,
+    BOXESEVENT_BOX_CLICKED,
+    BOXESEVENT_VERTICAL_MOVEMENTS_APPLIED
 };
 
-#define CALLBACK void(SDL_Event)
+#define CALLBACK void(const char *ptr)
 typedef std::function< CALLBACK > Callback;
 typedef std::pair<SubType, Callback> Observer;
 typedef std::vector<Observer> ObserverList;
@@ -28,6 +31,7 @@ class GameLooper {
 public:
     GameLooper();
     void observe(Type type, SubType event, Callback callback);
+    void sendSignal(Type type, SubType event, const char *data);
     void loop();
 
     void exit();
@@ -36,6 +40,7 @@ private:
     bool shouldExit;
     std::map<std::tuple<Type, SubType>, Signal> observers;
     Signal &getSignal(Type type, SubType event);
+
 };
 
 #endif //BOXESGAME_GAMELOOPER_HXX

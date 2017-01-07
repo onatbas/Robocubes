@@ -5,7 +5,7 @@
 #include "StackSetEntityMaker.hxx"
 #include "Scale.hxx"
 #include "GameBeginZoomOut.hxx"
-#include "../tests/Offset.hxx"
+#include "Offset.hxx"
 
 void StackSetEntityMaker::makeEntities(const StackSet &set) {
 

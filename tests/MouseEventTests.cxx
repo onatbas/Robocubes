@@ -22,14 +22,15 @@
 #include "BackgroundRendererEntityFactory.hxx"
 #include "WindowDimensionGetter.hxx"
 
-class WindowRenemeOnClick : public GameSystem<WindowRenemeOnClick>
+class WindowRenemeOnClick
 {
 public:
+    WindowRenemeOnClick(std::shared_ptr<Window> window, GameLooper &looper, StackSet &set) : window(window) {
+        looper.observe(BOXESEVENT_BOX_CLICKED, 0, [&](const char *data){
+            BoxPosition p = *(BoxPosition *)data;
 
-public:
-    virtual void
-    update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) override {
-        entities.each<MouseClicked, Box>([&](entityx::Entity entity, MouseClicked &clicked, Box &box){
+            Box box = set[p.getX()][p.getY()];
+
             WindowRenamer renames;
 
             std::string name;
@@ -40,12 +41,8 @@ public:
             }
 
             renames.rename(window, name);
-
-            entity.remove<MouseClicked>();
         });
     }
-
-    WindowRenemeOnClick(std::shared_ptr<Window> window) : window(window) {}
 
 private:
     std::shared_ptr<Window> window;
@@ -65,7 +62,6 @@ TEST(MouseEventTests, shouldCatchBoxColorOnClick)
     renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<BoxRendererSubSystem>());
     factory.addSystem(renderingSystem);
-    factory.addSystem(std::make_shared<WindowRenemeOnClick>(window));
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
 
     ResourceUtil util;
@@ -83,6 +79,7 @@ TEST(MouseEventTests, shouldCatchBoxColorOnClick)
     WindowRenamer renames;
     renames.rename(window, "clicking on boxes should rename the window with box's color.");
 
+    WindowRenemeOnClick renamer(window, looper, set);
     LoopTerminator terminator(looper);
     looper.loop();
 }

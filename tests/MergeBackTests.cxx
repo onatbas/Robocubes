@@ -1,4 +1,8 @@
 //
+// Created by Onat Bas on 07/01/17.
+//
+
+//
 // Created by Onat Bas on 06/01/17.
 //
 
@@ -28,19 +32,17 @@
 #include "TileVerticalMover.hxx"
 #include "TileHorizontalMover.hxx"
 
-TEST(FallDownTests, shouldFallDownWhenPopped)
+TEST(MergeBackTests, shouldMergeBack)
 {
-
     WindowOpener opener;
     auto window = opener.open();
     WindowRenamer renamer;
-    renamer.rename(window, "Stacks should animate smoke on click and their neighbours, and they disappear.");
+    renamer.rename(window, "Stacks should slide left if columns are emptied.");
 
-    StackSet set = getStackSetByCodeList("rgbgbbr rrbgbbgbr rgbgbbr rrrgbbgbbr rgbgbbr rrrgbbgbr rgbgbbr rgbbgbr rrrgbgbr rgbbgbbr");
+    StackSet set = getStackSetByCodeList("gggggggg gggggbggggggg gggggg bbbbbbbb rgbrgbrgb");
 
     GameLooper looper;
     LoopTerminator terminator(looper);
-
     EntityFactory factory(&looper);
     StackSetEntityMaker maker(&factory);
     maker.makeEntities(set);
@@ -50,6 +52,7 @@ TEST(FallDownTests, shouldFallDownWhenPopped)
     factory.addSystem(renderingSystem);
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
     factory.addSystem(std::make_shared<TileVerticalMover>(set, looper));
+    factory.addSystem(std::make_shared<TileHorizontalMover>(set, looper));
     factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get(), &looper));
 
     WindowDimensionGetter dimensionGetter;
