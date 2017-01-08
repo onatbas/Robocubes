@@ -50,6 +50,14 @@ std::string ResourceUtil::getRandomSmoke() const {
     return getMaterialsPath() << "whitePuff0" << random << ".png";
 }
 
+int ResourceUtil::getSmokeSize() const {
+  return 5;
+}
+
+std::string ResourceUtil::getSmokeNew(int i) const {
+    return getMaterialsPath() << "puf" << i+1 << ".png";
+}
+
 std::string ResourceUtil::getLogoPath() {
     return getMaterialsPath() << "logo.png";
 }
@@ -69,5 +77,21 @@ std::string ResourceUtil::getSoundLevelBegin() {
 std::string ResourceUtil::getClickedSound() {
     return getMaterialsPath() << "pop.wav";
 
+}
+
+std::string ResourceUtil::getBoardPath() {
+    return getMaterialsPath() << "board.png";
+}
+
+std::string ResourceUtil::getTTFPath() {
+    return getMaterialsPath() << "font.ttf";
+}
+
+std::string ResourceUtil::getGameOverPath() {
+    return getMaterialsPath() << "Game-Over.png";
+}
+
+std::string ResourceUtil::getGetReadyPath() {
+    return getMaterialsPath() << "GGet-Ready.png";
 }
 

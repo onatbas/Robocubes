@@ -8,7 +8,7 @@ StackSetInserter::StackSetInserter(StackSet &set) : set(&set) {
 }
 
 void StackSetInserter::insert(BoxPosition position, Box box) {
-    int stackOrder = position.getX();
+    int stackOrder = std::max(0, position.getX());
     while (set->getSize() <= stackOrder)
         set->addStack(Stack());
     set->insert(position, box);

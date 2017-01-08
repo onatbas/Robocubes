@@ -65,6 +65,7 @@ void TilePopperSystem::makePoppedDisappear(EntityManager &entities) const {
 void TilePopperSystem::markBoxesToPop(entityx::EntityManager &entities, BoxPosition clickedPos) const {
 
     std::vector<BoxPosition> positions = getNeighbours(clickedPos);
+    looper->sendSignal(BOXESGAME_POPPED_TILES, 0, (char *)&positions);
 
     entities.each<BoxPosition>([&](Entity entity, BoxPosition &position) {
         if (std::find(positions.begin(), positions.end(), position) != positions.end()) {
@@ -90,7 +91,7 @@ std::vector<BoxPosition> TilePopperSystem::getNeighbours(const MouseClicked &cli
 }
 
 TilePopperSystem::TilePopperSystem(StackSet *set, Window *window, GameLooper *looper) : set(set),
-                                                                                        window(window) {
+                                                                                        window(window), looper(looper){
     looper->observe(BOXESEVENT_BOX_CLICKED, 0, [&](const char *data) {
         BoxPosition clickedPosition = *(BoxPosition *) data;
         clicked = clickedPosition;

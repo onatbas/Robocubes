@@ -15,7 +15,7 @@ void TerrainRendererSubSystem::render(entityx::EntityManager &entities, Renderab
         WindowDimensionGetter getter;
         const Dimension &windowDimensions = getter.getDimensionsOfWindows(window);
         PNG *png = factory.getPNG(background.getPath());
-        DrawPosition origin(-2, windowDimensions.getHeight() - 90);
+        DrawPosition origin(-20, windowDimensions.getHeight() - 90);
 
         PNGDrawer drawer(&renderable);
         drawer.draw(*png, origin, s);

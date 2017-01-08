@@ -11,8 +11,13 @@ void SmokeAdder::add(entityx::EntityManager &entities, const DrawPosition &drawP
     ResourceUtil util;
     entityx::Entity smokeEntity = entities.create();
     AnimationSet animations;
-    animations.setPassInterval(40);
+    animations.setPassInterval(50);
     animations.setOneShot(true);
+
+    for (int i=0; i<util.getSmokeSize(); i++)
+    animations.addSprite(util.getSmokeNew(i), Scale(0.3));
+
+    /*
     animations.addSprite(util.getRandomSmoke(), Scale(0.29));
     animations.addSprite(util.getRandomSmoke(), Scale(0.32));
     animations.addSprite(util.getRandomSmoke(), Scale(0.25));
@@ -25,7 +30,7 @@ void SmokeAdder::add(entityx::EntityManager &entities, const DrawPosition &drawP
     animations.addSprite(util.getRandomSmoke(), Scale(0.04));
     animations.addSprite(util.getRandomSmoke(), Scale(0.02));
     animations.addSprite(util.getRandomSmoke(), Scale(0.01));
-
+*/
     smokeEntity.assign_from_copy<AnimationSet>(animations);
     smokeEntity.assign_from_copy(drawPosition);
 }

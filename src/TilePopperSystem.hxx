@@ -20,6 +20,7 @@ public:
 
     TilePopperSystem(StackSet *set, Window *window, GameLooper *looper);
 private:
+    GameLooper *looper;
     StackSet *set;
     Window *window;
 

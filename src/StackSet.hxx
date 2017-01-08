@@ -18,9 +18,9 @@ public:
     bool operator==(const StackSet &rhs) const;
     bool operator!=(const StackSet &rhs) const;
 
+
 protected:
     friend class StackSetInserter;
-
     void insert(BoxPosition &p, Box box);
 
 private:

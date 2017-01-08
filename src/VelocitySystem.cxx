@@ -11,6 +11,8 @@ using namespace entityx;
 void VelocitySystem::update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) {
 entities.each<Velocity, DrawPosition>([&](Entity entity, Velocity &v, DrawPosition &d){
 
+    if (v.shouldWait(dt))
+        return;
 
     int x = v.getSpeedX() + d.getX();
     int y = v.getSpeedY() + d.getY();

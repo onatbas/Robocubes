@@ -11,3 +11,7 @@ std::string GameConfig::getChoices() const {
 int GameConfig::getRowCount() const {
     return 8;
 }
+
+int GameConfig::getEndColumn() const {
+    return 6;
+}

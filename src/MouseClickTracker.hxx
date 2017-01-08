@@ -21,6 +21,7 @@ public:
 private:
     GameLooper &looper;
     SingleDataHolder<BoxPosition> clickPosition;
+    bool endGame;
 };
 
 #endif //BOXESGAME_MOUSECLICKTRACKER_HXX
