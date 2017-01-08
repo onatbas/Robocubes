@@ -17,6 +17,8 @@ public:
 
     std::string getRandomSmoke() const;
 
+    std::string getLogoPath();
+    const std::string getStartPath();
 };
 
 #endif //BOXESGAME_RESOURCEUTIL_HXX

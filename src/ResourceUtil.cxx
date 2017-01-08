@@ -47,3 +47,11 @@ std::string ResourceUtil::getRandomSmoke() const {
     return getMaterialsPath() << "whitePuff0" << random << ".png";
 }
 
+std::string ResourceUtil::getLogoPath() {
+    return getMaterialsPath() << "logo.png";
+}
+
+const std::string ResourceUtil::getStartPath() {
+    return getMaterialsPath() << "start.png";
+}
+
