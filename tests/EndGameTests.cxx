@@ -1,7 +1,8 @@
 //
-// Created by Onat Bas on 07/01/17.
+// Created by Onat Bas on 08/01/17.
 //
 
+#include <gtest/gtest.h>
 #include <WindowOpener.hxx>
 #include <GameLooper.hxx>
 #include <LoopTerminator.hxx>
@@ -21,6 +22,7 @@
 #include <MusicPlayer.hxx>
 #include <SoundPlayer.hxx>
 #include <GameConfig.hxx>
+#include <VelocitySystem.hxx>
 #include "gtest/gtest.h"
 #include "AnimationSubSystem.hxx"
 #include "TilePopperSystem.hxx"
@@ -28,18 +30,18 @@
 #include "TileHorizontalMover.hxx"
 #include "BackgroundRendererEntityFactory.hxx"
 #include "TerrainRenderer.hxx"
+#include "StackHelpers.hxx"
 #include "EndGameSystem.hxx"
-#include "VelocitySystem.hxx"
 
-int main(int argc, const char *argv[]) {
+TEST(EndGameTests, shouldEndGame)
+{
     WindowOpener opener;
     auto window = opener.open();
     WindowRenamer renamer;
-    renamer.rename(window, "Stacks should slide left if columns are emptied.");
+    renamer.rename(window, "After one move, game should end, boxes should fall..");
 
-    StackSetFactory stackSetFactory;
-    GameConfig config;
-    StackSet set = stackSetFactory.createFrom(config.getChoices(), 5, 3);
+
+    StackSet set = getStackSetByCodeList("ryyrrrrrrr brrrrrr gyyrrrrrrrr rrrrrrrrr gyyrrrrrrrrrr brrrrrrrrrr");
 
     GameLooper looper;
     LoopTerminator terminator(looper);
@@ -60,21 +62,17 @@ int main(int argc, const char *argv[]) {
     factory.addSystem(std::make_shared<TileVerticalMover>(set, looper));
     factory.addSystem(std::make_shared<TileHorizontalMover>(set, looper));
     factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get(), &looper));
-    factory.addSystem(std::make_shared<StackInsertionSystem>(set, looper, 6));
+    factory.addSystem(std::make_shared<StackInsertionSystem>(set, looper, 3));
     factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
-    factory.addSystem(std::make_shared<EndGameSystem>(config.getEndColumn(), windowDimensions, &looper));
-    factory.addSystem(std::make_shared<VelocitySystem>(false, windowDimensions));
     factory.addSystem(std::make_shared<SoundSystem>());
+    factory.addSystem(std::make_shared<VelocitySystem>(false, windowDimensions));
+    factory.addSystem(std::make_shared<EndGameSystem>(6, windowDimensions, &looper));
+
 
     ResourceUtil util;
     std::string path = util.getBackgroundPath();
 
     TerrainRenderer terrain(&factory);
-    BackgroundRendererEntityFactory renderer(path, &factory);
-
-    MusicPlayer player(&factory);
-    SoundPlayer(BOXESEVENT_BOX_CLICKED, util.getClickedSound(), &factory, &looper);
 
     looper.loop();
-    return 0;
 }

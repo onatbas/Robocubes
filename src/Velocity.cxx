@@ -4,7 +4,7 @@
 
 #include "Velocity.hxx"
 
-Velocity::Velocity(int w, int h) : Vector2D(w, h) {
+Velocity::Velocity(int w, int h, int waitForApply) : Vector2D(w, h), waitForApply(waitForApply) {
 }
 
 int Velocity::getSpeedX() const {
@@ -13,4 +13,9 @@ int Velocity::getSpeedX() const {
 
 int Velocity::getSpeedY() const {
     return h;
+}
+
+bool Velocity::shouldWait(int deltaTime) {
+    waitForApply -= deltaTime;
+    return waitForApply > 0;
 }

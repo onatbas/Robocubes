@@ -12,6 +12,7 @@ class GameConfig {
 public:
     int getRowCount() const;
     std::string getChoices() const;
+    int getEndColumn() const;
 };
 
 #endif //BOXESGAME_GAMECONFIG_HXX

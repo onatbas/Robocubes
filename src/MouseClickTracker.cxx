@@ -6,6 +6,7 @@
 #include "DrawPosition.hxx"
 #include "BoxPositionCalculator.hxx"
 #include "MovementChecker.hxx"
+#include "BoxExistanceChecker.hxx"
 
 using namespace entityx;
 
@@ -26,7 +27,9 @@ void MouseClickTracker::update(EntityManager &entities, EventManager &events, Ti
     BoxPosition click;
     if (clickPosition.getClick(click)) {
         MovementChecker checker;
+        BoxExistanceChecker existanceChecker(&entities);
         if (!checker.isSomethingMoving(entities)) {
+            if (existanceChecker.check(click))
             looper.sendSignal(BOXESEVENT_BOX_CLICKED, 0, (char *) &click);
         }
     }
