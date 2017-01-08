@@ -26,6 +26,8 @@ public:
 
     std::string getSoundLevelBegin();
     std::string getClickedSound();
+    std::string getBoardPath();
+    std::string getTTFPath();
 };
 
 #endif //BOXESGAME_RESOURCEUTIL_HXX

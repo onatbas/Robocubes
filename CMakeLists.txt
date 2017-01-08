@@ -43,7 +43,7 @@ set(BOXES_GAME_SRC_FILES
         src/BackgroundBoxesMaker.cxx src/BackgroundBoxesMaker.hxx src/Velocity.cxx src/Velocity.hxx src/VelocitySystem.cxx src/VelocitySystem.hxx src/StartButtonMaker.cxx src/StartButtonMaker.hxx src/AnyClickTracker.cxx src/AnyClickTracker.hxx
 
 
-        src/SoundSystem.cxx src/SoundSystem.hxx src/Sound.cxx src/Sound.hxx src/Music.cxx src/Music.hxx src/MusicPlayer.cxx src/MusicPlayer.hxx src/SoundPlayer.cxx src/SoundPlayer.hxx src/EndGameSystem.cxx src/EndGameSystem.hxx src/BoxExistanceChecker.cxx src/BoxExistanceChecker.hxx)
+        src/SoundSystem.cxx src/SoundSystem.hxx src/Sound.cxx src/Sound.hxx src/Music.cxx src/Music.hxx src/MusicPlayer.cxx src/MusicPlayer.hxx src/SoundPlayer.cxx src/SoundPlayer.hxx src/EndGameSystem.cxx src/EndGameSystem.hxx src/BoxExistanceChecker.cxx src/BoxExistanceChecker.hxx tests/GuiTests.cxx src/GuiRenderer.cxx src/GuiRenderer.hxx src/TTFText.cxx src/TTFText.hxx src/FontRenderingSubSystem.cxx src/FontRenderingSubSystem.hxx src/TTFRenderer.cxx src/TTFRenderer.hxx)
 
 #definitions
 #add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")

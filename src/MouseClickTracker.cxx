@@ -11,7 +11,7 @@
 using namespace entityx;
 
 MouseClickTracker::MouseClickTracker(GameLooper *looper, EntityFactory *factory, Dimension windowDimensions) : looper(
-        *looper) {
+        *looper), endGame(false) {
     looper->observe(SDL_MOUSEBUTTONDOWN, 0, [=](const char *data) {
         const SDL_Event *e = (SDL_Event *) data;
         const SDL_MouseButtonEvent &button = e->button;
@@ -21,9 +21,17 @@ MouseClickTracker::MouseClickTracker(GameLooper *looper, EntityFactory *factory,
         BoxPosition boxPosition = calculator.clickToBox(clickPosition, windowDimensions);
         this->clickPosition = boxPosition;
     });
+
+    looper->observe(BOXESGAME_ENDGAME, 0, [&](const char *data){
+       this->endGame = true;
+    });
 }
 
 void MouseClickTracker::update(EntityManager &entities, EventManager &events, TimeDelta dt) {
+
+    if (endGame)
+        return;
+
     BoxPosition click;
     if (clickPosition.getClick(click)) {
         MovementChecker checker;

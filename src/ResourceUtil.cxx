@@ -79,3 +79,11 @@ std::string ResourceUtil::getClickedSound() {
 
 }
 
+std::string ResourceUtil::getBoardPath() {
+    return getMaterialsPath() << "board.png";
+}
+
+std::string ResourceUtil::getTTFPath() {
+    return getMaterialsPath() << "font.ttf";
+}
+

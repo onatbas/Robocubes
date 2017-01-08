@@ -30,6 +30,8 @@
 #include "TerrainRenderer.hxx"
 #include "EndGameSystem.hxx"
 #include "VelocitySystem.hxx"
+#include "GuiRenderer.hxx"
+#include "FontRenderingSubSystem.hxx"
 
 int main(int argc, const char *argv[]) {
     WindowOpener opener;
@@ -54,17 +56,22 @@ int main(int argc, const char *argv[]) {
     renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<BoxRendererSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<AnimationSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<FontRenderingSubSystem>());
+
 
     factory.addSystem(renderingSystem);
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
     factory.addSystem(std::make_shared<TileVerticalMover>(set, looper));
     factory.addSystem(std::make_shared<TileHorizontalMover>(set, looper));
     factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get(), &looper));
-    factory.addSystem(std::make_shared<StackInsertionSystem>(set, looper, 6));
+    factory.addSystem(std::make_shared<StackInsertionSystem>(set, looper, 4));
     factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
-    factory.addSystem(std::make_shared<EndGameSystem>(config.getEndColumn(), windowDimensions, &looper));
+    factory.addSystem(std::make_shared<EndGameSystem>(config.getEndColumn(), windowDimensions, &looper, &set));
     factory.addSystem(std::make_shared<VelocitySystem>(false, windowDimensions));
     factory.addSystem(std::make_shared<SoundSystem>());
+    factory.addSystem(std::make_shared<GuiRenderer>(&factory, windowDimensions, &looper));
+
+
 
     ResourceUtil util;
     std::string path = util.getBackgroundPath();

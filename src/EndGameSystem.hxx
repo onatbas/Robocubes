@@ -8,10 +8,11 @@
 #include "GameSystem.hxx"
 #include "Dimension.hxx"
 #include "GameLooper.hxx"
+#include "StackSet.hxx"
 
 class EndGameSystem : public GameSystem<EndGameSystem> {
 public:
-    EndGameSystem(int endGameColumn, Dimension windowDimensions, GameLooper *looper);
+    EndGameSystem(int endGameColumn, Dimension windowDimensions, GameLooper *looper, StackSet *set);
     virtual void
     update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) override;
 
@@ -19,6 +20,7 @@ private:
     GameLooper *looper;
     int endGameColumn;
     Dimension windowDimensions;
+    StackSet *set;
 };
 
 #endif //BOXESGAME_ENDGAMESYSTEM_HXX

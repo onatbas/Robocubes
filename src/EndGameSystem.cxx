@@ -13,6 +13,8 @@
 #include "BoxPositionCalculator.hxx"
 #include "Velocity.hxx"
 #include "GameLooper.hxx"
+#include "StackSet.hxx"
+#include "NeighboursInVicinityCounter.hxx"
 
 void EndGameSystem::update(entityx::EntityManager &entities, entityx::EventManager &events, entityx::TimeDelta dt) {
     bool endGame = false;
@@ -20,7 +22,13 @@ void EndGameSystem::update(entityx::EntityManager &entities, entityx::EventManag
     if (checker.isSomethingMoving(entities))
         return;
 
+    bool noMoreMoves = true;
     entities.each<Box, BoxPosition>([&](entityx::Entity entity, Box &box, BoxPosition &position){
+
+        NeighboursInVicinityCounter counter;
+        if (counter.hasEnoughNeighbours(*set, position, box.getColor()))
+            noMoreMoves = false;
+
         if (position.getX() < endGameColumn)
             return;
 
@@ -38,17 +46,16 @@ void EndGameSystem::update(entityx::EntityManager &entities, entityx::EventManag
         animated.assign<Velocity>(0, 12, position.getY() * 10);
 
         entity.destroy();
-
     });
 
-    if (endGame)
+    if (endGame || noMoreMoves)
         looper->sendSignal(BOXESGAME_ENDGAME, 0, nullptr);
-
-
 }
 
-EndGameSystem::EndGameSystem(int endGameColumn, Dimension windowDimensions, GameLooper *looper)
+EndGameSystem::EndGameSystem(int endGameColumn, Dimension windowDimensions, GameLooper *looper, StackSet *set)
         : endGameColumn(endGameColumn),
           windowDimensions(windowDimensions),
-          looper(looper){
+          looper(looper),
+          set(set){
+
 }
