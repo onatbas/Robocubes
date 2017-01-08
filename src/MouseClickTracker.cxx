@@ -25,15 +25,23 @@ MouseClickTracker::MouseClickTracker(GameLooper *looper, EntityFactory *factory,
     looper->observe(BOXESGAME_ENDGAME, 0, [&](const char *data){
        this->endGame = true;
     });
+
+    looper->observe(BOXESGAME_RESET_SUCCESS, 0, [&](const char *data){
+        this->endGame = false;
+    });
 }
 
 void MouseClickTracker::update(EntityManager &entities, EventManager &events, TimeDelta dt) {
 
-    if (endGame)
-        return;
-
     BoxPosition click;
     if (clickPosition.getClick(click)) {
+
+        if (endGame) {
+            looper.sendSignal(BOXESGAME_RESET_REQUEST, 0, nullptr);
+            return;
+        }
+
+
         MovementChecker checker;
         BoxExistanceChecker existanceChecker(&entities);
         if (!checker.isSomethingMoving(entities)) {

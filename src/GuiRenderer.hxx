@@ -28,6 +28,8 @@ private:
     DrawPosition createBoard(EntityFactory *factory, Dimension windowDimension) const;
     DrawPosition createScoreEntity(EntityFactory *factory, DrawPosition boardPosition);
     void updateScoreText(int count);
+    int getCurrentPoint();
+    void updateTextToEndGame();
 };
 
 #endif //BOXESGAME_GUIRENDERER_HXX

@@ -32,32 +32,51 @@
 #include "VelocitySystem.hxx"
 #include "GuiRenderer.hxx"
 #include "FontRenderingSubSystem.hxx"
+#include "GameOverMaker.hxx"
+#include <ctime>
+#include "GameCleaner.hxx"
+
+void play(std::shared_ptr<Window> window);
+
+bool reset = true;
 
 int main(int argc, const char *argv[]) {
+
     WindowOpener opener;
     auto window = opener.open();
-    WindowRenamer renamer;
-    renamer.rename(window, "Stacks should slide left if columns are emptied.");
 
-    StackSetFactory stackSetFactory;
-    GameConfig config;
-    StackSet set = stackSetFactory.createFrom(config.getChoices(), 5, 3);
+    while (reset)
+    play(window);
+
+    return 0;
+}
+
+void play(std::shared_ptr<Window> window) {
+    reset = false;
 
     GameLooper looper;
-    LoopTerminator terminator(looper);
+    srand(time(0));
     EntityFactory factory(&looper);
+    LoopTerminator terminator(looper);
+    GameCleaner cleaner;
+    ResourceUtil util;
+    WindowRenamer renamer;
+    StackSetFactory stackSetFactory;
+    GameConfig config;
     StackSetEntityMaker maker(&factory);
     WindowDimensionGetter dimensionGetter;
-    const Dimension &windowDimensions = dimensionGetter.getDimensionsOfWindows(window.get());
 
-    maker.makeEntities(set);
+    renamer.rename(window, "Robocubes");
+    const Dimension windowDimensions = dimensionGetter.getDimensionsOfWindows(window.get());
+
+    StackSet set;
+
     auto renderingSystem = std::make_shared<RenderingSystem>(&factory, window.get());
     renderingSystem->addSubSystem(std::make_shared<BackgroundRendererSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<BoxRendererSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<AnimationSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<FontRenderingSubSystem>());
-
 
     factory.addSystem(renderingSystem);
     factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
@@ -71,17 +90,19 @@ int main(int argc, const char *argv[]) {
     factory.addSystem(std::make_shared<SoundSystem>());
     factory.addSystem(std::make_shared<GuiRenderer>(&factory, windowDimensions, &looper));
 
-
-
-    ResourceUtil util;
-    std::string path = util.getBackgroundPath();
-
-    TerrainRenderer terrain(&factory);
-    BackgroundRendererEntityFactory renderer(path, &factory);
-
     MusicPlayer player(&factory);
     SoundPlayer(BOXESEVENT_BOX_CLICKED, util.getClickedSound(), &factory, &looper);
+    GameOverMaker gameOver(&looper, &factory, windowDimensions);
 
+    cleaner.clean(&factory);
+    set = stackSetFactory.createFrom(config.getChoices(), 5, 6);
+    maker.makeEntities(set);
+    BackgroundRendererEntityFactory renderer( util.getBackgroundPath(), &factory);
+    TerrainRenderer terrain(&factory);
+
+    looper.observe(BOXESGAME_RESET_REQUEST, 0, [&](const char *data){
+        reset = true;
+        looper.exit();
+    });
     looper.loop();
-    return 0;
 }

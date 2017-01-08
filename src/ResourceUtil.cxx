@@ -87,3 +87,11 @@ std::string ResourceUtil::getTTFPath() {
     return getMaterialsPath() << "font.ttf";
 }
 
+std::string ResourceUtil::getGameOverPath() {
+    return getMaterialsPath() << "Game-Over.png";
+}
+
+std::string ResourceUtil::getGetReadyPath() {
+    return getMaterialsPath() << "GGet-Ready.png";
+}
+

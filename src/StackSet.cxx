@@ -36,5 +36,6 @@ bool StackSet::operator!=(const StackSet &rhs) const {
 
 void StackSet::insert(BoxPosition &p, Box box) {
     BoxStacker stacker;
-    stacks[p.getX()] = stacker.stackOn(stacks[p.getX()], box);
+    int stackOrder = std::max(0, p.getX());
+    stacks[stackOrder] = stacker.stackOn(stacks[stackOrder], box);
 }

@@ -13,12 +13,13 @@ void StackSetEntityMaker::makeEntities(const StackSet &set) {
     BoxDrawingConfiguration config;
     const int size = set.getSize();
     for (int i=0; i < size;i++) {
-        const Stack &stack = set[i];
+        Stack stack = set[i];
         const int size1 = stack.size();
         for(int j=0; j < size1; j++)
         {
             auto entity = factory->entities.create();
-            entity.assign<Box>(stack[j].getColor());
+            Colors color = stack[j].getColor();
+            entity.assign<Box>(color);
             entity.assign<BoxPosition>(i,j);
             entity.assign<Scale>(1);
             entity.assign<Offset>();

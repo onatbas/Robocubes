@@ -28,6 +28,8 @@ public:
     std::string getClickedSound();
     std::string getBoardPath();
     std::string getTTFPath();
+    std::string getGameOverPath();
+    std::string getGetReadyPath();
 };
 
 #endif //BOXESGAME_RESOURCEUTIL_HXX

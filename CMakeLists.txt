@@ -5,6 +5,8 @@ enable_testing()
 
 # sets
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
+set(CMAKE_EXE_LINKER_FLAGS "-static")
+
 set(CMAKE_CXX_STANDARD 14)
 set(BOXES_GAME_SRC_FILES
         src/Colors.hxx src/Game.hxx src/Game.cxx src/Box.hxx src/Box.cxx src/BoxStacker.hxx
@@ -43,7 +45,7 @@ set(BOXES_GAME_SRC_FILES
         src/BackgroundBoxesMaker.cxx src/BackgroundBoxesMaker.hxx src/Velocity.cxx src/Velocity.hxx src/VelocitySystem.cxx src/VelocitySystem.hxx src/StartButtonMaker.cxx src/StartButtonMaker.hxx src/AnyClickTracker.cxx src/AnyClickTracker.hxx
 
 
-        src/SoundSystem.cxx src/SoundSystem.hxx src/Sound.cxx src/Sound.hxx src/Music.cxx src/Music.hxx src/MusicPlayer.cxx src/MusicPlayer.hxx src/SoundPlayer.cxx src/SoundPlayer.hxx src/EndGameSystem.cxx src/EndGameSystem.hxx src/BoxExistanceChecker.cxx src/BoxExistanceChecker.hxx tests/GuiTests.cxx src/GuiRenderer.cxx src/GuiRenderer.hxx src/TTFText.cxx src/TTFText.hxx src/FontRenderingSubSystem.cxx src/FontRenderingSubSystem.hxx src/TTFRenderer.cxx src/TTFRenderer.hxx)
+        src/SoundSystem.cxx src/SoundSystem.hxx src/Sound.cxx src/Sound.hxx src/Music.cxx src/Music.hxx src/MusicPlayer.cxx src/MusicPlayer.hxx src/SoundPlayer.cxx src/SoundPlayer.hxx src/EndGameSystem.cxx src/EndGameSystem.hxx src/BoxExistanceChecker.cxx src/BoxExistanceChecker.hxx tests/GuiTests.cxx src/GuiRenderer.cxx src/GuiRenderer.hxx src/TTFText.cxx src/TTFText.hxx src/FontRenderingSubSystem.cxx src/FontRenderingSubSystem.hxx src/TTFRenderer.cxx src/TTFRenderer.hxx tests/GameOverMakerTests.cxx src/GameOverMaker.cxx src/GameOverMaker.hxx)
 
 #definitions
 #add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
@@ -58,7 +60,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # binaries/executables/libraries
 add_library(boxesGame STATIC ${BOXES_GAME_SRC_FILES})
-add_executable(boxesGameExe main.cxx)
+add_executable(boxesGameExe main.cxx src/GameCleaner.cxx src/GameCleaner.hxx)
 
 # linker
 target_link_libraries(boxesGame ${Boost_LIBRARIES} ${SDL2_LIBRARY_SET} ${ENTITYX_BINARIES})
@@ -67,3 +69,6 @@ target_link_libraries(boxesGameExe boxesGame)
 #tests
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)
+
+
+#packaging

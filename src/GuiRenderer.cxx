@@ -23,21 +23,46 @@ GuiRenderer::GuiRenderer(EntityFactory *factory, Dimension windowDimension, Game
     const DrawPosition boardPosition = createBoard(factory, windowDimension);
     const DrawPosition scorePosition = createScoreEntity(factory, boardPosition);
 
+    looper->observe(BOXESGAME_ENDGAME, 0, [&](const char *data){
+        updateTextToEndGame();
+    });
+    /*
+    looper->observe(BOXESGAME_RESET_SUCCESS, 0, [&](const char *data){
+        if (!scoreEntity.valid())
+            return;
+        auto handle = scoreEntity.component<TTFText>();
+        handle->setText("Score: 0");
+    });*/
+
+}
+
+void GuiRenderer::updateTextToEndGame() {
+    int currentPoint = getCurrentPoint();
+
+    auto handle = scoreEntity.component<TTFText>();
+
+    std::stringstream ss;
+    ss << "Score: " << currentPoint;
+    handle->setText(ss.str());
 }
 
 void GuiRenderer::updateScoreText(int count) {
     auto handle = scoreEntity.component<TTFText>();
-
-    int currentPoint;
-    {
-        std::string current = handle->getText();
-        std::stringstream ss(current);
-        ss >> current >> currentPoint;
-    }
+    int currentPoint = getCurrentPoint();
     std::stringstream ss;
     ss << "Score: ";
     ss << currentPoint + count * count;
     handle->setText(ss.str());
+}
+
+int GuiRenderer::getCurrentPoint() {
+
+    auto handle = scoreEntity.component<TTFText>();
+    int currentPoint;
+    std::string current = handle->getText();
+    std::stringstream ss(current);
+    ss >> current >> currentPoint;
+    return currentPoint;
 }
 
 DrawPosition GuiRenderer::createScoreEntity(EntityFactory *factory, DrawPosition boardPosition) {

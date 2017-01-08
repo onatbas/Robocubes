@@ -65,12 +65,15 @@ void StackInsertionSystem::insertNewColumn(EntityManager &entities) {
                 BoxDrawingConfiguration drawingConfiguration;
                 for (int i=0; i<rowCount; i++)
                 {
+                    HorizontalMovement movement(-1, -1);
                     Entity entity = entities.create();
-                    entity.assign<BoxPosition>(0, i);
+                    entity.assign<BoxPosition>(-1, i);
                     entity.assign_from_copy<Box>(generated[i]);
                     entity.assign<GraphicsHolder>();
+                    entity.assign_from_copy(movement);
                     entity.assign<Offset>(0, 0);
                     entity.assign<Scale>(drawingConfiguration.getBoxFinalScale());
+
                 }
 
                 shouldInsert = false;
