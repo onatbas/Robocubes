@@ -19,6 +19,9 @@ public:
 
     std::string getLogoPath();
     const std::string getStartPath();
+    std::string getMusicPath();
+
+    std::string getSoundLevelBegin();
 };
 
 #endif //BOXESGAME_RESOURCEUTIL_HXX

@@ -40,8 +40,10 @@ set(BOXES_GAME_SRC_FILES
         src/MovementChecker.hxx src/MovementChecker.cxx src/GraphicsHolder.cxx src/GraphicsHolder.hxx
         src/PlainBackgroundMaker.cxx src/PlainBackgroundMaker.hxx
         src/LogoMaker.cxx src/LogoMaker.hxx
+        src/BackgroundBoxesMaker.cxx src/BackgroundBoxesMaker.hxx src/Velocity.cxx src/Velocity.hxx src/VelocitySystem.cxx src/VelocitySystem.hxx src/StartButtonMaker.cxx src/StartButtonMaker.hxx src/AnyClickTracker.cxx src/AnyClickTracker.hxx
 
-        src/BackgroundBoxesMaker.cxx src/BackgroundBoxesMaker.hxx src/Velocity.cxx src/Velocity.hxx src/VelocitySystem.cxx src/VelocitySystem.hxx src/StartButtonMaker.cxx src/StartButtonMaker.hxx src/AnyClickTracker.cxx src/AnyClickTracker.hxx)
+
+        src/SoundSystem.cxx src/SoundSystem.hxx src/Sound.cxx src/Sound.hxx src/Music.cxx src/Music.hxx src/MusicPlayer.cxx src/MusicPlayer.hxx src/SoundPlayer.cxx src/SoundPlayer.hxx)
 
 #definitions
 #add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")

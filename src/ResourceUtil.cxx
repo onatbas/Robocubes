@@ -55,3 +55,11 @@ const std::string ResourceUtil::getStartPath() {
     return getMaterialsPath() << "start.png";
 }
 
+std::string ResourceUtil::getMusicPath() {
+    return getMaterialsPath() << "mainloop.wav";
+}
+
+std::string ResourceUtil::getSoundLevelBegin() {
+    return getMaterialsPath() << "drums.wav";
+}
+
