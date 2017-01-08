@@ -17,6 +17,10 @@
 #include <AdjacentNeighbourCounter.hxx>
 #include <StackSetFactory.hxx>
 #include <StackInsertionSystem.hxx>
+#include <SoundSystem.hxx>
+#include <MusicPlayer.hxx>
+#include <SoundPlayer.hxx>
+#include <GameConfig.hxx>
 #include "gtest/gtest.h"
 #include "AnimationSubSystem.hxx"
 #include "TilePopperSystem.hxx"
@@ -32,7 +36,8 @@ int main(int argc, const char *argv[]) {
     renamer.rename(window, "Stacks should slide left if columns are emptied.");
 
     StackSetFactory stackSetFactory;
-    StackSet set = stackSetFactory.createFrom("rgb", 10, 8);
+    GameConfig config;
+    StackSet set = stackSetFactory.createFrom(config.getChoices(), 10, 8);
 
     GameLooper looper;
     LoopTerminator terminator(looper);
@@ -55,12 +60,16 @@ int main(int argc, const char *argv[]) {
     factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get(), &looper));
     factory.addSystem(std::make_shared<StackInsertionSystem>(set, looper, 3));
     factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
+    factory.addSystem(std::make_shared<SoundSystem>());
 
     ResourceUtil util;
     std::string path = util.getBackgroundPath();
 
     TerrainRenderer terrain(&factory);
     BackgroundRendererEntityFactory renderer(path, &factory);
+
+    MusicPlayer player(&factory);
+    SoundPlayer(BOXESEVENT_BOX_CLICKED, util.getClickedSound(), &factory, &looper);
 
     looper.loop();
     return 0;

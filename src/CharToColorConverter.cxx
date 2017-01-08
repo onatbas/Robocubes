@@ -16,7 +16,10 @@ Colors CharToColorConverter::convert(char choice) {
             return GREEN;
         case 'b':
         case 'B':
-        default:
             return BLUE;
+        default:
+        case 'y':
+        case 'Y':
+            return YELLOW;
     }
 }

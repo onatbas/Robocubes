@@ -7,7 +7,7 @@
 
 enum Colors {
 
-    RED, GREEN, BLUE
+    RED, GREEN, BLUE, YELLOW
 
 };
 
