@@ -16,6 +16,7 @@
 #include <ResourceUtil.hxx>
 #include <AdjacentNeighbourCounter.hxx>
 #include <StackSetFactory.hxx>
+#include <StackInsertionSystem.hxx>
 #include "gtest/gtest.h"
 #include "AnimationSubSystem.hxx"
 #include "TilePopperSystem.hxx"
@@ -52,6 +53,7 @@ int main(int argc, const char *argv[]) {
     factory.addSystem(std::make_shared<TileVerticalMover>(set, looper));
     factory.addSystem(std::make_shared<TileHorizontalMover>(set, looper));
     factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get(), &looper));
+    factory.addSystem(std::make_shared<StackInsertionSystem>(set, looper, 3));
     factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
 
     ResourceUtil util;
