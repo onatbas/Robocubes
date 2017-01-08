@@ -30,6 +30,9 @@ std::string ResourceUtil::getBoxPath(const Box &box, bool alternative) const {
         case RED:
             return getMaterialsPath()
                     << (alternative ? "robot_redDrive1.png" : "robot_redDrive2.png"); //"alienPink_square.png";
+        case YELLOW:
+            return getMaterialsPath()
+                    << (alternative ? "robot_yellowDrive1.png" : "robot_yellowDrive2.png");
     }
     return "";
 }
@@ -61,5 +64,10 @@ std::string ResourceUtil::getMusicPath() {
 
 std::string ResourceUtil::getSoundLevelBegin() {
     return getMaterialsPath() << "drums.wav";
+}
+
+std::string ResourceUtil::getClickedSound() {
+    return getMaterialsPath() << "pop.wav";
+
 }
 

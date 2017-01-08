@@ -5,7 +5,7 @@
 #include "GameConfig.hxx"
 
 std::string GameConfig::getChoices() const {
-    return "rgb";
+    return "rgby";
 }
 
 int GameConfig::getRowCount() const {
