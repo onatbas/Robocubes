@@ -5,7 +5,6 @@ enable_testing()
 
 # sets
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
-set(CMAKE_EXE_LINKER_FLAGS "-static")
 
 set(CMAKE_CXX_STANDARD 14)
 set(BOXES_GAME_SRC_FILES
