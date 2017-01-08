@@ -13,6 +13,7 @@ class EntityFactory : public entityx::EntityX {
 
 private:
     GameLooper *looper;
+    bool active;
 public:
     EntityFactory(GameLooper *looper);
 
@@ -26,6 +27,7 @@ public:
     }
 
     void update(entityx::TimeDelta dt);
+    void setActive(bool active);
 
 private:
     std::vector<std::function<void(entityx::TimeDelta)> > systemUpdates;

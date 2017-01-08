@@ -37,7 +37,11 @@ set(BOXES_GAME_SRC_FILES
         src/SingleDataHolder.hxx src/SquaredDistanceModeler.cxx src/SquaredDistanceModeler.hxx src/HorizontalStackInserter.cxx src/HorizontalStackInserter.hxx
         src/HorizontalStackInserterResult.cxx src/HorizontalStackInserterResult.hxx src/StackSetFactory.cxx src/StackSetFactory.hxx src/StackFactory.cxx src/StackFactory.hxx src/CharToColorConverter.cxx
         src/CharToColorConverter.hxx src/StackInsertionSystem.cxx src/StackInsertionSystem.hxx src/GameConfig.cxx src/GameConfig.hxx
-        src/MovementChecker.hxx src/MovementChecker.cxx src/GraphicsHolder.cxx src/GraphicsHolder.hxx)
+        src/MovementChecker.hxx src/MovementChecker.cxx src/GraphicsHolder.cxx src/GraphicsHolder.hxx
+        src/PlainBackgroundMaker.cxx src/PlainBackgroundMaker.hxx
+        src/LogoMaker.cxx src/LogoMaker.hxx
+
+        src/BackgroundBoxesMaker.cxx src/BackgroundBoxesMaker.hxx src/Velocity.cxx src/Velocity.hxx src/VelocitySystem.cxx src/VelocitySystem.hxx src/StartButtonMaker.cxx src/StartButtonMaker.hxx src/AnyClickTracker.cxx src/AnyClickTracker.hxx)
 
 #definitions
 #add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
