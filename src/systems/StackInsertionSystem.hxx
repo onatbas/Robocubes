@@ -7,10 +7,10 @@
 
 #include "GameSystem.hxx"
 #include "logic/StackSet.hxx"
-#include "GameLooper.hxx"
-#include "SingleDataHolder.hxx"
+#include "decorators/GameLooper.hxx"
+#include "delegates/SingleDataHolder.hxx"
 #include "components/BoxPosition.hxx"
-#include "MovementChecker.hxx"
+#include "delegates/MovementChecker.hxx"
 
 class StackInsertionSystem : public GameSystem<StackInsertionSystem>{
 public:

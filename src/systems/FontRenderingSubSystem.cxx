@@ -4,9 +4,9 @@
 
 #include "FontRenderingSubSystem.hxx"
 #include "components/TTFText.hxx"
-#include "ResourceUtil.hxx"
-#include "TTFRenderer.hxx"
-#include "BoxDrawingConfiguration.hxx"
+#include "view/ResourceUtil.hxx"
+#include "view/TTFRenderer.hxx"
+#include "view/BoxDrawingConfiguration.hxx"
 
 using namespace entityx;
 

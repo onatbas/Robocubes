@@ -6,7 +6,7 @@
 #define BOXESGAME_ANIMATIONSET_HXX
 
 #include <vector>
-#include <Scale.hxx>
+#include <components/Scale.hxx>
 #include "AnimationStep.hxx"
 
 class AnimationSet {

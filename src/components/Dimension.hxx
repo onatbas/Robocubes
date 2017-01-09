@@ -6,7 +6,7 @@
 #define BOXESGAME_DIMENSION_HXX
 
 #include <SDL_rect.h>
-#include "Vector2D.hxx"
+#include "logic/Vector2D.hxx"
 
 class Dimension : public Vector2D {
 public:

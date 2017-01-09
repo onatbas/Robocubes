@@ -5,7 +5,7 @@
 #ifndef BOXESGAME_PNGFACTORY_HXX
 #define BOXESGAME_PNGFACTORY_HXX
 
-#include <PNG.hxx>
+#include <view/PNG.hxx>
 #include "EntityFactory.hxx"
 #include "systems/GameSystem.hxx"
 #include "systems/BackgroundRendererSubSystem.hxx"

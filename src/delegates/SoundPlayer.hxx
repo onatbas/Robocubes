@@ -7,7 +7,7 @@
 
 #include <string>
 #include "EntityFactory.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 
 class SoundPlayer {
 public:

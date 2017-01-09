@@ -6,11 +6,11 @@
 #define BOXESGAME_BOXRENDERER_HXX
 
 #include "Window.hxx"
-#include "logic/Box.hxx"
 #include "IMGInitializer.hxx"
 #include "WindowUpdater.hxx"
 #include "PNG.hxx"
 #include <string>
+#include "logic/Box.hxx"
 #include "components/DrawPosition.hxx"
 #include "Renderable.hxx"
 #include "components/Scale.hxx"

@@ -6,7 +6,7 @@
 #define BOXESGAME_WINDOWUPDATER_HXX
 
 #include "Window.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 
 class WindowUpdater {
 public:

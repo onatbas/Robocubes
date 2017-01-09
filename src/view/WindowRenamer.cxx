@@ -4,7 +4,7 @@
 
 #include <SDL2/SDL_video.h>
 #include "WindowRenamer.hxx"
-#include "WindowRefGetter.hxx"
+#include "delegates/WindowRefGetter.hxx"
 
 void WindowRenamer::rename(std::shared_ptr<Window> window, std::string name) const {
     WindowRefGetter getter(window.get());

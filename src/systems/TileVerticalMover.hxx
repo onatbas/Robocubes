@@ -6,7 +6,7 @@
 #define BOXESGAME_TILEVERTICALMOVER_HXX
 
 #include "systems/GameSystem.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "delegates/SingleDataHolder.hxx"
 
 class TileVerticalMover : public GameSystem<TileVerticalMover> {

@@ -5,8 +5,8 @@
 #ifndef BOXESGAME_STACKSETINSERTER_HXX
 #define BOXESGAME_STACKSETINSERTER_HXX
 
-#include <delegates/logic/StackSet.hxx>
-#include <delegates/logic/BoxStacker.hxx>
+#include <logic/StackSet.hxx>
+#include <logic/BoxStacker.hxx>
 
 class StackSetInserter {
 

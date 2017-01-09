@@ -3,11 +3,11 @@
 //
 
 #include "BackgroundBoxesMaker.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "EntityFactory.hxx"
 #include "components/Dimension.hxx"
-#include "ResourceUtil.hxx"
-#include "BoxDrawingConfiguration.hxx"
+#include "view/ResourceUtil.hxx"
+#include "view/BoxDrawingConfiguration.hxx"
 #include "CharToColorConverter.hxx"
 #include "GameConfig.hxx"
 #include "components/DrawPosition.hxx"

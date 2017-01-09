@@ -6,7 +6,7 @@
 #define BOXESGAME_BACKGROUNDBOXESMAKER_HXX
 
 #include "logic/Box.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "EntityFactory.hxx"
 #include "components/Dimension.hxx"
 

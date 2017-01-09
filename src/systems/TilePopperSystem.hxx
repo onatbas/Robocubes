@@ -10,7 +10,7 @@
 #include "components/MouseClicked.hxx"
 #include "view/Window.hxx"
 #include "view/SmokeAdder.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "delegates/SingleDataHolder.hxx"
 
 class TilePopperSystem : public GameSystem<TilePopperSystem> {

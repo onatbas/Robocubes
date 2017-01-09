@@ -2,9 +2,9 @@
 // Created by Onat Bas on 03/01/17.
 //
 
-#include <WindowRefGetter.hxx>
+#include <delegates/WindowRefGetter.hxx>
 #include "PNGDrawer.hxx"
-#include "PNGSurfaceGetter.hxx"
+#include "delegates/PNGSurfaceGetter.hxx"
 #include "PNGDimensionGetter.hxx"
 
 void PNGDrawer::draw(const PNG &png, const DrawPosition &position, Scale scale) {

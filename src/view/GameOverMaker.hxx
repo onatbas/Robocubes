@@ -5,7 +5,7 @@
 #ifndef BOXESGAME_GAMEOVERMAKER_HXX
 #define BOXESGAME_GAMEOVERMAKER_HXX
 
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "EntityFactory.hxx"
 #include "components/Dimension.hxx"
 

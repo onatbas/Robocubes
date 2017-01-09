@@ -5,15 +5,15 @@
 #ifndef BOXESGAME_RENDERINGSYSTEM_HXX
 #define BOXESGAME_RENDERINGSYSTEM_HXX
 
-#include <PNG.hxx>
+#include <view/PNG.hxx>
 #include <map>
 #include <components/BackgroundComponent.hxx>
 #include "EntityFactory.hxx"
 #include "GameSystem.hxx"
-#include "Window.hxx"
+#include "view/Window.hxx"
 #include "components/BoxPosition.hxx"
 #include "components/Scale.hxx"
-#include "PNGFactory.hxx"
+#include "view/PNGFactory.hxx"
 #include "TerrainRendererSubSystem.hxx"
 #include "BoxRendererSubSystem.hxx"
 

@@ -2,14 +2,16 @@
 // Created by Onat Bas on 07/01/17.
 //
 
+#include <logic/NeighboursInVicinityCounter.hxx>
+#include <logic/AdjacentNeighbourCounter.hxx>
 #include "StackInsertionSystem.hxx"
 #include "logic/HorizontalMovement.hxx"
 #include "logic/StackSetInserter.hxx"
 #include "logic/StackFactory.hxx"
 #include "GameConfig.hxx"
-#include "StackSetEntityMaker.hxx"
+#include "view/StackSetEntityMaker.hxx"
 #include "components/Offset.hxx"
-#include "GraphicsHolder.hxx"
+#include "view/GraphicsHolder.hxx"
 
 using namespace entityx;
 
@@ -34,7 +36,9 @@ void StackInsertionSystem::checkShouldInsert() {
     BoxPosition click;
     if (lastClick.getClick(click))
     {
-        shouldInsert = ((++currentRound % roundsForInsertion) == 0);
+        AdjacentNeighbourCounter counter;
+        if (counter.count(set, click).getSameColorAreaCount() > 1)
+            shouldInsert = ((++currentRound % roundsForInsertion) == 0);
     }
 }
 

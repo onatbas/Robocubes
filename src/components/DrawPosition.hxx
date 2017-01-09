@@ -5,7 +5,7 @@
 #ifndef BOXESGAME_DRAWPOSITION_HXX
 #define BOXESGAME_DRAWPOSITION_HXX
 
-#include "Vector2D.hxx"
+#include "logic/Vector2D.hxx"
 
 class DrawPosition : public Vector2D {
 

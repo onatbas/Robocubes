@@ -3,10 +3,10 @@
 //
 
 #include "systems/RenderingSystem.hxx"
-#include <PNGDimensionGetter.hxx>
+#include <view/PNGDimensionGetter.hxx>
 #include "BackgroundRendererSubSystem.hxx"
-#include "WindowDimensionGetter.hxx"
-#include "PNGDrawer.hxx"
+#include "view/WindowDimensionGetter.hxx"
+#include "view/PNGDrawer.hxx"
 
 void BackgroundRendererSubSystem::render(entityx::EntityManager &entities, Renderable &renderable, Window *window, entityx::TimeDelta delta) {
     entities.each<BackgroundComponent, Scale>([&](entityx::Entity entity, BackgroundComponent &background, Scale &s) {

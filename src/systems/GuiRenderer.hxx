@@ -8,7 +8,7 @@
 #include "EntityFactory.hxx"
 #include "systems/GameSystem.hxx"
 #include "components/Dimension.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "components/DrawPosition.hxx"
 #include "components/TTFText.hxx"
 

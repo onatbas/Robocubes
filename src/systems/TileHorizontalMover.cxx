@@ -3,7 +3,7 @@
 //
 
 #include <entityx/entityx.h>
-#include <GameLooper.hxx>
+#include <decorators/GameLooper.hxx>
 #include <logic/AdjacentPopperResult.hxx>
 #include <logic/VerticalMover.hxx>
 #include <logic/HorizontalMover.hxx>

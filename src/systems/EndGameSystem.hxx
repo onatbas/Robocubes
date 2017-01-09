@@ -7,7 +7,7 @@
 
 #include "GameSystem.hxx"
 #include "components/Dimension.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "logic/StackSet.hxx"
 
 class EndGameSystem : public GameSystem<EndGameSystem> {

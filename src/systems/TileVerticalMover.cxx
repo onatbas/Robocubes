@@ -10,7 +10,7 @@
 #include "TileVerticalMover.hxx"
 #include "components/Offset.hxx"
 #include "logic/StackSetInserter.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "delegates/SquaredDistanceModeler.hxx"
 #include <map>
 #include <vector>

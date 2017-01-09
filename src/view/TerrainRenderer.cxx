@@ -3,11 +3,11 @@
 //
 
 #include <components/BackgroundComponent.hxx>
-#include <ResourceUtil.hxx>
+#include <view/ResourceUtil.hxx>
 #include <components/Scale.hxx>
 #include <systems/GameBeginZoomOut.hxx>
 #include "TerrainRenderer.hxx"
-#include "TerrainComponent.hxx"
+#include "components/TerrainComponent.hxx"
 
 TerrainRenderer::TerrainRenderer(EntityFactory *factory) : factory(factory) {
     ResourceUtil util;

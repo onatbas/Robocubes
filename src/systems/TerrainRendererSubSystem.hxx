@@ -8,7 +8,7 @@
 #include "EntityFactory.hxx"
 #include "GameSystem.hxx"
 #include "components/Dimension.hxx"
-#include "WindowCleaner.hxx"
+#include "view/WindowCleaner.hxx"
 #include "RenderingSubSystem.hxx"
 
 class TerrainRendererSubSystem : public RenderingSubSystem {

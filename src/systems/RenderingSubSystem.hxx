@@ -5,9 +5,9 @@
 #ifndef BOXESGAME_RENDERINGSUBSYSTEM_HXX
 #define BOXESGAME_RENDERINGSUBSYSTEM_HXX
 
-#include "Window.hxx"
+#include "view/Window.hxx"
 #include <entityx/entityx.h>
-#include "Renderable.hxx"
+#include "view/Renderable.hxx"
 #include "components/Dimension.hxx"
 
 class RenderingSubSystem {

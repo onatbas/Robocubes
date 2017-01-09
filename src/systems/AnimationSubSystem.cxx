@@ -2,10 +2,10 @@
 // Created by Onat Bas on 06/01/17.
 //
 
-#include <PNGFactory.hxx>
-#include <PNGDrawer.hxx>
-#include <BoxDrawingConfiguration.hxx>
-#include <PNGDimensionGetter.hxx>
+#include <view/PNGFactory.hxx>
+#include <view/PNGDrawer.hxx>
+#include <view/BoxDrawingConfiguration.hxx>
+#include <view/PNGDimensionGetter.hxx>
 #include "AnimationSubSystem.hxx"
 #include "components/AnimationSet.hxx"
 

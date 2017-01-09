@@ -3,7 +3,7 @@
 //
 
 #include "systems/RenderingSystem.hxx"
-#include "WindowRefGetter.hxx"
+#include "delegates/WindowRefGetter.hxx"
 
 void WindowCleaner::clean(Renderable &renderable, Window *window) const {
     WindowRefGetter getter(window);

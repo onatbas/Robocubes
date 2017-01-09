@@ -6,11 +6,11 @@
 #define BOXESGAME_BACKGROUNDRENDERERENTITYFACTORY_HXX
 
 #include <string>
-#include <Window.hxx>
+#include <view/Window.hxx>
 #include <memory>
-#include <PNG.hxx>
-#include <GameLooper.hxx>
-#include "WindowDimensionGetter.hxx"
+#include <view/PNG.hxx>
+#include <decorators/GameLooper.hxx>
+#include "view/WindowDimensionGetter.hxx"
 #include "EntityFactory.hxx"
 
 class BackgroundRendererEntityFactory {

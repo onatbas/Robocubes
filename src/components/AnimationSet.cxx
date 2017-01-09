@@ -3,7 +3,7 @@
 //
 
 #include <string>
-#include <Scale.hxx>
+#include <components/Scale.hxx>
 #include "AnimationSet.hxx"
 
 void AnimationSet::setPassInterval(double interval) {

@@ -3,16 +3,16 @@
 //
 
 #include "RenderingSystem.hxx"
-#include <PNGDrawer.hxx>
-#include <Window.hxx>
+#include <view/PNGDrawer.hxx>
+#include <view/Window.hxx>
 #include "BoxRendererSubSystem.hxx"
 #include "logic/Box.hxx"
-#include "ResourceUtil.hxx"
-#include "BoxDrawer.hxx"
-#include "BoxPositionCalculator.hxx"
-#include "WindowDimensionGetter.hxx"
+#include "view/ResourceUtil.hxx"
+#include "view/BoxDrawer.hxx"
+#include "view/BoxPositionCalculator.hxx"
+#include "view/WindowDimensionGetter.hxx"
 #include "components/Offset.hxx"
-#include "GraphicsHolder.hxx"
+#include "view/GraphicsHolder.hxx"
 
 DrawPosition operator-(const DrawPosition &position, const Offset &offset)
 {

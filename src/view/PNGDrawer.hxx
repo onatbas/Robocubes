@@ -5,7 +5,7 @@
 #ifndef BOXESGAME_PNGDRAWER_HXX
 #define BOXESGAME_PNGDRAWER_HXX
 
-#include <Window.hxx>
+#include <view/Window.hxx>
 #include "PNG.hxx"
 #include "components/DrawPosition.hxx"
 #include "RectBuilder.hxx"

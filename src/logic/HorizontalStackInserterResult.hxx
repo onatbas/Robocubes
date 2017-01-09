@@ -5,8 +5,8 @@
 #ifndef BOXESGAME_HORIZONTALSTACKINSERTERRESULT_HXX
 #define BOXESGAME_HORIZONTALSTACKINSERTERRESULT_HXX
 
-#include <delegates/logic/StackSet.hxx>
-#include <delegates/logic/HorizontalMovements.hxx>
+#include <logic/StackSet.hxx>
+#include <logic/HorizontalMovements.hxx>
 
 class HorizontalStackInserterResult {
 

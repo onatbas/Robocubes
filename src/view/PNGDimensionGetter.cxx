@@ -3,7 +3,7 @@
 //
 
 #include "PNGDimensionGetter.hxx"
-#include "PNGSurfaceGetter.hxx"
+#include "delegates/PNGSurfaceGetter.hxx"
 
 Dimension PNGDimensionGetter::calculate(const PNG &png) const {
     PNGSurfaceGetter getter(const_cast<PNG *>(&png));

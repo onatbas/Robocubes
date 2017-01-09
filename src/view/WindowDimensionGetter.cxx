@@ -4,7 +4,7 @@
 
 #include "delegates/BackgroundRendererEntityFactory.hxx"
 #include "WindowDimensionGetter.hxx"
-#include "WindowRefGetter.hxx"
+#include "delegates/WindowRefGetter.hxx"
 
 Dimension WindowDimensionGetter::getDimensionsOfWindows(const Window *window) const {
     WindowRefGetter getter(window);

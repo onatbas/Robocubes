@@ -5,7 +5,7 @@
 #ifndef BOXESGAME_GAMECLEANER_HXX
 #define BOXESGAME_GAMECLEANER_HXX
 
-#include <GameLooper.hxx>
+#include <decorators/GameLooper.hxx>
 #include "EntityFactory.hxx"
 
 class GameCleaner {

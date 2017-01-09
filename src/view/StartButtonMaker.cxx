@@ -5,7 +5,7 @@
 #include "StartButtonMaker.hxx"
 
 #include "components/DrawPosition.hxx"
-#include "WindowRefGetter.hxx"
+#include "delegates/WindowRefGetter.hxx"
 #include "components/AnimationSet.hxx"
 #include "ResourceUtil.hxx"
 #include "BoxDrawingConfiguration.hxx"

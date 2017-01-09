@@ -6,7 +6,7 @@
 #define BOXESGAME_STARTBUTTONMAKER_HXX
 
 #include "EntityFactory.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "components/Dimension.hxx"
 
 class StartButtonMaker {

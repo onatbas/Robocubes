@@ -11,8 +11,8 @@
 #include <string>
 #include <SDL2/SDL_surface.h>
 #include <SDL_image.h>
-#include <Window.hxx>
-#include <WindowRefGetter.hxx>
+#include <view/Window.hxx>
+#include <delegates/WindowRefGetter.hxx>
 
 class PNGLoader {
 public:

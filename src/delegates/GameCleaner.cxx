@@ -7,7 +7,7 @@
 #include "components/AnimationSet.hxx"
 #include "components/DrawPosition.hxx"
 #include "components/BackgroundComponent.hxx"
-#include "TerrainComponent.hxx"
+#include "components/TerrainComponent.hxx"
 #include "components/BoxPosition.hxx"
 
 using namespace entityx;

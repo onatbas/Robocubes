@@ -3,11 +3,11 @@
 //
 
 #include "RenderingSystem.hxx"
-#include <PNGDrawer.hxx>
-#include <PNGDimensionGetter.hxx>
-#include "TerrainRenderer.hxx"
-#include "TerrainComponent.hxx"
-#include "WindowDimensionGetter.hxx"
+#include <view/PNGDrawer.hxx>
+#include <view/PNGDimensionGetter.hxx>
+#include "view/TerrainRenderer.hxx"
+#include "components/TerrainComponent.hxx"
+#include "view/WindowDimensionGetter.hxx"
 
 void TerrainRendererSubSystem::render(entityx::EntityManager &entities, Renderable &renderable, Window *window, entityx::TimeDelta delta) {
     entities.each<TerrainComponent, Scale>([&](entityx::Entity entity, TerrainComponent &background, Scale &s) {

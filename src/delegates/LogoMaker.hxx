@@ -5,7 +5,7 @@
 #ifndef BOXESGAME_LOGOMAKER_HXX
 #define BOXESGAME_LOGOMAKER_HXX
 
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "EntityFactory.hxx"
 #include "components/Dimension.hxx"
 

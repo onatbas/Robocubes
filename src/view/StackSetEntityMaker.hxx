@@ -8,7 +8,7 @@
 #include "Window.hxx"
 #include "logic/Box.hxx"
 #include "BoxDrawer.hxx"
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include "EntityFactory.hxx"
 #include "BoxDrawingConfiguration.hxx"
 

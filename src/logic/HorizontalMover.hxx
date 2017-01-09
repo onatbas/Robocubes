@@ -5,8 +5,8 @@
 #ifndef BOXESGAME_HORIZONTALMOVER_HXX
 #define BOXESGAME_HORIZONTALMOVER_HXX
 
-#include <delegates/logic/StackSet.hxx>
-#include <delegates/logic/VerticalMovements.hxx>
+#include <logic/StackSet.hxx>
+#include <logic/VerticalMovements.hxx>
 #include "HorizontalMovements.hxx"
 
 class HorizontalMover {

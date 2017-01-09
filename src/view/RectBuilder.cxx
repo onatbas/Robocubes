@@ -3,7 +3,7 @@
 //
 
 #include "RectBuilder.hxx"
-#include "PNGSurfaceGetter.hxx"
+#include "delegates/PNGSurfaceGetter.hxx"
 
 SDL_Rect RectBuilder::buildFromPosition(const DrawPosition &position) {
     SDL_Rect r;

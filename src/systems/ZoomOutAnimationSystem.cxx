@@ -3,7 +3,7 @@
 //
 
 #include <components/Scale.hxx>
-#include <GameBeginZoomOut.hxx>
+#include <systems/GameBeginZoomOut.hxx>
 #include <SDL2/SDL_timer.h>
 #include <components/BackgroundComponent.hxx>
 #include "ZoomOutAnimationSystem.hxx"

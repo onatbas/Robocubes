@@ -5,7 +5,7 @@
 #ifndef BOXESGAME_VELOCITY_HXX
 #define BOXESGAME_VELOCITY_HXX
 
-#include "Vector2D.hxx"
+#include "logic/Vector2D.hxx"
 
 class Velocity : private Vector2D{
 public:

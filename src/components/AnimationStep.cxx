@@ -2,7 +2,7 @@
 // Created by Onat Bas on 06/01/17.
 //
 
-#include <Scale.hxx>
+#include <components/Scale.hxx>
 #include "AnimationStep.hxx"
 
 bool AnimationStep::isNextStepValid() const {

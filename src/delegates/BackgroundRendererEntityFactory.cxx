@@ -2,15 +2,15 @@
 // Created by Onat Bas on 03/01/17.
 //
 
-#include <PNGLoader.hxx>
+#include <view/PNGLoader.hxx>
 #include "BackgroundRendererEntityFactory.hxx"
 #include "EntityFactory.hxx"
 #include "components/BackgroundComponent.hxx"
 #include "components/Scale.hxx"
 #include "systems/GameBeginZoomOut.hxx"
-#include <PNGDrawer.hxx>
-#include <WindowUpdater.hxx>
-#include <PNGDimensionGetter.hxx>
+#include <view/PNGDrawer.hxx>
+#include <view/WindowUpdater.hxx>
+#include <view/PNGDimensionGetter.hxx>
 
 BackgroundRendererEntityFactory::BackgroundRendererEntityFactory(const std::string &pathToPng, EntityFactory *factory) {
     auto e = factory->entities.create();

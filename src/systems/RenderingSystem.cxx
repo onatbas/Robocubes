@@ -2,10 +2,10 @@
 // Created by Onat Bas on 04/01/17.
 //
 
-#include <Window.hxx>
-#include <PNGDrawer.hxx>
-#include <PNGLoader.hxx>
-#include <BoxDrawer.hxx>
+#include <view/Window.hxx>
+#include <view/PNGDrawer.hxx>
+#include <view/PNGLoader.hxx>
+#include <view/BoxDrawer.hxx>
 #include "RenderingSystem.hxx"
 
 RenderingSystem::RenderingSystem(EntityFactory *factory, Window *window) : factory(factory),
