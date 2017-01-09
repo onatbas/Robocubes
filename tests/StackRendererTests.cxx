@@ -2,18 +2,18 @@
 // Created by Onat Bas on 04/01/17.
 //
 
-#include <StackSet.hxx>
-#include <GameLooper.hxx>
-#include <WindowOpener.hxx>
-#include <WindowRenamer.hxx>
+#include <logic/StackSet.hxx>
+#include <decorators/GameLooper.hxx>
+#include <view/WindowOpener.hxx>
+#include <view/WindowRenamer.hxx>
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
-#include "LoopTerminator.hxx"
-#include "BackgroundRendererEntityFactory.hxx"
-#include "StackSetEntityMaker.hxx"
+#include "decorators/LoopTerminator.hxx"
+#include "delegates/BackgroundRendererEntityFactory.hxx"
+#include "view/StackSetEntityMaker.hxx"
 #include "EntityFactory.hxx"
-#include "RenderingSystem.hxx"
-#include "ZoomOutAnimationSystem.hxx"
+#include "systems/RenderingSystem.hxx"
+#include "systems/ZoomOutAnimationSystem.hxx"
 #include <memory>
 
 TEST(StackRendererTests, shouldDisplayStack)

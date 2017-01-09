@@ -3,35 +3,35 @@
 //
 
 #include <gtest/gtest.h>
-#include <WindowOpener.hxx>
-#include <GameLooper.hxx>
-#include <LoopTerminator.hxx>
-#include <WindowRenamer.hxx>
-#include <StackSet.hxx>
+#include <view/WindowOpener.hxx>
+#include <decorators/GameLooper.hxx>
+#include <decorators/LoopTerminator.hxx>
+#include <view/WindowRenamer.hxx>
+#include <logic/StackSet.hxx>
 #include <EntityFactory.hxx>
-#include <StackSetEntityMaker.hxx>
-#include <RenderingSystem.hxx>
-#include <ZoomOutAnimationSystem.hxx>
-#include <MouseClickTracker.hxx>
-#include <WindowDimensionGetter.hxx>
-#include <ResourceUtil.hxx>
-#include <AdjacentNeighbourCounter.hxx>
-#include <StackSetFactory.hxx>
-#include <StackInsertionSystem.hxx>
-#include <SoundSystem.hxx>
-#include <MusicPlayer.hxx>
-#include <SoundPlayer.hxx>
+#include <view/StackSetEntityMaker.hxx>
+#include <systems/RenderingSystem.hxx>
+#include <systems/ZoomOutAnimationSystem.hxx>
+#include <decorators/MouseClickTracker.hxx>
+#include <view/WindowDimensionGetter.hxx>
+#include <view/ResourceUtil.hxx>
+#include <logic/AdjacentNeighbourCounter.hxx>
+#include <logic/StackSetFactory.hxx>
+#include <systems/StackInsertionSystem.hxx>
+#include <systems/SoundSystem.hxx>
+#include <delegates/MusicPlayer.hxx>
+#include <delegates/SoundPlayer.hxx>
 #include <GameConfig.hxx>
-#include <VelocitySystem.hxx>
+#include <systems/VelocitySystem.hxx>
 #include "gtest/gtest.h"
-#include "AnimationSubSystem.hxx"
-#include "TilePopperSystem.hxx"
-#include "TileVerticalMover.hxx"
-#include "TileHorizontalMover.hxx"
-#include "BackgroundRendererEntityFactory.hxx"
-#include "TerrainRenderer.hxx"
+#include "systems/AnimationSubSystem.hxx"
+#include "systems/TilePopperSystem.hxx"
+#include "systems/TileVerticalMover.hxx"
+#include "systems/TileHorizontalMover.hxx"
+#include "delegates/BackgroundRendererEntityFactory.hxx"
+#include "view/TerrainRenderer.hxx"
 #include "StackHelpers.hxx"
-#include "EndGameSystem.hxx"
+#include "systems/EndGameSystem.hxx"
 
 TEST(EndGameTests, shouldEndGame)
 {
@@ -66,7 +66,7 @@ TEST(EndGameTests, shouldEndGame)
     factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
     factory.addSystem(std::make_shared<SoundSystem>());
     factory.addSystem(std::make_shared<VelocitySystem>(false, windowDimensions));
-    factory.addSystem(std::make_shared<EndGameSystem>(6, windowDimensions, &looper));
+    factory.addSystem(std::make_shared<EndGameSystem>(6, windowDimensions, &looper, &set));
 
 
     ResourceUtil util;

@@ -3,15 +3,15 @@
 //
 
 
-#include <WindowOpener.hxx>
-#include <GameLooper.hxx>
-#include <LoopTerminator.hxx>
-#include <WindowRenamer.hxx>
+#include <view/WindowOpener.hxx>
+#include <decorators/GameLooper.hxx>
+#include <decorators/LoopTerminator.hxx>
+#include <view/WindowRenamer.hxx>
 #include <EntityFactory.hxx>
-#include <SoundSystem.hxx>
-#include <ResourceUtil.hxx>
-#include "MusicPlayer.hxx"
-#include "SoundPlayer.hxx"
+#include <systems/SoundSystem.hxx>
+#include <view/ResourceUtil.hxx>
+#include "delegates/MusicPlayer.hxx"
+#include "delegates/SoundPlayer.hxx"
 
 #include "gtest/gtest.h"
 TEST(SoundTest, shouldPlayMusic)

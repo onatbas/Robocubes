@@ -2,7 +2,7 @@
 // Created by Onat Bas on 04/01/17.
 //
 
-#include <GameLooper.hxx>
+#include <decorators/GameLooper.hxx>
 #include "EntityFactory.hxx"
 
 EntityFactory::EntityFactory(GameLooper *looper) : looper(looper), active(true) {

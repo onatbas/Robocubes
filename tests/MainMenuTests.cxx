@@ -2,45 +2,45 @@
 // Created by Onat Bas on 08/01/17.
 //
 
-#include <WindowOpener.hxx>
+#include <view/WindowOpener.hxx>
 #include <gtest/gtest.h>
-#include <WindowRenamer.hxx>
-#include <GameLooper.hxx>
-#include <LoopTerminator.hxx>
+#include <view/WindowRenamer.hxx>
+#include <decorators/GameLooper.hxx>
+#include <decorators/LoopTerminator.hxx>
 #include <EntityFactory.hxx>
-#include <RenderingSystem.hxx>
-#include <WindowDimensionGetter.hxx>
-#include <AnimationSubSystem.hxx>
-#include <StackSet.hxx>
+#include <systems/RenderingSystem.hxx>
+#include <view/WindowDimensionGetter.hxx>
+#include <systems/AnimationSubSystem.hxx>
+#include <logic/StackSet.hxx>
 #include "EntityFactory.hxx"
-#include "PlainBackgroundMaker.hxx"
-#include "LogoMaker.hxx"
-#include "BackgroundBoxesMaker.hxx"
-#include "VelocitySystem.hxx"
-#include "StartButtonMaker.hxx"
-#include "AnyClickTracker.hxx"
-#include <WindowOpener.hxx>
-#include <GameLooper.hxx>
-#include <LoopTerminator.hxx>
-#include <WindowRenamer.hxx>
-#include <StackSet.hxx>
+#include "delegates/PlainBackgroundMaker.hxx"
+#include "delegates/LogoMaker.hxx"
+#include "delegates/BackgroundBoxesMaker.hxx"
+#include "systems/VelocitySystem.hxx"
+#include "view/StartButtonMaker.hxx"
+#include "decorators/AnyClickTracker.hxx"
+#include <view/WindowOpener.hxx>
+#include <decorators/GameLooper.hxx>
+#include <decorators/LoopTerminator.hxx>
+#include <view/WindowRenamer.hxx>
+#include <logic/StackSet.hxx>
 #include <EntityFactory.hxx>
-#include <StackSetEntityMaker.hxx>
-#include <RenderingSystem.hxx>
-#include <ZoomOutAnimationSystem.hxx>
-#include <MouseClickTracker.hxx>
-#include <WindowDimensionGetter.hxx>
-#include <ResourceUtil.hxx>
-#include <AdjacentNeighbourCounter.hxx>
-#include <StackSetFactory.hxx>
-#include <StackInsertionSystem.hxx>
+#include <view/StackSetEntityMaker.hxx>
+#include <systems/RenderingSystem.hxx>
+#include <systems/ZoomOutAnimationSystem.hxx>
+#include <decorators/MouseClickTracker.hxx>
+#include <view/WindowDimensionGetter.hxx>
+#include <view/ResourceUtil.hxx>
+#include <logic/AdjacentNeighbourCounter.hxx>
+#include <logic/StackSetFactory.hxx>
+#include <systems/StackInsertionSystem.hxx>
 #include "gtest/gtest.h"
-#include "AnimationSubSystem.hxx"
-#include "TilePopperSystem.hxx"
-#include "TileVerticalMover.hxx"
-#include "TileHorizontalMover.hxx"
-#include "BackgroundRendererEntityFactory.hxx"
-#include "TerrainRenderer.hxx"
+#include "systems/AnimationSubSystem.hxx"
+#include "systems/TilePopperSystem.hxx"
+#include "systems/TileVerticalMover.hxx"
+#include "systems/TileHorizontalMover.hxx"
+#include "delegates/BackgroundRendererEntityFactory.hxx"
+#include "view/TerrainRenderer.hxx"
 
 
 
@@ -58,57 +58,21 @@ TEST(MainMenuTests, shouldShowMainMenu)
     GameLooper looper;
     LoopTerminator terminator(looper);
 
-    EntityFactory factoryMainMenu(&looper);
-    auto renderingSystem = std::make_shared<RenderingSystem>(&factoryMainMenu, window.get());
+    EntityFactory factory(&looper);
+    auto renderingSystem = std::make_shared<RenderingSystem>(&factory, window.get());
     renderingSystem->addSubSystem(std::make_shared<BackgroundRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
     renderingSystem->addSubSystem(std::make_shared<AnimationSubSystem>());
-    factoryMainMenu.addSystem(renderingSystem);
-    factoryMainMenu.addSystem(std::make_shared<VelocitySystem>(true, windowDimensions));
+    factory.addSystem(renderingSystem);
+    factory.addSystem(std::make_shared<VelocitySystem>(true, windowDimensions));
 
-    PlainBackgroundMaker backgroundMaker(&factoryMainMenu, &looper);
-    BackgroundBoxesMaker boxMaker(&looper, &factoryMainMenu, windowDimensions);
-    LogoMaker maker(&looper, &factoryMainMenu, windowDimensions);
-    StartButtonMaker buttonMaker(&looper, &factoryMainMenu, windowDimensions);
+    PlainBackgroundMaker backgroundMaker(&factory, &looper);
+    TerrainRenderer terrain(&factory);
+    BackgroundBoxesMaker boxMaker(&looper, &factory, windowDimensions);
+    LogoMaker maker(&looper, &factory, windowDimensions);
+    StartButtonMaker buttonMaker(&looper, &factory, windowDimensions);
     AnyClickTracker tracker(&looper, [&](){
-
-        factoryMainMenu.setActive(false);
-
-        StackSetFactory stackSetFactory;
-        StackSet set = stackSetFactory.createFrom("rgb", 10, 8);
-
-        GameLooper looper;
-        LoopTerminator terminator(looper);
-        EntityFactory factory(&looper);
-        StackSetEntityMaker maker(&factory);
-        WindowDimensionGetter dimensionGetter;
-        const Dimension &windowDimensions = dimensionGetter.getDimensionsOfWindows(window.get());
-
-        maker.makeEntities(set);
-        auto renderingSystem = std::make_shared<RenderingSystem>(&factory, window.get());
-        renderingSystem->addSubSystem(std::make_shared<BackgroundRendererSubSystem>());
-        renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
-        renderingSystem->addSubSystem(std::make_shared<BoxRendererSubSystem>());
-        renderingSystem->addSubSystem(std::make_shared<AnimationSubSystem>());
-
-        factory.addSystem(renderingSystem);
-        factory.addSystem(std::make_shared<ZoomOutAnimationSystem>());
-        factory.addSystem(std::make_shared<TileVerticalMover>(set, looper));
-        factory.addSystem(std::make_shared<TileHorizontalMover>(set, looper));
-        factory.addSystem(std::make_shared<TilePopperSystem>(&set, window.get(), &looper));
-        factory.addSystem(std::make_shared<StackInsertionSystem>(set, looper, 3));
-        factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
-
-        ResourceUtil util;
-        std::string path = util.getBackgroundPath();
-
-        TerrainRenderer terrain(&factory);
-        BackgroundRendererEntityFactory renderer(path, &factory);
-
-
-
-
+        looper.exit();
     });
-
-
     looper.loop();
 }

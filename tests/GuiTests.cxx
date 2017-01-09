@@ -3,17 +3,17 @@
 //
 
 
-#include <WindowOpener.hxx>
-#include <WindowRenamer.hxx>
-#include <GameLooper.hxx>
+#include <view/WindowOpener.hxx>
+#include <view/WindowRenamer.hxx>
+#include <decorators/GameLooper.hxx>
 #include <EntityFactory.hxx>
-#include <LoopTerminator.hxx>
-#include <RenderingSystem.hxx>
-#include <AnimationSubSystem.hxx>
-#include <WindowDimensionGetter.hxx>
+#include <decorators/LoopTerminator.hxx>
+#include <systems/RenderingSystem.hxx>
+#include <systems/AnimationSubSystem.hxx>
+#include <view/WindowDimensionGetter.hxx>
 #include "gtest/gtest.h"
-#include "GuiRenderer.hxx"
-#include "FontRenderingSubSystem.hxx"
+#include "systems/GuiRenderer.hxx"
+#include "systems/FontRenderingSubSystem.hxx"
 
 TEST(GuiTests, shouldDisplayGui)
 {

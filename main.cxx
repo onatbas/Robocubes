@@ -2,41 +2,47 @@
 // Created by Onat Bas on 07/01/17.
 //
 
-#include <WindowOpener.hxx>
-#include <GameLooper.hxx>
-#include <LoopTerminator.hxx>
-#include <WindowRenamer.hxx>
-#include <StackSet.hxx>
+#include <view/WindowOpener.hxx>
+#include <decorators/GameLooper.hxx>
+#include <decorators/LoopTerminator.hxx>
+#include <view/WindowRenamer.hxx>
+#include <logic/StackSet.hxx>
 #include <EntityFactory.hxx>
-#include <StackSetEntityMaker.hxx>
-#include <RenderingSystem.hxx>
-#include <ZoomOutAnimationSystem.hxx>
-#include <MouseClickTracker.hxx>
-#include <WindowDimensionGetter.hxx>
-#include <ResourceUtil.hxx>
-#include <AdjacentNeighbourCounter.hxx>
-#include <StackSetFactory.hxx>
-#include <StackInsertionSystem.hxx>
-#include <SoundSystem.hxx>
-#include <MusicPlayer.hxx>
-#include <SoundPlayer.hxx>
+#include <view/StackSetEntityMaker.hxx>
+#include <systems/RenderingSystem.hxx>
+#include <systems/ZoomOutAnimationSystem.hxx>
+#include <decorators/MouseClickTracker.hxx>
+#include <view/WindowDimensionGetter.hxx>
+#include <view/ResourceUtil.hxx>
+#include <logic/AdjacentNeighbourCounter.hxx>
+#include <logic/StackSetFactory.hxx>
+#include <systems/StackInsertionSystem.hxx>
+#include <systems/SoundSystem.hxx>
+#include <delegates/MusicPlayer.hxx>
+#include <delegates/SoundPlayer.hxx>
 #include <GameConfig.hxx>
 #include "gtest/gtest.h"
-#include "AnimationSubSystem.hxx"
-#include "TilePopperSystem.hxx"
-#include "TileVerticalMover.hxx"
-#include "TileHorizontalMover.hxx"
-#include "BackgroundRendererEntityFactory.hxx"
-#include "TerrainRenderer.hxx"
-#include "EndGameSystem.hxx"
-#include "VelocitySystem.hxx"
-#include "GuiRenderer.hxx"
-#include "FontRenderingSubSystem.hxx"
-#include "GameOverMaker.hxx"
+#include "systems/AnimationSubSystem.hxx"
+#include "systems/TilePopperSystem.hxx"
+#include "systems/TileVerticalMover.hxx"
+#include "systems/TileHorizontalMover.hxx"
+#include "delegates/BackgroundRendererEntityFactory.hxx"
+#include "view/TerrainRenderer.hxx"
+#include "systems/EndGameSystem.hxx"
+#include "systems/VelocitySystem.hxx"
+#include "systems/GuiRenderer.hxx"
+#include "systems/FontRenderingSubSystem.hxx"
+#include "view/GameOverMaker.hxx"
 #include <ctime>
-#include "GameCleaner.hxx"
+#include "delegates/GameCleaner.hxx"
+#include "delegates/PlainBackgroundMaker.hxx"
+#include "view/StartButtonMaker.hxx"
+#include "delegates/LogoMaker.hxx"
+#include "decorators/AnyClickTracker.hxx"
+#include "delegates/BackgroundBoxesMaker.hxx"
 
 void play(std::shared_ptr<Window> window);
+void mainMenu(std::shared_ptr<Window> window);
 
 bool reset = true;
 
@@ -44,6 +50,11 @@ int main(int argc, const char *argv[]) {
 
     WindowOpener opener;
     auto window = opener.open();
+
+    WindowRenamer renamer;
+    renamer.rename(window, "Robocubes");
+
+    mainMenu(window);
 
     while (reset)
     play(window);
@@ -60,13 +71,11 @@ void play(std::shared_ptr<Window> window) {
     LoopTerminator terminator(looper);
     GameCleaner cleaner;
     ResourceUtil util;
-    WindowRenamer renamer;
     StackSetFactory stackSetFactory;
     GameConfig config;
     StackSetEntityMaker maker(&factory);
     WindowDimensionGetter dimensionGetter;
 
-    renamer.rename(window, "Robocubes");
     const Dimension windowDimensions = dimensionGetter.getDimensionsOfWindows(window.get());
 
     StackSet set;
@@ -102,6 +111,34 @@ void play(std::shared_ptr<Window> window) {
 
     looper.observe(BOXESGAME_RESET_REQUEST, 0, [&](const char *data){
         reset = true;
+        looper.exit();
+    });
+    looper.loop();
+}
+
+
+void mainMenu(std::shared_ptr<Window> window)
+{
+    WindowDimensionGetter getter;
+    Dimension windowDimensions = getter.getDimensionsOfWindows(window.get());
+
+    GameLooper looper;
+    LoopTerminator terminator(looper);
+
+    EntityFactory factory(&looper);
+    auto renderingSystem = std::make_shared<RenderingSystem>(&factory, window.get());
+    renderingSystem->addSubSystem(std::make_shared<BackgroundRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<TerrainRendererSubSystem>());
+    renderingSystem->addSubSystem(std::make_shared<AnimationSubSystem>());
+    factory.addSystem(renderingSystem);
+    factory.addSystem(std::make_shared<VelocitySystem>(true, windowDimensions));
+
+    PlainBackgroundMaker backgroundMaker(&factory, &looper);
+    TerrainRenderer terrain(&factory);
+    BackgroundBoxesMaker boxMaker(&looper, &factory, windowDimensions);
+    LogoMaker maker(&looper, &factory, windowDimensions);
+    StartButtonMaker buttonMaker(&looper, &factory, windowDimensions);
+    AnyClickTracker tracker(&looper, [&](){
         looper.exit();
     });
     looper.loop();

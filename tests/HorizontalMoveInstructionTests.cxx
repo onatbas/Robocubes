@@ -3,12 +3,12 @@
 //
 
 
-#include <StackSet.hxx>
-#include <VerticalMover.hxx>
-#include <AdjacentPopper.hxx>
+#include <logic/StackSet.hxx>
+#include <logic/VerticalMover.hxx>
+#include <logic/AdjacentPopper.hxx>
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
-#include "HorizontalMover.hxx"
+#include "logic/HorizontalMover.hxx"
 
 TEST(HorizontalInstructionsTest, shouldDoNothingIfNoStackIsNull) {
     StackSet set = getStackSetByCodeList("bgb bbbr bbbr");

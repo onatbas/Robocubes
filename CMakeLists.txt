@@ -8,43 +8,43 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 set(CMAKE_CXX_STANDARD 14)
 set(BOXES_GAME_SRC_FILES
-        src/Colors.hxx src/Game.hxx src/Game.cxx src/Box.hxx src/Box.cxx src/BoxStacker.hxx
-        src/BoxStacker.cxx src/Stack.hxx src/Stack.cxx src/StackPopper.hxx src/StackPopper.cxx src/VerticalNeighbourCounter.hxx
-        src/VerticalNeighbourCounter.cxx src/VerticalNeigbourCountResult.hxx src/VerticalNeigbourCountResult.cxx src/StackPopResult.hxx src/StackPopResult.cxx src/StackDivider.hxx
-        src/StackDivider.cxx src/AdjacentNeighbourCounter.hxx src/AdjacentNeighbourCounter.cxx src/StackSet.hxx src/StackSet.cxx src/BoxPosition.hxx
-        src/BoxPosition.cxx src/AdjacentNeighbourCountResult.hxx src/AdjacentNeighbourCountResult.cxx src/TileExistsChecker.hxx src/TileExistsChecker.cxx src/SameColorChecker.hxx
-        src/SameColorChecker.cxx src/NeighboursInVicinityCounter.hxx src/NeighboursInVicinityCounter.cxx src/AdjacentPopper.hxx src/AdjacentPopper.cxx src/AdjacentPopperResult.hxx
-        src/AdjacentPopperResult.cxx src/PoppedPositions.hxx src/PoppedPositions.cxx src/VerticalMover.hxx src/VerticalMover.cxx src/VerticalMovements.hxx
-        src/VerticalMovements.cxx src/VerticalMovement.hxx src/VerticalMovement.cxx src/HorizontalMover.cxx src/HorizontalMover.hxx src/HorizontalMovements.cxx
-        src/HorizontalMovements.hxx src/WindowRefGetter.cxx src/WindowRefGetter.hxx src/HorizontalMovement.cxx src/HorizontalMovement.hxx src/Window.cxx
-        src/Window.hxx src/WindowOpener.cxx src/WindowOpener.hxx src/GameLooper.cxx src/GameLooper.hxx src/WindowRenamer.cxx
-        src/WindowRenamer.hxx src/WindowRefGetter.cxx src/WindowRefGetter.hxx src/BoxDrawer.cxx src/BoxDrawer.hxx src/PNGLoader.cxx
-        src/PNGLoader.hxx src/PNG.cxx src/PNG.hxx src/PNGDrawer.cxx src/PNGDrawer.hxx src/PNGSurfaceGetter.cxx
-        src/PNGSurfaceGetter.hxx src/RectBuilder.cxx src/RectBuilder.hxx src/PNGDimensionGetter.cxx src/PNGDimensionGetter.hxx src/Dimension.cxx
-        src/Dimension.hxx src/DrawPosition.cxx src/DrawPosition.hxx src/WindowUpdater.cxx src/WindowUpdater.hxx src/IMGInitializer.cxx
-        src/IMGInitializer.hxx src/Vector2D.cxx src/Vector2D.hxx src/BackgroundRendererEntityFactory.cxx src/BackgroundRendererEntityFactory.hxx src/LoopTerminator.cxx src/LoopTerminator.hxx src/StackSetEntityMaker.cxx src/StackSetEntityMaker.hxx
-        src/WindowCleaner.cxx src/WindowCleaner.hxx src/TerrainRendererSubSystem.cxx src/TerrainRendererSubSystem.hxx src/Renderable.hxx src/Renderable.cxx
-        src/WindowPositioner.cxx src/WindowPositioner.hxx src/PNGFactory.cxx src/PNGFactory.hxx src/BackgroundRendererSubSystem.cxx src/BackgroundRendererSubSystem.hxx
-        src/BoxRendererSubSystem.hxx src/BoxRendererSubSystem.cxx src/SmokeAdder.hxx src/SmokeAdder.cxx src/WindowDimensionGetter.cxx src/WindowDimensionGetter.hxx
-        src/EntityFactory.cxx src/BoxDrawingConfiguration.cxx src/BoxDrawingConfiguration.hxx src/EntityFactory.hxx src/RenderingSystem.cxx src/RenderingSystem.hxx
-        src/BackgroundComponent.cxx src/BackgroundComponent.hxx src/GameSystem.cxx src/GameSystem.hxx src/DrawCanvas.cxx src/DrawCanvas.hxx
-        src/Scale.cxx src/Scale.hxx src/GameBeginZoomOut.cxx src/GameBeginZoomOut.hxx src/ZoomOutAnimationSystem.cxx src/ZoomOutAnimationSystem.hxx
-        src/TerrainRenderer.cxx src/TerrainRenderer.hxx src/ResourceUtil.cxx src/ResourceUtil.hxx src/TerrainComponent.cxx src/TerrainComponent.hxx
-        src/MouseClickTracker.cxx src/MouseClickTracker.hxx src/MouseClicked.cxx src/MouseClicked.hxx src/BoxPositionCalculator.cxx src/BoxPositionCalculator.hxx
-        tests/DisapperanceAnimationTests.cxx src/AnimationSet.cxx src/AnimationSet.hxx src/RenderingSubSystem.cxx src/RenderingSubSystem.hxx src/AnimationSubSystem.cxx
-        src/AnimationSubSystem.hxx src/AnimationStep.cxx src/AnimationStep.hxx src/TilePopperSystem.cxx src/TilePopperSystem.hxx src/WillPop.cxx
-        src/WillPop.hxx tests/FallDownTests.cxx src/TileVerticalMover.cxx src/TileVerticalMover.hxx src/Offset.cxx src/Offset.hxx
-        src/StackSetInserter.cxx src/StackSetInserter.hxx src/TileHorizontalMover.cxx src/TileHorizontalMover.hxx tests/MergeBackTests.cxx src/SingleDataHolder.cxx
-        src/SingleDataHolder.hxx src/SquaredDistanceModeler.cxx src/SquaredDistanceModeler.hxx src/HorizontalStackInserter.cxx src/HorizontalStackInserter.hxx
-        src/HorizontalStackInserterResult.cxx src/HorizontalStackInserterResult.hxx src/StackSetFactory.cxx src/StackSetFactory.hxx src/StackFactory.cxx src/StackFactory.hxx src/CharToColorConverter.cxx
-        src/CharToColorConverter.hxx src/StackInsertionSystem.cxx src/StackInsertionSystem.hxx src/GameConfig.cxx src/GameConfig.hxx
-        src/MovementChecker.hxx src/MovementChecker.cxx src/GraphicsHolder.cxx src/GraphicsHolder.hxx
-        src/PlainBackgroundMaker.cxx src/PlainBackgroundMaker.hxx
-        src/LogoMaker.cxx src/LogoMaker.hxx
-        src/BackgroundBoxesMaker.cxx src/BackgroundBoxesMaker.hxx src/Velocity.cxx src/Velocity.hxx src/VelocitySystem.cxx src/VelocitySystem.hxx src/StartButtonMaker.cxx src/StartButtonMaker.hxx src/AnyClickTracker.cxx src/AnyClickTracker.hxx
+        src/logic/Colors.hxx src/logic/Box.hxx src/logic/Box.cxx src/logic/BoxStacker.hxx
+        src/logic/BoxStacker.cxx src/logic/Stack.hxx src/logic/Stack.cxx src/logic/StackPopper.hxx src/logic/StackPopper.cxx src/logic/VerticalNeighbourCounter.hxx
+        src/logic/VerticalNeighbourCounter.cxx src/logic/VerticalNeigbourCountResult.hxx src/logic/VerticalNeigbourCountResult.cxx src/logic/StackPopResult.hxx src/logic/StackPopResult.cxx src/logic/StackDivider.hxx
+        src/logic/StackDivider.cxx src/logic/AdjacentNeighbourCounter.hxx src/logic/AdjacentNeighbourCounter.cxx src/logic/StackSet.hxx src/logic/StackSet.cxx src/components/BoxPosition.hxx
+        src/components/BoxPosition.cxx src/logic/AdjacentNeighbourCountResult.hxx src/logic/AdjacentNeighbourCountResult.cxx src/delegates/TileExistsChecker.hxx src/delegates/TileExistsChecker.cxx src/logic/SameColorChecker.hxx
+        src/logic/SameColorChecker.cxx src/logic/NeighboursInVicinityCounter.hxx src/logic/NeighboursInVicinityCounter.cxx src/logic/AdjacentPopper.hxx src/logic/AdjacentPopper.cxx src/logic/AdjacentPopperResult.hxx
+        src/logic/AdjacentPopperResult.cxx src/logic/PoppedPositions.hxx src/logic/PoppedPositions.cxx src/logic/VerticalMover.hxx src/logic/VerticalMover.cxx src/logic/VerticalMovements.hxx
+        src/logic/VerticalMovements.cxx src/logic/VerticalMovement.hxx src/logic/VerticalMovement.cxx src/logic/HorizontalMover.cxx src/logic/HorizontalMover.hxx src/logic/HorizontalMovements.cxx
+        src/logic/HorizontalMovements.hxx src/delegates/WindowRefGetter.cxx src/delegates/WindowRefGetter.hxx src/logic/HorizontalMovement.cxx src/logic/HorizontalMovement.hxx src/view/Window.cxx
+        src/view/Window.hxx src/view/WindowOpener.cxx src/view/WindowOpener.hxx src/decorators/GameLooper.cxx src/decorators/GameLooper.hxx src/view/WindowRenamer.cxx
+        src/view/WindowRenamer.hxx src/delegates/WindowRefGetter.cxx src/delegates/WindowRefGetter.hxx src/view/BoxDrawer.cxx src/view/BoxDrawer.hxx src/view/PNGLoader.cxx
+        src/view/PNGLoader.hxx src/view/PNG.cxx src/view/PNG.hxx src/view/PNGDrawer.cxx src/view/PNGDrawer.hxx src/delegates/PNGSurfaceGetter.cxx
+        src/delegates/PNGSurfaceGetter.hxx src/view/RectBuilder.cxx src/view/RectBuilder.hxx src/view/PNGDimensionGetter.cxx src/view/PNGDimensionGetter.hxx src/components/Dimension.cxx
+        src/components/Dimension.hxx src/components/DrawPosition.cxx src/components/DrawPosition.hxx src/view/WindowUpdater.cxx src/view/WindowUpdater.hxx src/view/IMGInitializer.cxx
+        src/view/IMGInitializer.hxx src/logic/Vector2D.cxx src/logic/Vector2D.hxx src/delegates/BackgroundRendererEntityFactory.cxx src/delegates/BackgroundRendererEntityFactory.hxx src/decorators/LoopTerminator.cxx src/decorators/LoopTerminator.hxx src/view/StackSetEntityMaker.cxx src/view/StackSetEntityMaker.hxx
+        src/view/WindowCleaner.cxx src/view/WindowCleaner.hxx src/systems/TerrainRendererSubSystem.cxx src/systems/TerrainRendererSubSystem.hxx src/view/Renderable.hxx src/view/Renderable.cxx
+        src/view/WindowPositioner.cxx src/view/WindowPositioner.hxx src/view/PNGFactory.cxx src/view/PNGFactory.hxx src/systems/BackgroundRendererSubSystem.cxx src/systems/BackgroundRendererSubSystem.hxx
+        src/systems/BoxRendererSubSystem.hxx src/systems/BoxRendererSubSystem.cxx src/view/SmokeAdder.hxx src/view/SmokeAdder.cxx src/view/WindowDimensionGetter.cxx src/view/WindowDimensionGetter.hxx
+        src/EntityFactory.cxx src/view/BoxDrawingConfiguration.cxx src/view/BoxDrawingConfiguration.hxx src/EntityFactory.hxx src/systems/RenderingSystem.cxx src/systems/RenderingSystem.hxx
+        src/components/BackgroundComponent.cxx src/components/BackgroundComponent.hxx src/systems/GameSystem.cxx src/systems/GameSystem.hxx src/view/DrawCanvas.cxx src/view/DrawCanvas.hxx
+        src/components/Scale.cxx src/components/Scale.hxx src/systems/GameBeginZoomOut.cxx src/systems/GameBeginZoomOut.hxx src/systems/ZoomOutAnimationSystem.cxx src/systems/ZoomOutAnimationSystem.hxx
+        src/view/TerrainRenderer.cxx src/view/TerrainRenderer.hxx src/view/ResourceUtil.cxx src/view/ResourceUtil.hxx src/components/TerrainComponent.cxx src/components/TerrainComponent.hxx
+        src/decorators/MouseClickTracker.cxx src/decorators/MouseClickTracker.hxx src/components/MouseClicked.cxx src/components/MouseClicked.hxx src/view/BoxPositionCalculator.cxx src/view/BoxPositionCalculator.hxx
+        tests/DisapperanceAnimationTests.cxx src/components/AnimationSet.cxx src/components/AnimationSet.hxx src/systems/RenderingSubSystem.cxx src/systems/RenderingSubSystem.hxx src/systems/AnimationSubSystem.cxx
+        src/systems/AnimationSubSystem.hxx src/components/AnimationStep.cxx src/components/AnimationStep.hxx src/systems/TilePopperSystem.cxx src/systems/TilePopperSystem.hxx src/components/WillPop.cxx
+        src/components/WillPop.hxx tests/FallDownTests.cxx src/systems/TileVerticalMover.cxx src/systems/TileVerticalMover.hxx src/components/Offset.cxx src/components/Offset.hxx
+        src/logic/StackSetInserter.cxx src/logic/StackSetInserter.hxx src/systems/TileHorizontalMover.cxx src/systems/TileHorizontalMover.hxx tests/MergeBackTests.cxx src/delegates/SingleDataHolder.cxx
+        src/delegates/SingleDataHolder.hxx src/delegates/SquaredDistanceModeler.cxx src/delegates/SquaredDistanceModeler.hxx src/logic/HorizontalStackInserter.cxx src/logic/HorizontalStackInserter.hxx
+        src/logic/HorizontalStackInserterResult.cxx src/logic/HorizontalStackInserterResult.hxx src/logic/StackSetFactory.cxx src/logic/StackSetFactory.hxx src/logic/StackFactory.cxx src/logic/StackFactory.hxx src/delegates/CharToColorConverter.cxx
+        src/delegates/CharToColorConverter.hxx src/systems/StackInsertionSystem.cxx src/systems/StackInsertionSystem.hxx src/GameConfig.cxx src/GameConfig.hxx
+        src/delegates/MovementChecker.hxx src/delegates/MovementChecker.cxx src/view/GraphicsHolder.cxx src/view/GraphicsHolder.hxx
+        src/delegates/PlainBackgroundMaker.cxx src/delegates/PlainBackgroundMaker.hxx
+        src/delegates/LogoMaker.cxx src/delegates/LogoMaker.hxx
+        src/delegates/BackgroundBoxesMaker.cxx src/delegates/BackgroundBoxesMaker.hxx src/components/Velocity.cxx src/components/Velocity.hxx src/systems/VelocitySystem.cxx src/systems/VelocitySystem.hxx src/view/StartButtonMaker.cxx src/view/StartButtonMaker.hxx src/decorators/AnyClickTracker.cxx src/decorators/AnyClickTracker.hxx
 
 
-        src/SoundSystem.cxx src/SoundSystem.hxx src/Sound.cxx src/Sound.hxx src/Music.cxx src/Music.hxx src/MusicPlayer.cxx src/MusicPlayer.hxx src/SoundPlayer.cxx src/SoundPlayer.hxx src/EndGameSystem.cxx src/EndGameSystem.hxx src/BoxExistanceChecker.cxx src/BoxExistanceChecker.hxx tests/GuiTests.cxx src/GuiRenderer.cxx src/GuiRenderer.hxx src/TTFText.cxx src/TTFText.hxx src/FontRenderingSubSystem.cxx src/FontRenderingSubSystem.hxx src/TTFRenderer.cxx src/TTFRenderer.hxx tests/GameOverMakerTests.cxx src/GameOverMaker.cxx src/GameOverMaker.hxx)
+        src/systems/SoundSystem.cxx src/systems/SoundSystem.hxx src/components/Sound.cxx src/components/Sound.hxx src/components/Music.cxx src/components/Music.hxx src/delegates/MusicPlayer.cxx src/delegates/MusicPlayer.hxx src/delegates/SoundPlayer.cxx src/delegates/SoundPlayer.hxx src/systems/EndGameSystem.cxx src/systems/EndGameSystem.hxx src/delegates/BoxExistanceChecker.cxx src/delegates/BoxExistanceChecker.hxx tests/GuiTests.cxx src/systems/GuiRenderer.cxx src/systems/GuiRenderer.hxx src/components/TTFText.cxx src/components/TTFText.hxx src/systems/FontRenderingSubSystem.cxx src/systems/FontRenderingSubSystem.hxx src/view/TTFRenderer.cxx src/view/TTFRenderer.hxx tests/GameOverMakerTests.cxx src/view/GameOverMaker.cxx src/view/GameOverMaker.hxx)
 
 #definitions
 #add_definitions("-Wall -Wextra -pedantic-errors -Werror=return-type")
@@ -59,7 +59,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # binaries/executables/libraries
 add_library(boxesGame STATIC ${BOXES_GAME_SRC_FILES})
-add_executable(boxesGameExe main.cxx src/GameCleaner.cxx src/GameCleaner.hxx)
+add_executable(boxesGameExe main.cxx src/delegates/GameCleaner.cxx src/delegates/GameCleaner.hxx)
 
 # linker
 target_link_libraries(boxesGame ${Boost_LIBRARIES} ${SDL2_LIBRARY_SET} ${ENTITYX_BINARIES})

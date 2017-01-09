@@ -5,12 +5,12 @@
 #ifndef BOXESGAME_BOXPOPPERTESTHELPERS_HXX
 #define BOXESGAME_BOXPOPPERTESTHELPERS_HXX
 
-#include "BoxStacker.hxx"
-#include "StackSet.hxx"
+#include "logic/BoxStacker.hxx"
+#include "logic/StackSet.hxx"
 
 #include <boost/tokenizer.hpp>
 #include <boost/foreach.hpp>
-#include <CharToColorConverter.hxx>
+#include <delegates/CharToColorConverter.hxx>
 
 typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
 

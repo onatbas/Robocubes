@@ -6,7 +6,7 @@
 #define BOXESGAME_ENTITYFACTORY_HXX
 
 #include <entityx/entityx.h>
-#include "GameLooper.hxx"
+#include "decorators/GameLooper.hxx"
 #include <vector>
 
 class EntityFactory : public entityx::EntityX {
