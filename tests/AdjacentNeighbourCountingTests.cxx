@@ -2,9 +2,9 @@
 // Created by Onat Bas on 01/01/17.
 //
 
-#include "StackSet.hxx"
+#include "logic/StackSet.hxx"
 #include "gtest/gtest.h"
-#include "AdjacentNeighbourCounter.hxx"
+#include "logic/AdjacentNeighbourCounter.hxx"
 #include "StackHelpers.hxx"
 
 TEST(HorizontalAndVerticalNeighbourCounting, three_single_box_column_counting) {

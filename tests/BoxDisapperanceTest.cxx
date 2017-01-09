@@ -4,8 +4,8 @@
 
 
 #include <gtest/gtest.h>
-#include "BoxStacker.hxx"
-#include "StackPopper.hxx"
+#include "logic/BoxStacker.hxx"
+#include "logic/StackPopper.hxx"
 #include "StackHelpers.hxx"
 
 TEST(BoxPopperTests, single_column_all_should_pop) {

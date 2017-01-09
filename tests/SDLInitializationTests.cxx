@@ -3,19 +3,19 @@
 //
 
 
-#include <Box.hxx>
-#include <DrawPosition.hxx>
-#include <ResourceUtil.hxx>
-#include <PNGLoader.hxx>
+#include <logic/Box.hxx>
+#include <components/DrawPosition.hxx>
+#include <view/ResourceUtil.hxx>
+#include <view/PNGLoader.hxx>
 #include "gtest/gtest.h"
 
-#include "Window.hxx"
-#include "WindowOpener.hxx"
-#include "GameLooper.hxx"
-#include "WindowRenamer.hxx"
-#include "BoxDrawer.hxx"
-#include "LoopTerminator.hxx"
-#include "BackgroundRendererEntityFactory.hxx"
+#include "view/Window.hxx"
+#include "view/WindowOpener.hxx"
+#include "decorators/GameLooper.hxx"
+#include "view/WindowRenamer.hxx"
+#include "view/BoxDrawer.hxx"
+#include "decorators/LoopTerminator.hxx"
+#include "delegates/BackgroundRendererEntityFactory.hxx"
 
 TEST(SDLInitializationTests, shouldOpenWindow)
 {

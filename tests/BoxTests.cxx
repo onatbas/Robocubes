@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Box.hxx"
-#include "BoxStacker.hxx"
+#include "logic/Box.hxx"
+#include "logic/BoxStacker.hxx"
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"

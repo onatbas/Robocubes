@@ -2,12 +2,12 @@
 // Created by Onat Bas on 07/01/17.
 //
 
-#include <StackSet.hxx>
-#include <HorizontalStackInserter.hxx>
-#include <HorizontalMovements.hxx>
+#include <logic/StackSet.hxx>
+#include <logic/HorizontalStackInserter.hxx>
+#include <logic/HorizontalMovements.hxx>
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
-#include "HorizontalStackInserterResult.hxx"
+#include "logic/HorizontalStackInserterResult.hxx"
 
 TEST(HorizontalStackInsertion, shouldAddAStack)
 {

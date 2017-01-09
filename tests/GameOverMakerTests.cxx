@@ -4,15 +4,15 @@
 
 
 #include "gtest/gtest.h"
-#include <WindowOpener.hxx>
-#include <WindowRenamer.hxx>
-#include <GameLooper.hxx>
-#include <LoopTerminator.hxx>
+#include <view/WindowOpener.hxx>
+#include <view/WindowRenamer.hxx>
+#include <decorators/GameLooper.hxx>
+#include <decorators/LoopTerminator.hxx>
 #include <EntityFactory.hxx>
-#include <AnimationSubSystem.hxx>
-#include <WindowDimensionGetter.hxx>
-#include "RenderingSystem.hxx"
-#include "GameOverMaker.hxx"
+#include <systems/AnimationSubSystem.hxx>
+#include <view/WindowDimensionGetter.hxx>
+#include "systems/RenderingSystem.hxx"
+#include "view/GameOverMaker.hxx"
 
 TEST(GameOverMakerTests, shouldSayGameOver)
 {
