@@ -59,11 +59,15 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # binaries/executables/libraries
 add_library(boxesGame STATIC ${BOXES_GAME_SRC_FILES})
+
+SET(MACOSX_BUNDLE_BUNDLE_NAME Robocubes)
 add_executable(boxesGameExe main.cxx src/delegates/GameCleaner.cxx src/delegates/GameCleaner.hxx)
+SET_TARGET_PROPERTIES(boxesGameExe PROPERTIES MACOSX_BUNDLE TRUE)
 
 # linker
 target_link_libraries(boxesGame ${Boost_LIBRARIES} ${SDL2_LIBRARY_SET} ${ENTITYX_BINARIES})
-target_link_libraries(boxesGameExe boxesGame)
+target_link_libraries(boxesGameExe boxesGame  ${Boost_LIBRARIES} ${SDL2_LIBRARY_SET} ${ENTITYX_BINARIES})
+
 
 #tests
 
