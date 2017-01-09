@@ -3,18 +3,18 @@
 //
 
 
-#include <WindowOpener.hxx>
-#include <GameLooper.hxx>
-#include <LoopTerminator.hxx>
-#include <WindowRenamer.hxx>
-#include <StackSet.hxx>
-#include <StackSetEntityMaker.hxx>
-#include <ZoomOutAnimationSystem.hxx>
-#include <BackgroundRendererEntityFactory.hxx>
+#include <view/WindowOpener.hxx>
+#include <decorators/GameLooper.hxx>
+#include <decorators/LoopTerminator.hxx>
+#include <view/WindowRenamer.hxx>
+#include <logic/StackSet.hxx>
+#include <view/StackSetEntityMaker.hxx>
+#include <systems/ZoomOutAnimationSystem.hxx>
+#include <delegates/BackgroundRendererEntityFactory.hxx>
 #include "gtest/gtest.h"
 #include "EntityFactory.hxx"
-#include "RenderingSystem.hxx"
-#include "TerrainRenderer.hxx"
+#include "systems/RenderingSystem.hxx"
+#include "view/TerrainRenderer.hxx"
 #include "StackHelpers.hxx"
 
 TEST(TerrainDrawTests, shouldRenderTerrain)

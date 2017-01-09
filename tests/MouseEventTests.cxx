@@ -2,25 +2,25 @@
 // Created by Onat Bas on 05/01/17.
 //
 
-#include <WindowOpener.hxx>
-#include <GameLooper.hxx>
+#include <view/WindowOpener.hxx>
+#include <decorators/GameLooper.hxx>
 #include <EntityFactory.hxx>
-#include <RenderingSystem.hxx>
-#include <LoopTerminator.hxx>
-#include <BackgroundRendererEntityFactory.hxx>
-#include <ResourceUtil.hxx>
-#include <BoxPosition.hxx>
-#include <WindowRenamer.hxx>
-#include <StackSet.hxx>
-#include <StackSetEntityMaker.hxx>
-#include <ZoomOutAnimationSystem.hxx>
+#include <systems/RenderingSystem.hxx>
+#include <decorators/LoopTerminator.hxx>
+#include <delegates/BackgroundRendererEntityFactory.hxx>
+#include <view/ResourceUtil.hxx>
+#include <components/BoxPosition.hxx>
+#include <view/WindowRenamer.hxx>
+#include <logic/StackSet.hxx>
+#include <view/StackSetEntityMaker.hxx>
+#include <systems/ZoomOutAnimationSystem.hxx>
 #include "gtest/gtest.h"
-#include "MouseClickTracker.hxx"
-#include "MouseClicked.hxx"
+#include "decorators/MouseClickTracker.hxx"
+#include "components/MouseClicked.hxx"
 #include "StackHelpers.hxx"
-#include "TerrainRenderer.hxx"
-#include "BackgroundRendererEntityFactory.hxx"
-#include "WindowDimensionGetter.hxx"
+#include "view/TerrainRenderer.hxx"
+#include "delegates/BackgroundRendererEntityFactory.hxx"
+#include "view/WindowDimensionGetter.hxx"
 
 class WindowRenemeOnClick
 {
@@ -69,7 +69,7 @@ TEST(MouseEventTests, shouldCatchBoxColorOnClick)
 
     WindowDimensionGetter windowDimensionGetter;
     const Dimension &windowDimensions = windowDimensionGetter.getDimensionsOfWindows(window.get());
-    MouseClickTracker tracker(&looper, &factory, windowDimensions);
+    factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
 
     StackSet set = getStackSetByCodeList("brbrgb ggggbg brrrgr bbrgbr bbggrr bbrgrr");
     StackSetEntityMaker maker(&factory);

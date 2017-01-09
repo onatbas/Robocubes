@@ -3,14 +3,14 @@
 //
 
 
-#include <WindowOpener.hxx>
+#include <view/WindowOpener.hxx>
 #include "gtest/gtest.h"
-#include "BackgroundRendererEntityFactory.hxx"
+#include "delegates/BackgroundRendererEntityFactory.hxx"
 #include <string>
-#include <GameLooper.hxx>
-#include <RenderingSystem.hxx>
-#include <ResourceUtil.hxx>
-#include "LoopTerminator.hxx"
+#include <decorators/GameLooper.hxx>
+#include <systems/RenderingSystem.hxx>
+#include <view/ResourceUtil.hxx>
+#include "decorators/LoopTerminator.hxx"
 
 TEST(GameSceneTests, shouldDisplayBackground)
 {

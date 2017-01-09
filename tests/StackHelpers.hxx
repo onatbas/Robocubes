@@ -5,29 +5,21 @@
 #ifndef BOXESGAME_BOXPOPPERTESTHELPERS_HXX
 #define BOXESGAME_BOXPOPPERTESTHELPERS_HXX
 
-#include "BoxStacker.hxx"
-#include "StackSet.hxx"
+#include "logic/BoxStacker.hxx"
+#include "logic/StackSet.hxx"
 
 #include <boost/tokenizer.hpp>
 #include <boost/foreach.hpp>
+#include <delegates/CharToColorConverter.hxx>
 
 typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
 
 Stack getStackByCode(std::string colors) {
     Stack s;
     BoxStacker stacker;
+    CharToColorConverter converter;
     for (char c : colors)
-        switch (c) {
-            case 'r':
-                s = stacker.stackOn(s, RED);
-                break;
-            case 'g':
-                s = stacker.stackOn(s, GREEN);
-                break;
-            case 'b':
-                s = stacker.stackOn(s, BLUE);
-                break;
-        }
+        s = stacker.stackOn(s, converter.convert(c));
     return s;
 }
 

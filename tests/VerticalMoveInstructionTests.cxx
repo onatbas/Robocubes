@@ -2,9 +2,9 @@
 // Created by Onat Bas on 02/01/17.
 //
 
-#include "StackSet.hxx"
-#include "AdjacentPopper.hxx"
-#include "VerticalMover.hxx"
+#include "logic/StackSet.hxx"
+#include "logic/AdjacentPopper.hxx"
+#include "logic/VerticalMover.hxx"
 #include "StackHelpers.hxx"
 #include "gtest/gtest.h"
 

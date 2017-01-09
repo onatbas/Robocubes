@@ -3,19 +3,19 @@
 //
 
 
-#include <Box.hxx>
-#include <DrawPosition.hxx>
-#include <ResourceUtil.hxx>
-#include <PNGLoader.hxx>
+#include <logic/Box.hxx>
+#include <components/DrawPosition.hxx>
+#include <view/ResourceUtil.hxx>
+#include <view/PNGLoader.hxx>
 #include "gtest/gtest.h"
 
-#include "Window.hxx"
-#include "WindowOpener.hxx"
-#include "GameLooper.hxx"
-#include "WindowRenamer.hxx"
-#include "BoxDrawer.hxx"
-#include "LoopTerminator.hxx"
-#include "BackgroundRendererEntityFactory.hxx"
+#include "view/Window.hxx"
+#include "view/WindowOpener.hxx"
+#include "decorators/GameLooper.hxx"
+#include "view/WindowRenamer.hxx"
+#include "view/BoxDrawer.hxx"
+#include "decorators/LoopTerminator.hxx"
+#include "delegates/BackgroundRendererEntityFactory.hxx"
 
 TEST(SDLInitializationTests, shouldOpenWindow)
 {
@@ -44,7 +44,7 @@ TEST(SDLInitializationTests, shouldRenderGreenBox)
 
     ResourceUtil util;
     PNGLoader loader;
-    const PNG &png = loader.load(util.getBoxPath(Box(GREEN)), window.get());
+    const PNG &png = loader.load(util.getBoxPath(Box(GREEN), false), window.get());
     Box box(GREEN);
     BoxDrawer renderer(png);
     WindowRefGetter getter(window.get());
@@ -80,7 +80,7 @@ TEST(SDLInitializationTests, shouldRenderRedBox)
     Box box(RED);
     ResourceUtil util;
     PNGLoader loader;
-    PNG png = loader.load(util.getBoxPath(box), window.get());
+    PNG png = loader.load(util.getBoxPath(box, false), window.get());
     BoxDrawer boxDrawer(png);
 
     Renderable renderable(SDL_GetWindowSurface(getter.getWindowRef()));

@@ -3,30 +3,30 @@
 //
 
 
-#include <WindowOpener.hxx>
-#include <GameLooper.hxx>
-#include <LoopTerminator.hxx>
-#include <WindowRenamer.hxx>
-#include <StackSet.hxx>
+#include <view/WindowOpener.hxx>
+#include <decorators/GameLooper.hxx>
+#include <decorators/LoopTerminator.hxx>
+#include <view/WindowRenamer.hxx>
+#include <logic/StackSet.hxx>
 #include <EntityFactory.hxx>
-#include <StackSetEntityMaker.hxx>
-#include <RenderingSystem.hxx>
-#include <ZoomOutAnimationSystem.hxx>
-#include <MouseClickTracker.hxx>
-#include <WindowDimensionGetter.hxx>
-#include <ResourceUtil.hxx>
-#include <BoxPositionCalculator.hxx>
-#include <AdjacentNeighbourCounter.hxx>
+#include <view/StackSetEntityMaker.hxx>
+#include <systems/RenderingSystem.hxx>
+#include <systems/ZoomOutAnimationSystem.hxx>
+#include <decorators/MouseClickTracker.hxx>
+#include <view/WindowDimensionGetter.hxx>
+#include <view/ResourceUtil.hxx>
+#include <view/BoxPositionCalculator.hxx>
+#include <logic/AdjacentNeighbourCounter.hxx>
 #include "gtest/gtest.h"
 #include "StackHelpers.hxx"
-#include "MouseClicked.hxx"
-#include "Window.hxx"
-#include "AnimationSet.hxx"
-#include "AnimationSubSystem.hxx"
-#include "AdjacentNeighbourCounter.hxx"
-#include "TilePopperSystem.hxx"
-#include "TileVerticalMover.hxx"
-#include "TileHorizontalMover.hxx"
+#include "components/MouseClicked.hxx"
+#include "view/Window.hxx"
+#include "components/AnimationSet.hxx"
+#include "systems/AnimationSubSystem.hxx"
+#include "logic/AdjacentNeighbourCounter.hxx"
+#include "systems/TilePopperSystem.hxx"
+#include "systems/TileVerticalMover.hxx"
+#include "systems/TileHorizontalMover.hxx"
 
 TEST(FallDownTests, shouldFallDownWhenPopped)
 {
@@ -34,7 +34,7 @@ TEST(FallDownTests, shouldFallDownWhenPopped)
     WindowOpener opener;
     auto window = opener.open();
     WindowRenamer renamer;
-    renamer.rename(window, "Stacks should animate smoke on click and their neighbours, and they disappear.");
+    renamer.rename(window, "Boxes should fall down upon successfull selection.");
 
     StackSet set = getStackSetByCodeList("rgbgbbr rrbgbbgbr rgbgbbr rrrgbbgbbr rgbgbbr rrrgbbgbr rgbgbbr rgbbgbr rrrgbgbr rgbbgbbr");
 
@@ -54,7 +54,7 @@ TEST(FallDownTests, shouldFallDownWhenPopped)
 
     WindowDimensionGetter dimensionGetter;
     const Dimension &windowDimensions = dimensionGetter.getDimensionsOfWindows(window.get());
-    MouseClickTracker tracker(&looper, &factory, windowDimensions);
+    factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
 
     looper.loop();
 }
