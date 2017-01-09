@@ -66,7 +66,7 @@ TEST(EndGameTests, shouldEndGame)
     factory.addSystem(std::make_shared<MouseClickTracker>(&looper, &factory, windowDimensions));
     factory.addSystem(std::make_shared<SoundSystem>());
     factory.addSystem(std::make_shared<VelocitySystem>(false, windowDimensions));
-    factory.addSystem(std::make_shared<EndGameSystem>(6, windowDimensions, &looper));
+    factory.addSystem(std::make_shared<EndGameSystem>(6, windowDimensions, &looper, &set));
 
 
     ResourceUtil util;
