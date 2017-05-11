@@ -14,4 +14,4 @@ I used TDD to develop this. Some of the tests were visual tests. When you use TD
 
 ![](https://media.giphy.com/media/xUA7bclp2btjH8q6hW/giphy.gif)
 
-For higher resolution version [click here](https://media.giphy.com/media/3og0IPFyiamB1djAFG/giphy.gif)
+For higher resolution version [click here](https://www.evernote.com/l/ATfu2EkpTYtOPaJ4BovTF_VCBcgc6uxoV7Q)
