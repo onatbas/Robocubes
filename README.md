@@ -13,3 +13,5 @@ this is a code challengeI did myself , building a game with c++/SDL2 using moder
 I used TDD to develop this. Some of the tests were visual tests. When you use TDD, the tests clearly show the progress of the development in an iterative fashion and It's more visible when It's a game. Here you can see the tests running with the title of widows explaining that the test is about.
 
 ![](https://media.giphy.com/media/xUA7bclp2btjH8q6hW/giphy.gif)
+
+For higher resolution version [click here](https://media.giphy.com/media/3og0IPFyiamB1djAFG/giphy.gif)
